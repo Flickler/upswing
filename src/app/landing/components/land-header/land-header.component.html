@@ -1,0 +1,26 @@
+<header>
+  <nav>
+    <div class="brand">
+      <img src="/assets/logo.svg" alt="upswing logo" />
+      <img src="/assets/wordmark.svg" alt="" />
+    </div>
+    <div class="nav_group">
+      <a href="#about-section" class="nav_link">Sobre</a>
+      <a href="#feature-section" class="nav_link">Cursos</a>
+      <a href="#feature-section" class="nav_link">Empresas</a>
+      <a href="#testimonials-section" class="nav_link">Recursos</a>
+      <a href="#contact-section" class="nav_link">Fale Conosco</a>
+    </div>
+    <div class="nav_link_login">
+      <button class="nav_button_icon" (click)="flyoutToggle()">
+        <lucide-icons name="circleUser" color="#839ef7" [size]="20" />
+        <span>Minha Área</span>
+      </button>
+      <div [ngClass]="{ menu_flyout: true, active: isFlyoutActive }">
+        <a class="flyout_link" routerLink="al">Sou Aluno</a>
+        <a class="flyout_link" routerLink="co">Sou Empresa</a>
+        <a class="flyout_link" routerLink="ad">Administrador</a>
+      </div>
+    </div>
+  </nav>
+</header>
