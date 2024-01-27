@@ -19,9 +19,33 @@ export const routes: Routes = [
         path: '',
         pathMatch: 'prefix',
         loadComponent: () =>
-          import('./admin/dashboard/dashboard.component').then(
+          import('./admin/pages/dashboard/dashboard.component').then(
             (c) => c.DashboardComponent
           ),
+        children: [
+          {
+            path: '',
+            pathMatch: 'prefix',
+            loadComponent: () =>
+              import('./admin/components/home/home.component').then(
+                (c) => c.HomeComponent
+              ),
+          },
+          {
+            path: 'register',
+            loadComponent: () =>
+              import('./admin/components/register/register.component').then(
+                (c) => c.RegisterComponent
+              ),
+          },
+          {
+            path: 'admins',
+            loadComponent: () =>
+              import(
+                './admin/components/admin-viewer/admin-viewer.component'
+              ).then((c) => c.AdminViewerComponent),
+          },
+        ],
       },
       {
         path: '',
@@ -31,7 +55,9 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./admin/login/login.component').then((c) => c.LoginComponent),
+          import('./admin/pages/login/login.component').then(
+            (c) => c.LoginComponent
+          ),
       },
     ],
   },
