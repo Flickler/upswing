@@ -1,0 +1,35 @@
+@use "variables" as *;
+
+:host {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-7;
+}
+
+.welcome {
+  grid-column: span 3;
+  border-bottom: 2px solid $gray-scale-60;
+  padding-bottom: $spacing-8;
+}
+
+.router_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-4;
+
+  height: 12.5rem;
+  border: 2px solid $gray-scale-30;
+  border-radius: $radius-2;
+  background-color: transparent;
+
+  &:nth-child(1) {
+    border: 2px solid $gray-scale-30;
+  }
+}
+
+button {
+  font-size: $h4;
+  color: $gray-scale-60;
+}
