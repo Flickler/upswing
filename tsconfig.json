@@ -22,7 +22,14 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@@Icons/*": ["./src/app/icons/*"],
+      "@@Landing/*": ["./src/app/landing/*"],
+      "@@Aluno/*": ["./src/app/aluno/*"],
+      "@@Admin/*": ["./src/app/admin/*"],
+      "@@Corporativo/*": ["./src/app/corporativo/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
