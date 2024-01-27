@@ -18,10 +18,22 @@ export const icons = {
     ],
     lines: [{ x1: 2, x2: 22, y1: 2, y2: 22 }],
   },
+  bot: {
+    paths: ['M12 8V4H8', 'M2 14h2', 'M20 14h2', 'M15 13v2', 'M9 13v2'],
+    rects: [{ width: 16, height: 12, x: 4, y: 8, rx: 2 }],
+  },
+  briefcase: {
+    rects: [{ width: 20, height: 14, x: 2, y: 7, rx: 2, ry: 2 }],
+    paths: ['M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'],
+  },
+  plus: {
+    paths: ['M5 12h14', 'M12 5v14'],
+  },
 };
 
 export type Icons = keyof typeof icons;
-export type IconsProps = {
+
+export type IconProps = {
   paths?: string[];
   circles?: {
     cx: number;
@@ -34,4 +46,14 @@ export type IconsProps = {
     y1: number;
     y2: number;
   }[];
+  rects?: {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+    rx?: number;
+    ry?: number;
+  }[];
+  polygons?: string[];
+  polylines?: string[];
 };

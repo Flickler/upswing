@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-import { Icons, IconsProps } from './lucide-icons';
+import { Icons, IconProps } from './lucide-icons';
 import { LucideIconsDirective } from './lucide-icon.directive';
 
 @Component({
@@ -37,6 +37,25 @@ import { LucideIconsDirective } from './lucide-icon.directive';
         [attr.y2]="line.y2"
       />
       } }
+      <!-- RECTS -->
+      @if(icon.rects){ @for (rect of icon.rects; track $index) {
+      <rect
+        [attr.width]="rect.width"
+        [attr.height]="rect.height"
+        [attr.x]="rect.x"
+        [attr.y]="rect.y"
+        [attr.rx]="rect?.rx"
+        [attr.ry]="rect?.ry"
+      />
+      } }
+      <!-- POLYGONS -->
+      @if(icon.polygons){ @for (polygon of icon.polygons; track $index) {
+      <polygon [attr.points]="polygon" />
+      } }
+      <!-- POLYLINES -->
+      @if(icon.polylines){ @for (polyline of icon.polylines; track $index) {
+      <polygon [attr.points]="polyline" />
+      } }
     </svg>
     }
   `,
@@ -45,7 +64,7 @@ export class LucideIcons implements OnChanges {
   @Input({ required: true }) name!: Icons;
   @Input() size: number = 20;
   @Input() color: string = 'black';
-  icon?: IconsProps;
+  icon?: IconProps;
 
   async ngOnChanges() {
     this.icon = await import('./lucide-icons').then((i) => i.icons[this.name]);
