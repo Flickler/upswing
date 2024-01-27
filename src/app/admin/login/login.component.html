@@ -1,0 +1,50 @@
+<header>
+  <img ngSrc="assets/brand-lg.svg" width="312" height="60" alt="logo-header" />
+</header>
+<div class="modal">
+  <h1>Área de Login</h1>
+  <form [formGroup]="formLogin">
+    <div class="form_group">
+      <label class="form_label">E-mail</label>
+      <input
+        type="text"
+        id="email"
+        formControlName="email"
+        placeholder="Digite seu email"
+      />
+    </div>
+    <div class="form_group">
+      <label class="form_label">Senha</label>
+      <div class="pass_box">
+        <input
+          [type]="isPassVisible ? 'text' : 'password'"
+          id="password"
+          placeholder="Digite sua senha"
+          formControlName="senha"
+        />
+        <lucide-icons
+          [name]="isPassVisible ? 'eyeOff' : 'eye'"
+          [size]="16"
+          color="#666c84"
+          (click)="VisibilityToggle()"
+        />
+      </div>
+    </div>
+
+    <div class="form_group_row">
+      <div class="form_check">
+        <input class="form-check-input" type="checkbox" />
+        <label class="form-check-label"> Me mantenha logado. </label>
+      </div>
+      <a> Esqueci minha senha. </a>
+    </div>
+    <button type="submit">Entrar</button>
+  </form>
+  <a routerLink="/" class="return_link"> Voltar para Website. </a>
+</div>
+<footer>
+  <div class="brand-2">
+    <img ngSrc="assets/logo-bw.svg" width="56" height="56" alt="logo-footer" />
+  </div>
+  <p class="footer_copy" href="">© 2023 Upswing</p>
+</footer>
