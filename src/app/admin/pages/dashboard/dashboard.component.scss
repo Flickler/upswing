@@ -1,0 +1,52 @@
+@use "variables" as *;
+
+:host {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 4rem 1fr;
+
+  background-color: $primary-10;
+  padding: 2rem;
+  min-height: 100dvh;
+}
+
+header,
+aside,
+main {
+  background-color: $white-color;
+}
+
+header {
+  grid-column: span 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: $radius-3 $radius-3 0 0;
+  border-bottom: 2px solid $primary-10;
+  padding: 0 $spacing-4;
+
+  height: 4rem;
+  width: 100%;
+
+  button {
+    padding: 1rem 1rem;
+    background-color: transparent;
+    border-radius: 50%;
+  }
+}
+
+aside {
+  border-right: 2px solid $primary-10;
+  border-bottom-left-radius: $radius-3;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-9;
+
+  border-bottom-right-radius: $radius-3;
+  padding: $spacing-11;
+}
