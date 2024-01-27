@@ -1,0 +1,17 @@
+@use "variables" as *;
+
+@mixin heading {
+  font-size: $h2;
+  border-bottom: 4px solid $primary-color;
+  padding: $spacing-8 $spacing-10 $spacing-8 $spacing-6;
+  width: fit-content;
+}
+
+@mixin formGroup($direction: column) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-4;
+  width: 100%;
+}

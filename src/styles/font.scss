@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Mona Sans";
+  /* prettier-ignore */
+  src: 
+    url(../fonts/Mona-Sans-Regular.woff2),
+    url(../fonts/Mona-Sans-Medium.woff2), 
+    url(../fonts/Mona-Sans-SemiBold.woff2),
+    url(../fonts/Mona-Sans-Bold.woff2);
+  font-weight: 400, 500, 600, 700;
+}
+
+$font: "Mona Sans", sans-serif;
