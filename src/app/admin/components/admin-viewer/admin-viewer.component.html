@@ -1,0 +1,7 @@
+<h1>Administradores</h1>
+@for (admin of (admins$ | async); track $index) {
+<div class="admin_card">
+  <lucide-icons name="circleUserRound" [size]="32" color="#666c84" />
+  <p>{{ admin.account.name }}</p>
+</div>
+}
