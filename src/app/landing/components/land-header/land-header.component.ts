@@ -1,8 +1,8 @@
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 import { LucideIcons } from '@@Icons/lucide-icons.component';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'land-header',

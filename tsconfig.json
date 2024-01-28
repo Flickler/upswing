@@ -30,6 +30,8 @@
       "@@Admin/*": ["./src/app/admin/*"],
       "@@Corporativo/*": ["./src/app/corporativo/*"],
       "@@Services/*": ["./src/app/services/*"],
+      "@@Directives/*": ["./src/app/directives/*"],
+      "@@Pipes/*": ["./src/app/pipes/*"],
       "@@Types/*": ["./src/app/types/*"],
       "@@Environments/*": ["./src/environments/*"],
     }

@@ -41,11 +41,11 @@ nav {
   color: $black;
 }
 
-.nav_link_login {
+.container_flyout {
   position: relative;
 }
 
-.nav_button_icon {
+.button_flyout {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -56,16 +56,15 @@ nav {
 }
 
 .menu_flyout {
-  display: none;
   flex-direction: column;
-
   position: absolute;
   top: 3.75rem;
   width: 120px;
 
   background-color: $white-color;
   border-radius: $radius-4;
-  z-index: 999;
+  box-shadow: $shadow-container;
+  z-index: 1;
 
   &.active {
     display: flex;

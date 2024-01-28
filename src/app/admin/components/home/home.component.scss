@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "mixins" as *;
 
 :host {
   display: grid;
@@ -13,19 +14,14 @@
 }
 
 .router_card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: $spacing-4;
+  @include linkCard;
 
-  height: 12.5rem;
-  border: 2px solid $gray-scale-30;
-  border-radius: $radius-2;
-  background-color: transparent;
+  &.register {
+    border: 4px dashed $gray-scale-30;
 
-  &:nth-child(1) {
-    border: 2px solid $gray-scale-30;
+    &:is(:hover, :focus) {
+      border: 4px dashed $primary-color;
+    }
   }
 }
 

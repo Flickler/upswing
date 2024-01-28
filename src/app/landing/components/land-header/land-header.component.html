@@ -11,12 +11,15 @@
       <a href="#testimonials-section" class="nav_link">Recursos</a>
       <a href="#contact-section" class="nav_link">Fale Conosco</a>
     </div>
-    <div class="nav_link_login">
-      <button class="nav_button_icon" (click)="flyoutToggle()">
+    <div class="container_flyout">
+      <button class="button_flyout" (click)="flyoutToggle()">
         <lucide-icons name="circleUser" color="#839ef7" [size]="20" />
         <span>Minha Área</span>
       </button>
-      <div [ngClass]="{ menu_flyout: true, active: isFlyoutActive }">
+      <div
+        [ngClass]="isFlyoutActive ? 'menu_flyout active' : 'menu_flyout'"
+        [hidden]="!isFlyoutActive"
+      >
         <a class="flyout_link" routerLink="al">Sou Aluno</a>
         <a class="flyout_link" routerLink="co">Sou Empresa</a>
         <a class="flyout_link" routerLink="ad">Administrador</a>

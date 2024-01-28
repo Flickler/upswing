@@ -1,7 +1,21 @@
-<h1>Administradores</h1>
+<div class="heading">
+  <lucide-icons
+    name="chevronLeft"
+    [size]="24"
+    color="#666c84"
+    routerLink="../"
+  />
+  <h1>Administradores</h1>
+</div>
 @for (admin of (admins$ | async); track $index) {
 <div class="admin_card">
-  <lucide-icons name="circleUserRound" [size]="32" color="#666c84" />
+  <lucide-icons class="admin_options" name="moreVertical" color="#666c84" />
+  <lucide-icons
+    class="admin_avatar"
+    name="circleUserRound"
+    color="#666c84"
+    [size]="32"
+  />
   <p>{{ admin.account.name }}</p>
 </div>
 }
