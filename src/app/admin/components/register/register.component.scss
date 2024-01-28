@@ -1,3 +1,27 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 :host {
   display: block;
+}
+
+h1 {
+  @include heading-2;
+}
+
+h2 {
+  margin-bottom: $spacing-6;
+}
+
+.register_options {
+  display: flex;
+  gap: $spacing-4;
+
+  button {
+    color: $gray-scale-80;
+    background-color: transparent;
+    border: 2px solid $gray-scale-60;
+    width: 30%;
+    height: 10rem;
+  }
 }
