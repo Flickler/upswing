@@ -84,6 +84,13 @@ export const icons = {
       { cx: 12, cy: 10, r: 3 },
     ],
   },
+  circleUserRound: {
+    paths: ['M18 20a6 6 0 0 0-12 0'],
+    circles: [
+      { cx: 12, cy: 10, r: 4 },
+      { cx: 12, cy: 12, r: 10 },
+    ],
+  },
   chevronDown: {
     paths: ['m6 9 6 6 6-6'],
   },
@@ -103,14 +110,6 @@ export const icons = {
   chevronLeftSquare: {
     paths: ['m14 16-4-4 4-4'],
     rects: [{ width: 18, height: 18, x: 3, y: 3, rx: 2 }],
-  },
-
-  circleUserRound: {
-    paths: ['M18 20a6 6 0 0 0-12 0'],
-    circles: [
-      { cx: 12, cy: 10, r: 4 },
-      { cx: 12, cy: 12, r: 10 },
-    ],
   },
 
   eye: {
@@ -194,6 +193,16 @@ export const icons = {
   mouse: {
     paths: ['M12 6v4'],
     rects: [{ width: 14, height: 20, x: 5, y: 2, rx: 7 }],
+  },
+
+  panelLeftClose: {
+    paths: ['M9 3v18', 'm16 15-3-3 3-3'],
+    rects: [{ width: 18, height: 18, x: 3, y: 3, rx: 2 }],
+  },
+
+  panelLeftOpen: {
+    paths: ['M9 3v18', 'm14 9 3 3-3 3'],
+    rects: [{ width: 18, height: 18, x: 3, y: 3, rx: 2 }],
   },
 
   phone: {
