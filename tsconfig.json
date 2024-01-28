@@ -29,6 +29,9 @@
       "@@Aluno/*": ["./src/app/aluno/*"],
       "@@Admin/*": ["./src/app/admin/*"],
       "@@Corporativo/*": ["./src/app/corporativo/*"],
+      "@@Services/*": ["./src/app/services/*"],
+      "@@Types/*": ["./src/app/types/*"],
+      "@@Environments/*": ["./src/environments/*"],
     }
   },
   "angularCompilerOptions": {
