@@ -7,6 +7,13 @@
   width: fit-content;
 }
 
+@mixin heading-2 {
+  border-bottom: 2px solid $gray-scale-60;
+  padding-bottom: $spacing-8;
+  margin-bottom: $spacing-6;
+  width: 100%;
+}
+
 @mixin formGroup($direction: column) {
   display: flex;
   flex-direction: $direction;

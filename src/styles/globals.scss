@@ -21,6 +21,10 @@ body {
   scroll-behavior: smooth;
 }
 
+router-outlet {
+  display: none;
+}
+
 h1 {
   font-size: $h1;
   font-weight: $semibold;
