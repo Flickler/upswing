@@ -37,6 +37,15 @@ export const routes: Routes = [
               import('./admin/components/register/register.component').then(
                 (c) => c.RegisterComponent
               ),
+            children: [
+              {
+                path: 'student',
+                loadComponent: () =>
+                  import(
+                    './admin/components/register-student/register-student.component'
+                  ).then((c) => c.RegisterStudentComponent),
+              },
+            ],
           },
           {
             path: 'admins',

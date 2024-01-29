@@ -1,0 +1,122 @@
+<register-modal>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <h4 class="h4 subtitle">Dados do Aluno</h4>
+    <h4 class="body-base-md subtitle">Informações Pessoais</h4>
+    <div class="form_group">
+      <label class="form_label">Nome Completo</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="Nome e Sobrenome"
+        formControlName="nome"
+      />
+    </div>
+    <div class="form_group">
+      <label class="form_label">Data de Nascimento</label>
+      <input
+        class="form_input form_placeholder"
+        type="date"
+        placeholder="DD/MM/AAAA"
+        formControlName="dataNascimento"
+      />
+    </div>
+    <div class="form_group">
+      <label class="form_label">CPF</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="Informe seu CPF"
+        mask="000.000.000-00"
+        formControlName="cpf"
+      />
+    </div>
+
+    <h4 class="body-base-md subtitle">Informações de Contato</h4>
+
+    <div class="form_group">
+      <label class="form_label">Telefone 1</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="(00) 00000-0000"
+        mask="(00) 00000-0000"
+        formControlName="telefoneUm"
+      />
+    </div>
+    <div class="form_group">
+      <label class="form_label">Telefone 2</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="(00) 00000-0000"
+        mask="(00) 00000-0000"
+        formControlName="telefoneDois"
+      />
+    </div>
+    <div class="form_group">
+      <label class="form_label">E-mail</label>
+      <input
+        class="form_input form_placeholder"
+        type="email"
+        placeholder="Digite seu e-mail"
+        formControlName="email"
+      />
+    </div>
+
+    <h4 class="body-base-md subtitle">Endereço</h4>
+
+    <div class="form_group">
+      <label class="form_label">CEP</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="00000-000"
+        mask="00000-000"
+        formControlName="cep"
+      />
+    </div>
+
+    <div class="form_group">
+      <label class="form_label">Logradouro</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="Digite o logradouro"
+        formControlName="logradouro"
+      />
+    </div>
+
+    <div class="form_group">
+      <label class="form_label">Complemento</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="Complemento"
+        formControlName="complemento"
+      />
+    </div>
+
+    <div class="form_group">
+      <label class="form_label">Bairro</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="Bairro"
+        formControlName="bairro"
+      />
+    </div>
+
+    <div class="form_group">
+      <label class="form_label">Cidade</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="Cidade"
+        formControlName="cidade"
+      />
+    </div>
+
+    <div class="form_group">
+      <label class="form_label">Estado</label>
+      <input
+        class="form_input form_placeholder"
+        placeholder="UF"
+        formControlName="estado"
+        mask="SS"
+      />
+    </div>
+    <!--SUBMIT-->
+    <button type="submit">Cadastrar</button>
+  </form>
+</register-modal>

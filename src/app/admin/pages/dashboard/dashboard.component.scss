@@ -7,7 +7,7 @@
 
   background-color: $primary-10;
   padding: 2rem;
-  min-height: 100dvh;
+  height: 100dvh;
 }
 
 header,
@@ -47,6 +47,7 @@ main {
   flex-direction: column;
   gap: $spacing-9;
 
+  overflow-y: auto;
   border-bottom-right-radius: $radius-3;
   padding: $spacing-11;
 

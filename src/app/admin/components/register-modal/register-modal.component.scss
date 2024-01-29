@@ -1,0 +1,25 @@
+@use "variables" as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100dvh;
+  width: 100dvw;
+  background-color: #0000008d;
+  backdrop-filter: blur(1rem);
+}
+
+.modal {
+  background-color: $white-color;
+  width: 60dvw;
+  height: 80dvh;
+  overflow-y: auto;
+  padding: $spacing-11;
+  border-radius: $radius-2;
+}
