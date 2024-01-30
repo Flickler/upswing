@@ -25,8 +25,15 @@ export class RegisterStudentComponent {
           Validators.maxLength(16),
         ],
       ],
-      mainPhone: ['', Validators.required],
-      optionalPhone: [''],
+      mainPhone: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ],
+      ],
+      optionalPhone: ['', [Validators.minLength(11), Validators.maxLength(11)]],
     }),
     birthDate: ['', Validators.required],
     socialSecurity: [
