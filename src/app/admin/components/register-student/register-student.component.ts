@@ -1,16 +1,8 @@
 import { Component, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { NgxMaskDirective } from 'ngx-mask';
-import { RegisterStudent } from '@@Types/Student';
-import { RegisterAccount } from '@@Types/Account';
 
 @Component({
   selector: 'app-register-student',
@@ -21,7 +13,35 @@ import { RegisterAccount } from '@@Types/Account';
 })
 export class RegisterStudentComponent {
   private fb = inject(FormBuilder);
-  protected form = this.fb.nonNullable.group({});
+  protected form = this.fb.nonNullable.group({
+    account: this.fb.nonNullable.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+        ],
+      ],
+      mainPhone: ['', Validators.required],
+      optionalPhone: [''],
+    }),
+    birthDate: ['', Validators.required],
+    socialSecurity: [
+      '',
+      [Validators.required, Validators.maxLength(11), Validators.minLength(11)],
+    ],
+    address: this.fb.nonNullable.group({
+      zipCode: [
+        '',
+        [Validators.required, Validators.maxLength(8), Validators.minLength(8)],
+      ],
+      number: ['', Validators.required],
+      complement: ['', Validators.required],
+    }),
+  });
 
   onSubmit() {
     console.log(this.form.value);

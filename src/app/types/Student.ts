@@ -1,5 +1,5 @@
 import { Account, RegisterAccount } from './Account';
-import { Address } from './Address';
+import { Address, RegisterAddress } from './Address';
 
 export type Student = {
   id: string;
@@ -14,8 +14,6 @@ export type Student = {
 export type RegisterStudent = {
   birthDate: string;
   socialSecurity: string;
-  registration?: unknown[];
   account: RegisterAccount;
-  socialNetworks?: unknown[];
-  Address: Address;
+  Address: RegisterAddress;
 };

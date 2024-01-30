@@ -6,3 +6,5 @@ export type Address = {
   complement: string;
   zipCode: ZipCode;
 };
+
+export type RegisterAddress = Omit<Address, 'id'>;
