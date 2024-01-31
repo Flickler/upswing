@@ -6,11 +6,11 @@ export type Account = {
   activeProfile?: boolean;
 };
 
-export type RegisterAccount = {
+export type RegisterAccount = Partial<{
   name: string;
   mainPhone: string;
   optionalPhone?: string;
   email: string;
   password: string;
   activeProfile?: boolean;
-};
+}>;

@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { NgxMaskDirective } from 'ngx-mask';
+// import { RegisterService } from '@@Services/register.service';
+import { RegisterModalComponent } from '../register-modal/register-modal.component';
 
 @Component({
   selector: 'app-register-student',
@@ -13,6 +14,8 @@ import { NgxMaskDirective } from 'ngx-mask';
 })
 export class RegisterStudentComponent {
   private fb = inject(FormBuilder);
+  // private registerService = inject(RegisterService);
+
   protected form = this.fb.nonNullable.group({
     account: this.fb.nonNullable.group({
       name: ['', Validators.required],
@@ -51,6 +54,8 @@ export class RegisterStudentComponent {
   });
 
   onSubmit() {
-    console.log(this.form.value);
+    if (this.form.valid) {
+      // this.registerService.registerStudent(this.form.value);
+    }
   }
 }

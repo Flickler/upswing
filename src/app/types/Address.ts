@@ -7,4 +7,4 @@ export type Address = {
   zipCode: ZipCode;
 };
 
-export type RegisterAddress = Omit<Address, 'id'>;
+export type RegisterAddress = Partial<Omit<Address, 'id'>>;

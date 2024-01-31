@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: DashboardService,
 })
 export class DashboardService {
   isPanelActive = signal(true);

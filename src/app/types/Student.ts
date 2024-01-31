@@ -11,9 +11,9 @@ export type Student = {
   Address: Address;
 };
 
-export type RegisterStudent = {
+export type RegisterStudent = Partial<{
   birthDate: string;
   socialSecurity: string;
   account: RegisterAccount;
   Address: RegisterAddress;
-};
+}>;

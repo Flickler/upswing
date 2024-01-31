@@ -9,6 +9,7 @@ import { DashboardService } from '@@Services/dashboard.service';
   selector: 'app-dashboard',
   standalone: true,
   imports: [RouterOutlet, NgClass, LucideIcons],
+  providers: [DashboardService],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
