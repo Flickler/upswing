@@ -16,10 +16,25 @@
 }
 
 .modal {
-  background-color: $white-color;
+  position: relative;
   width: 60dvw;
   height: 80dvh;
   overflow-y: auto;
   padding: $spacing-11;
   border-radius: $radius-2;
+  background-color: $white-color;
+}
+
+lucide-icons[name="chevronLeft"] {
+  position: absolute;
+  top: $spacing-10;
+  right: $spacing-10;
+  padding: $spacing-3;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-scale-30;
+  }
 }

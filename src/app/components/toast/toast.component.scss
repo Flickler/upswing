@@ -1,0 +1,24 @@
+@use "variables" as *;
+
+:host.toast {
+  width: 100%;
+  padding: $spacing-2 $spacing-4;
+
+  &.toast_info {
+    color: $primary-color;
+    background-color: $primary-5;
+    border-left: 2px solid $primary-color;
+  }
+
+  &.toast_warn {
+    color: $ui-red;
+    background-color: #fa36640d;
+    border-left: 2px solid $ui-red;
+  }
+
+  &.toast_sucess {
+    color: $ui-green;
+    background-color: #46cc8b0d;
+    border-left: 2px solid $ui-green;
+  }
+}
