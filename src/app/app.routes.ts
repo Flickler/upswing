@@ -5,7 +5,9 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./landing/landing.component').then((c) => c.LandingComponent),
+      import('./pages/landing/landing.component').then(
+        (c) => c.LandingComponent
+      ),
     pathMatch: 'full',
   },
 
@@ -19,7 +21,7 @@ export const routes: Routes = [
         path: '',
         pathMatch: 'prefix',
         loadComponent: () =>
-          import('./admin/pages/dashboard/dashboard.component').then(
+          import('./pages/dashboard/dashboard.component').then(
             (c) => c.DashboardComponent
           ),
         children: [
@@ -27,14 +29,14 @@ export const routes: Routes = [
             path: '',
             pathMatch: 'prefix',
             loadComponent: () =>
-              import('./admin/components/home/home.component').then(
+              import('./admin/home/home.component').then(
                 (c) => c.HomeComponent
               ),
           },
           {
             path: 'register',
             loadComponent: () =>
-              import('./admin/components/register/register.component').then(
+              import('./admin/register/register.component').then(
                 (c) => c.RegisterComponent
               ),
             children: [
@@ -42,7 +44,7 @@ export const routes: Routes = [
                 path: 'student',
                 loadComponent: () =>
                   import(
-                    './admin/components/register-student/register-student.component'
+                    './admin/register-student/register-student.component'
                   ).then((c) => c.RegisterStudentComponent),
               },
             ],
@@ -50,9 +52,9 @@ export const routes: Routes = [
           {
             path: 'admins',
             loadComponent: () =>
-              import(
-                './admin/components/admin-viewer/admin-viewer.component'
-              ).then((c) => c.AdminViewerComponent),
+              import('./admin/admin-viewer/admin-viewer.component').then(
+                (c) => c.AdminViewerComponent
+              ),
           },
         ],
       },
@@ -64,9 +66,7 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./admin/pages/login/login.component').then(
-            (c) => c.LoginComponent
-          ),
+          import('./pages/login/login.component').then((c) => c.LoginComponent),
       },
     ],
   },

@@ -3,12 +3,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { NgxMaskDirective } from 'ngx-mask';
 // import { RegisterService } from '@@Services/register.service';
-import { RegisterModalComponent } from '../register-modal/register-modal.component';
+import { ModalComponent } from '@@Components/register-modal/modal.component';
 
 @Component({
   selector: 'app-register-student',
   standalone: true,
-  imports: [ReactiveFormsModule, NgxMaskDirective, RegisterModalComponent],
+  imports: [ReactiveFormsModule, NgxMaskDirective, ModalComponent],
   templateUrl: './register-student.component.html',
   styleUrl: './register-student.component.scss',
 })

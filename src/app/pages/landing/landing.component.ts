@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LandHeaderComponent } from './components/land-header/land-header.component';
+import { LandHeaderComponent } from './land-header/land-header.component';
 
 @Component({
   selector: 'app-landing',
