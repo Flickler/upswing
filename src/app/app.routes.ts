@@ -54,6 +54,13 @@ export const routes: Routes = [
                     './admin/register/register-admin/register-admin.component'
                   ).then((c) => c.RegisterAdminComponent),
               },
+              {
+                path: 'corp',
+                loadComponent: () =>
+                  import(
+                    './admin/register/register-company/register-company.component'
+                  ).then((c) => c.RegisterCompanyComponent),
+              },
             ],
           },
           {
