@@ -1,5 +1,6 @@
 @use "font" as *;
 @use "variables" as *;
+@use "mixins" as *;
 
 * {
   padding: 0;
@@ -39,7 +40,7 @@ h2 {
 
 h3 {
   font-size: $h3;
-  font-weight: $semibold;
+  font-weight: $medium;
   line-height: $headings;
 }
 
@@ -86,6 +87,12 @@ ul {
 
 img {
   user-select: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
 }
 
 input {
@@ -143,6 +150,23 @@ input[type="radio"] {
 
 input[type="date"] {
   color: $gray-scale-60;
+}
+
+.form_heading {
+  @include heading;
+  margin-bottom: $spacing-7;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-5;
+}
+
+.form_control {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
 }
 
 ::-webkit-scrollbar {

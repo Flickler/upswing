@@ -1,1 +1,118 @@
-<p>register-admin works!</p>
+<modal>
+  <h2 class="form_heading">Cadastro do Administrador</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h3 class="body-base-md subtitle">Informações Pessoais</h3>
+    <div formGroupName="account" class="form_group">
+      <div class="form_control">
+        <label class="form_label">Nome Completo</label>
+        <input 
+          type="text"
+          placeholder="Nome e Sobrenome"
+          formControlName="name"
+        />
+
+        @if (submitted && name.invalid) {
+          <toast type="warn">Por favor, preencha um nome valido</toast>
+        }
+      </div>
+
+      <div class="form_control">
+        <label class="form_label">E-mail</label>
+        <input
+          type="email"
+          placeholder="Digite seu e-mail"
+          formControlName="email"
+        />
+
+        @if (submitted && email.invalid) {
+          <toast type="warn">Por favor, preencha um email valido</toast>
+        }
+      </div>
+
+      <div class="form_control">
+        <label class="form_label">Senha</label>
+        <input
+          type="password"
+          placeholder="Digite sua senha"
+          formControlName="password"
+        />
+
+        @if (submitted && password.invalid) {
+          @if(password.errors?.['required']){
+            <toast type="warn">É necessário informar uma senha</toast>
+          }
+          @if(password.errors?.['maxLenght'] || password.errors?.['minLenght']){
+            <toast type="warn">A senha deve deve ter entre 8 a 16 caracteres</toast>
+          }
+        }
+      </div>
+
+      <div class="form_control">
+        <label class="form_label">Confirmar senha</label>
+        <input
+          type="password"
+          placeholder="confirme a sua senha"
+          formControlName="confirmPassword"
+        />
+
+        @if (submitted && confirmPassword.invalid) {
+          @if(confirmPassword.errors?.['required']){
+            <toast type="warn">É necessário confirmar a sua senha</toast>
+          } 
+          @if(confirmPassword.errors?.['maxLenght']){
+            <toast type="warn">A senha deve possuir menos de 16 caracteres</toast>
+          }
+          @if(confirmPassword.errors?.['minLenght']){
+            <toast type="warn">A senha deve possuir mais de 8 caracteres</toast>
+          }
+          @if(confirmPassword.errors?.['notEqual']){
+            <toast type="warn">A informada não é igual a anterior</toast>
+          }
+        }
+      </div>
+
+      <div class="form_control">
+        <label class="form_label">Telefone principal</label>
+        <input
+          type="text"
+          placeholder="(00) 00000-0000"
+          mask="(00) 00000-0000"
+          formControlName="mainPhone"
+        />
+
+        @if (submitted && mainPhone.invalid){
+          <toast type="warn">Não é permitido valores parciais do numero de telefone</toast>
+        }
+      </div>
+
+      <div class="form_control">
+        <label class="form_label">Telefone Opcional</label>
+        <input
+        type="text"
+          placeholder="(00) 00000-0000"
+          mask="(00) 00000-0000"
+          formControlName="optionalPhone"
+        />
+      </div>
+
+      @if (submitted && optionalPhone.invalid){
+        <toast type="warn">Não é permitido valores parciais do numero de telefone</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Cargo</label>
+      <input
+        type="text"
+        placeholder="Informe o cargo do novo administrador"
+        formControlName="position"
+      />
+
+      @if (submitted && position.invalid){
+        <toast type="warn">É necessario informar o cargo do administrador</toast>
+      }
+    </div>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+</modal>

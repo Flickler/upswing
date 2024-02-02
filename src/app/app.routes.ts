@@ -47,6 +47,13 @@ export const routes: Routes = [
                     './admin/register/register-student/register-student.component'
                   ).then((c) => c.RegisterStudentComponent),
               },
+              {
+                path: 'admin',
+                loadComponent: () =>
+                  import(
+                    './admin/register/register-admin/register-admin.component'
+                  ).then((c) => c.RegisterAdminComponent),
+              },
             ],
           },
           {

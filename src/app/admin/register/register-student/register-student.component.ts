@@ -23,7 +23,6 @@ import { ToastComponent } from '@@Components/toast/toast.component';
     ToastComponent,
   ],
   templateUrl: './register-student.component.html',
-  styleUrl: './register-student.component.scss',
 })
 export class RegisterStudentComponent {
   private fb = inject(NonNullableFormBuilder);
