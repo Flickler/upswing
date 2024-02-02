@@ -5,3 +5,5 @@ export type ZipCode = {
   city: string;
   state: string;
 };
+
+export type RegisterZipeCode = Partial<ZipCode>;

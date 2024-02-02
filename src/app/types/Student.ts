@@ -15,5 +15,5 @@ export type RegisterStudent = Partial<{
   birthDate: string;
   socialSecurity: string;
   account: RegisterAccount;
-  Address: RegisterAddress;
+  address: RegisterAddress;
 }>;

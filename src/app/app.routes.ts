@@ -44,7 +44,7 @@ export const routes: Routes = [
                 path: 'student',
                 loadComponent: () =>
                   import(
-                    './admin/register-student/register-student.component'
+                    './admin/register/register-student/register-student.component'
                   ).then((c) => c.RegisterStudentComponent),
               },
             ],

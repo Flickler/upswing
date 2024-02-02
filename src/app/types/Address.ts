@@ -1,10 +1,14 @@
-import { ZipCode } from './ZipCode';
+import { RegisterZipeCode, ZipCode } from './ZipCode';
 
 export type Address = {
   id: string;
   number: number;
-  complement: string;
+  complement?: string;
   zipCode: ZipCode;
 };
 
-export type RegisterAddress = Partial<Omit<Address, 'id'>>;
+export type RegisterAddress = Partial<{
+  number: number | null;
+  complement: string | null;
+  zipCode: RegisterZipeCode;
+}>;

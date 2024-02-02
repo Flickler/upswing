@@ -8,10 +8,10 @@ import { RegisterStudent, Student } from '@@Types/Student';
   providedIn: 'root',
 })
 export class RegisterService {
-  private readonly path = environment.apiUrl + 'register';
+  private readonly path = environment.apiUrl + '/register';
   private http = inject(HttpClient);
 
   registerStudent(form: RegisterStudent) {
-    this.http.post<Student>(this.path, form);
+    return this.http.post<Student>(this.path + '/student', form);
   }
 }
