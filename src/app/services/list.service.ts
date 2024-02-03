@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@@Environments/environment';
 import { Pagination } from '@@Types/Pagination';
 import { Admin, Admins } from '@@Types/Admin';
+import { BusinessAreas } from '@@Types/BussinesArea';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,9 @@ export class ListService {
 
   listAdminById(id: string) {
     return this.http.get<Admin>(this.path + '/admin/' + id);
+  }
+
+  listBussinesArea() {
+    return this.http.get<BusinessAreas>(this.path + '/business-area');
   }
 }

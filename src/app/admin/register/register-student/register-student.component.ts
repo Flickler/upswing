@@ -36,7 +36,7 @@ export class RegisterStudentComponent {
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16), MatchDirective.match('password')]],
       mainPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
-      optionalPhone: new FormControl<string|null>('', [Validators.nullValidator, Validators.minLength(11), Validators.maxLength(11)]),
+      optionalPhone: new FormControl<string | null>('', [Validators.nullValidator, Validators.minLength(11), Validators.maxLength(11)]),
     }),
     birthDate: ['', Validators.required],
     socialSecurity: ['', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
@@ -73,11 +73,17 @@ export class RegisterStudentComponent {
     this.submitted = true;
     if (this.form.valid) {
       this.confirmPassword.disable();
-      if(this.optionalPhone.value == '')this.optionalPhone.disable();
+      if (this.optionalPhone.value == '') this.optionalPhone.disable();
       this.registerService
         .registerStudent(this.form.value)
         .pipe(take(1))
-        .subscribe((res) => console.log(res));
+        .subscribe((res) => {
+          this.submitted = false;
+          this.confirmPassword.enable();
+          this.optionalPhone.enable();
+          this.form.reset();
+          console.log(res);
+        });
     }
   }
 }

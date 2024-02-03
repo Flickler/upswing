@@ -1,4 +1,6 @@
-export type BussinesArea = {
+export type BusinessArea = {
   id: string;
-  bussinesArea: string;
+  businessArea: string;
 }
+
+export type BusinessAreas = BusinessArea[];

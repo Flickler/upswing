@@ -1,0 +1,24 @@
+<modal>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class="form_heading">Cadastro de Curso</h2>
+    <div class="form_control">
+      <label for="courseName">Nome do curso</label>
+      <input type="text" id="courseName" formControlName="courseName">
+
+      @if(submitted && courseName.invalid ){
+        <toast type="warn">É necessário informar um nome para o curso</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label for="businessAreaId">Selecionar area de atuação</label>
+      <select formControlName="businessAreaId">
+        @for (businessArea of businessAreas$ | async; track $index) {
+          <option [value]="businessArea.id">{{ businessArea.businessArea }}</option>
+        }
+      </select>
+
+    </div>
+    <button type="submit">Cadastrar</button>
+  </form>
+</modal>

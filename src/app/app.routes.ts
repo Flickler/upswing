@@ -55,11 +55,11 @@ export const routes: Routes = [
                   ).then((c) => c.RegisterAdminComponent),
               },
               {
-                path: 'corp',
+                path: 'course',
                 loadComponent: () =>
                   import(
-                    './admin/register/register-company/register-company.component'
-                  ).then((c) => c.RegisterCompanyComponent),
+                    './admin/register/register-course/register-course.component'
+                  ).then((c) => c.RegisterCourseComponent),
               },
             ],
           },

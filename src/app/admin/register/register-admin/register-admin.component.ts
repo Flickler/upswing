@@ -47,10 +47,16 @@ export class RegisterAdminComponent {
     this.submitted = true;
     if (this.form.valid) {
       this.confirmPassword.disable();
-      if(this.optionalPhone.value == '') this.optionalPhone.disable();
+      if (this.optionalPhone.value == '') this.optionalPhone.disable();
       this.registerService.registerAdmin(this.form.value)
         .pipe(take(1))
-        .subscribe(res => console.log(res));
+        .subscribe(res => {
+          this.submitted = false;
+          this.confirmPassword.enable();
+          this.optionalPhone.enable();
+          this.form.reset();
+          console.log(res);
+        });
     }
   }
 }
