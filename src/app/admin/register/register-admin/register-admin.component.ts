@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { NgxMaskDirective } from 'ngx-mask';
 import { MatchDirective } from '@@Directives/match.directive';
@@ -27,7 +27,7 @@ export class RegisterAdminComponent {
     account: this.fb.group({
       name: ['', [Validators.required]],
       mainPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
-      optionalPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      optionalPhone: ['', [Validators.nullValidator, Validators.minLength(11), Validators.maxLength(11)]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16), MatchDirective.match('password')]],
@@ -47,7 +47,7 @@ export class RegisterAdminComponent {
     this.submitted = true;
     if (this.form.valid) {
       this.confirmPassword.disable();
-      console.log(this.form.value);
+      if(this.optionalPhone.value == '') this.optionalPhone.disable();
       this.registerService.registerAdmin(this.form.value)
         .pipe(take(1))
         .subscribe(res => console.log(res));

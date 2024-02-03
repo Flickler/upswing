@@ -4,11 +4,12 @@ import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } 
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { MatchDirective } from '@@Directives/match.directive';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'upswing-register-company',
   standalone: true,
-  imports: [ReactiveFormsModule, ModalComponent, ToastComponent],
+  imports: [ReactiveFormsModule, NgxMaskDirective, ModalComponent, ToastComponent],
   templateUrl: './register-company.component.html',
 })
 export class RegisterCompanyComponent {
@@ -35,7 +36,7 @@ export class RegisterCompanyComponent {
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16), MatchDirective.match('password')]],
       mainPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
-      optionalPhone: ['', [Validators.nullValidator, Validators.minLength(11), Validators.maxLength(11)]],
+      optionalPhone: new FormControl<string|null>(null, [Validators.nullValidator, Validators.minLength(11), Validators.maxLength(11)]),
     }),
     address: this.fb.group({
       zipCode: this.fb.group({
@@ -76,5 +77,10 @@ export class RegisterCompanyComponent {
 
   onSubmit() {
     this.submitted = true;
+    if(this.form.valid){
+      this.confirmPassword.disable();
+      if(this.optionalPhone.value == '') this.optionalPhone.disable();
+      console.log(this.form.value);
+    }
   }
 }

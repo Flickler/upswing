@@ -41,7 +41,7 @@
           @if(password.errors?.['required']){
             <toast type="warn">É necessário informar uma senha</toast>
           }
-          @if(password.errors?.['maxLenght'] || password.errors?.['minLenght']){
+          @if(password.errors?.['minlength'] || password.errors?.['maxlength']){
             <toast type="warn">A senha deve deve ter entre 8 a 16 caracteres</toast>
           }
         }
@@ -58,12 +58,6 @@
         @if (submitted && confirmPassword.invalid) {
           @if(confirmPassword.errors?.['required']){
             <toast type="warn">É necessário confirmar a sua senha</toast>
-          } 
-          @if(confirmPassword.errors?.['maxLenght']){
-            <toast type="warn">A senha deve possuir menos de 16 caracteres</toast>
-          }
-          @if(confirmPassword.errors?.['minLenght']){
-            <toast type="warn">A senha deve possuir mais de 8 caracteres</toast>
           }
           @if(confirmPassword.errors?.['notEqual']){
             <toast type="warn">A informada não é igual a anterior</toast>
@@ -115,7 +109,7 @@
           @if(socialSecurity.errors?.['required']){
             <toast type="warn">É necessário informar uma CPF</toast>
           } 
-          @if(socialSecurity.errors?.['minLength'] || socialSecurity.errors?.['minLength']){
+          @if(socialSecurity.errors?.['minlength'] || socialSecurity.errors?.['maxlength']){
             <toast type="warn">O CPF deve possuir 11 digitos</toast>
           }
         }

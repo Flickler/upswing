@@ -6,7 +6,7 @@
       <label class="form_label">Razão social</label>
       <input 
         type="text"
-        placeholder="digite a razão social da empresa"
+        placeholder="Digite a razão social da empresa"
         formControlName="companyName"
       />
 
@@ -19,21 +19,22 @@
       <label class="form_label">CNPJ</label>
       <input 
         type="text"
-        placeholder="digite a CNPJ da empresa"
-        formControlName="companyName"
+        placeholder="Digite a CNPJ da empresa"
+        mask="00000000/0000-00"
+        formControlName="companyCode"
       />
 
       @if (submitted && companyCode.invalid) {
         @if(companyCode.errors?.['required']){
           <toast type="warn">Por favor, preecha a CNPJ da empresa</toast>
         }
-        @if(companyCode.errors?.['minLenght'] || companyCode.errors?.['maxLenght']){
+        @if(companyCode.errors?.['minlength'] || companyCode.errors?.['maxlength']){
           <toast type="warn">O CNPJ deve ter 14 digitos</toast>
         }
       }
     </div>
 
-    <div formGroupName="bussinesArea" class="form_group">
+    <div formGroupName="businessArea" class="form_group">
     </div>
     <div formGroupName="socialNetworks" class="form_group">
     </div>
@@ -41,7 +42,7 @@
     <h3>Informações da conta</h3>
     <div formGroupName="account" class="form_group">
       <div class="form_control">
-        <label class="form_label">Nome Completo</label>
+        <label class="form_label">Nome fantasia</label>
         <input 
           type="text"
           placeholder="Nome e Sobrenome"
@@ -49,7 +50,7 @@
         />
 
         @if (submitted && name.invalid) {
-          <toast type="warn">Por favor, preencha um nome valido</toast>
+          <toast type="warn">Por favor, preencha um nome fantasia</toast>
         }
       </div>
 
@@ -78,7 +79,7 @@
           @if(password.errors?.['required']){
             <toast type="warn">É necessário informar uma senha</toast>
           }
-          @if(password.errors?.['maxLenght'] || password.errors?.['minLenght']){
+          @if(password.errors?.['minlength'] || password.errors?.['maxlength']){
             <toast type="warn">A senha deve deve ter entre 8 a 16 caracteres</toast>
           }
         }
@@ -95,12 +96,6 @@
         @if (submitted && confirmPassword.invalid) {
           @if(confirmPassword.errors?.['required']){
             <toast type="warn">É necessário confirmar a sua senha</toast>
-          } 
-          @if(confirmPassword.errors?.['maxLenght']){
-            <toast type="warn">A senha deve possuir menos de 16 caracteres</toast>
-          }
-          @if(confirmPassword.errors?.['minLenght']){
-            <toast type="warn">A senha deve possuir mais de 8 caracteres</toast>
           }
           @if(confirmPassword.errors?.['notEqual']){
             <toast type="warn">A informada não é igual a anterior</toast>
@@ -125,7 +120,7 @@
       <div class="form_control">
         <label class="form_label">Telefone Opcional</label>
         <input
-        type="text"
+          type="text"
           placeholder="(00) 00000-0000"
           mask="(00) 00000-0000"
           formControlName="optionalPhone"
@@ -153,7 +148,7 @@
             @if(zipCode.errors?.['required']){
               <toast type="warn">Preencha uma CEP válido</toast>
             }
-            @if(zipCode.errors?.['minLenght'] || zipCode.errors?.['minLenght']){
+            @if(zipCode.errors?.['minlength'] || zipCode.errors?.['maxlength']){
               <toast type="warn">O numero de CEP deve conter 8 digitos</toast>
             }
           }

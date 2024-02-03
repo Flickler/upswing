@@ -8,9 +8,9 @@ export type Account = {
 
 export type RegisterAccount = Partial<{
   name: string;
-  mainPhone: string;
-  optionalPhone: string;
   email: string;
   password: string;
   confirmPassword: string;
+  mainPhone: string;
+  optionalPhone: string | null;
 }>;
