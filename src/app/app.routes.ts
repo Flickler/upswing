@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  // LADING
+  // LANDING
   {
     path: '',
     loadComponent: () =>
@@ -33,6 +33,7 @@ export const routes: Routes = [
                 (c) => c.HomeComponent
               ),
           },
+          // PAGINAS DE CADASTRO DO ADMINISTRADOR
           {
             path: 'register',
             loadComponent: () =>
@@ -61,6 +62,13 @@ export const routes: Routes = [
                     './admin/register/register-course/register-course.component'
                   ).then((c) => c.RegisterCourseComponent),
               },
+              {
+                path: 'class',
+                loadComponent: () =>
+                  import(
+                    './admin/register/register-class/register-class.component'
+                  ).then((c) => c.RegisterClassComponent),
+              },
             ],
           },
           {
@@ -77,6 +85,7 @@ export const routes: Routes = [
         pathMatch: 'prefix',
         redirectTo: 'login',
       },
+      // PAGINA DE LOGIN
       {
         path: 'login',
         loadComponent: () =>

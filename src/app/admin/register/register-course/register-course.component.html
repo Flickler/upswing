@@ -3,22 +3,130 @@
     <h2 class="form_heading">Cadastro de Curso</h2>
     <div class="form_control">
       <label for="courseName">Nome do curso</label>
-      <input type="text" id="courseName" formControlName="courseName">
+      <input
+        type="text"
+        id="courseName"
+        formControlName="courseName"
+        placeholder="Informe o nome do curso"
+      />
 
       @if(submitted && courseName.invalid ){
-        <toast type="warn">É necessário informar um nome para o curso</toast>
+      <toast type="warn">É necessário informar um nome para o curso</toast>
+      }
+    </div>
+
+    <div class="custom_select_container">
+      <label>Selecionar área de atuação</label>
+      <span class="custom_select" (click)="optionsContainerToggle()">{{
+        selected
+      }}</span>
+
+      <div
+        [ngClass]="
+          optionsContainer
+            ? 'custom_options_container active'
+            : 'custom_options_container'
+        "
+      >
+        @for (businessArea of businessAreas$ | async; track $index) {
+        <span class="custom_option" (click)="optionClick(businessArea)">
+          {{ businessArea.businessArea }}
+        </span>
+
+        }
+      </div>
+
+      @if (submitted && businessAreaId.errors?.['required']){
+      <toast type="warn">É necessário selecionar uma categoria</toast>
+      }
+    </div>
+
+    <div class="form_group">
+      <label>Selecione a nivel de ensino do curso</label>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="medio"
+          name="EducationalLevel"
+          (click)="educationalLevel.setValue('Ensino Médio')"
+        />
+        <label for="medio">Ensino Médio</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="livre"
+          name="EducationalLevel"
+          (click)="educationalLevel.setValue('Livre')"
+        />
+        <label for="livre">Cursos Livres</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="tecnico"
+          name="EducationalLevel"
+          (click)="educationalLevel.setValue('Técnico')"
+        />
+        <label for="tecnico">Ensino Técnico</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="superior"
+          name="EducationalLevel"
+          (click)="educationalLevel.setValue('Superior')"
+        />
+        <label for="superior">Ensino Superior</label>
+      </div>
+
+      @if (submitted && educationalLevel.errors?.['required']){
+      <toast type="warn">É necessário o nivel do curso</toast>
       }
     </div>
 
     <div class="form_control">
-      <label for="businessAreaId">Selecionar area de atuação</label>
-      <select formControlName="businessAreaId">
-        @for (businessArea of businessAreas$ | async; track $index) {
-          <option [value]="businessArea.id">{{ businessArea.businessArea }}</option>
-        }
-      </select>
+      <label for="schedule">Carga horaria</label>
+      <input
+        type="number"
+        id="schedule"
+        formControlName="schedule"
+        placeholder="Informe a carga horaria em horas"
+      />
 
+      @if(submitted && schedule.invalid ){
+      <toast type="warn">É necessário informar uma carga horaria</toast>
+      }
     </div>
+
+    <div class="form_control">
+      <label for="monthlyCost">Custo mensal</label>
+      <input
+        type="number"
+        id="monthlyCost"
+        formControlName="monthlyCost"
+        placeholder="Informe o custo mensal deste curso"
+      />
+
+      @if(submitted && monthlyCost.invalid ){
+      <toast type="warn">É necessário informar o custo mensal do curso</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label for="totalCost">Custo total</label>
+      <input
+        type="number"
+        id="totalCost"
+        formControlName="totalCost"
+        placeholder="Informe o custo mensal deste curso"
+      />
+
+      @if(submitted && totalCost.invalid ){
+      <toast type="warn">É necessário informar o custo total do curso</toast>
+      }
+    </div>
+
     <button type="submit">Cadastrar</button>
   </form>
 </modal>

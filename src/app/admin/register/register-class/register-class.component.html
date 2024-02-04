@@ -1,0 +1,129 @@
+<modal>
+  <h2 class="form_heading">Cadastro de Turma</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h3 class="body-base-md subtitle">Informações sobre a turma</h3>
+    <div class="custom_select_container">
+      <label>Selecionar área de atuação</label>
+      <span class="custom_select" (click)="optionsContainerToggle()">{{
+        selected
+      }}</span>
+
+      <div
+        [ngClass]="
+          optionsContainer
+            ? 'custom_options_container active'
+            : 'custom_options_container'
+        "
+      >
+        @for (course of courses$ | async; track $index) {
+        <span class="custom_option" (click)="optionClick(course)">
+          {{ course.courseName }}
+        </span>
+
+        }
+      </div>
+
+      @if (submitted && courseId.errors?.['required']){
+      <toast type="warn">É necessário vincular um curso</toast>
+      }
+    </div>
+
+    <div class="form_group">
+      <label>Selecione a modalidade da turma</label>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="ead"
+          name="modalidade"
+          (click)="mode.setValue('EAD')"
+        />
+        <label for="ead">EAD</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="presencial"
+          name="modalidade"
+          (click)="mode.setValue('Presencial')"
+        />
+        <label for="presencial">Presencial</label>
+      </div>
+
+      @if (submitted && mode.errors?.['required']){
+      <toast type="warn">É necessário selecionar uma modalidade</toast>
+      }
+    </div>
+
+    <div class="form_group">
+      <label>Selecione o turno da turma</label>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="matutino"
+          name="turno"
+          (click)="shift.setValue('Matutino')"
+        />
+        <label for="matutino">Matutino</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="vespertino"
+          name="turno"
+          (click)="shift.setValue('Vespertino')"
+        />
+        <label for="vespertino">Vespertino</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="noturno"
+          name="turno"
+          (click)="shift.setValue('Noturno')"
+        />
+        <label for="noturno">Noturno</label>
+      </div>
+
+      @if (submitted && shift.errors?.['required']){
+      <toast type="warn">É necessário selecionar um turno</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Data de inicio</label>
+      <input type="date" placeholder="DD/MM/AAAA" formControlName="startDate" />
+
+      @if (submitted && startDate.invalid) {
+      <toast type="warn">Preencha uma data válida</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Data de termino</label>
+      <input
+        type="date"
+        placeholder="DD/MM/AAAA"
+        formControlName="closingDate"
+      />
+
+      @if (submitted && closingDate.invalid) {
+      <toast type="warn">Preencha uma data válida</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Numero de vagas</label>
+      <input
+        type="number"
+        placeholder="Digite o numero de vagas para essa turma"
+        formControlName="vacancyNumber"
+      />
+
+      @if (submitted && vacancyNumber.invalid) {
+      <toast type="warn">Preencha uma data válida</toast>
+      }
+    </div>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+</modal>

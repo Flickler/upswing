@@ -17,3 +17,10 @@ export type RegisterCourse = Partial<{
   monthlyCost: number | null;
   totalCost: number | null;
 }>;
+
+export type OptionCourse = {
+  id: string;
+  courseName: string;
+};
+
+export type OptionsCourse = OptionCourse[];

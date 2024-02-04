@@ -1,40 +1,61 @@
 import { Component, inject } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { ListService } from '@@Services/list.service';
+import { RegisterService } from '@@Services/register.service';
+import { SelectService } from '@@Services/select.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
-import { of } from 'rxjs';
+import { BusinessArea } from '@@Types/BussinesArea';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'upswing-register-course',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, ModalComponent, ToastComponent],
+  imports: [ReactiveFormsModule, AsyncPipe, NgClass, ModalComponent, ToastComponent],
   templateUrl: './register-course.component.html',
 })
 export class RegisterCourseComponent {
   private fb = inject(NonNullableFormBuilder);
-  private listService = inject(ListService);
-  protected businessAreas$ = this.listService.listBussinesArea();
+  private registerService = inject(RegisterService);
+  private selectService = inject(SelectService);
+  protected businessAreas$ = this.selectService.getBussinesArea();
   protected form = this.fb.group({
-    courseName: ['', [Validators.required,]],
-    businessAreaId: ['', [Validators.required]],
-    educationLevel: ['', [Validators.required]],
-    schedule: new FormControl<number | null>(null, [Validators.required]),
-    monthlyCost: new FormControl<number | null>(null, [Validators.required]),
-    totalCost: new FormControl<number | null>(null, [Validators.required]),
+    courseName: ['', Validators.required],
+    businessAreaId: ['', Validators.required],
+    educationalLevel: ['', Validators.required],
+    schedule: new FormControl<number | null>(null, Validators.required),
+    monthlyCost: new FormControl<number | null>(null, Validators.required),
+    totalCost: new FormControl<number | null>(null, Validators.required),
   })
   submitted = false;
+  selected = 'selecione uma categoria';
+  optionsContainer = false;
 
-  get courseName() { return this.form.controls.courseName }
-  get businessAreaId() { return this.form.controls.businessAreaId }
-  get educationLevel() { return this.form.controls.educationLevel }
-  get schedule() { return this.form.controls.schedule }
-  get monthlyCost() { return this.form.controls.monthlyCost }
-  get totalCost() { return this.form.controls.totalCost }
+  protected get courseName() { return this.form.controls.courseName }
+  protected get businessAreaId() { return this.form.controls.businessAreaId }
+  protected get educationalLevel() { return this.form.controls.educationalLevel }
+  protected get schedule() { return this.form.controls.schedule }
+  protected get monthlyCost() { return this.form.controls.monthlyCost }
+  protected get totalCost() { return this.form.controls.totalCost }
 
-  onSubmit() {
-    console.log(this.form);
+
+  optionClick(option: BusinessArea) {
+    this.selected = option.businessArea;
+    this.businessAreaId.setValue(option.id);
+    this.optionsContainer = false;
+  }
+
+  optionsContainerToggle() {
+    this.optionsContainer = !this.optionsContainer;
+  }
+
+  protected onSubmit() {
+    this.submitted = true;
+    if (this.form.valid) {
+      this.registerService.registerCourse(this.form.value)
+        .pipe(take(1))
+        .subscribe(res => console.log(res));
+    }
   }
 }
