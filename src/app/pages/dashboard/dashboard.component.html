@@ -1,24 +1,3 @@
-<header>
-  <button (click)="panelToggle()">
-    <lucide-icons
-      [name]="panel() ? 'panelLeftClose' : 'panelLeftOpen'"
-      color="#c1c5d5"
-      [size]="20"
-    />
-  </button>
-  <div>
-    <button>
-      <lucide-icons name="search" color="#c1c5d5" [size]="20" />
-    </button>
-    <button>
-      <lucide-icons name="bell" color="#c1c5d5" [size]="20" />
-    </button>
-    <button>
-      <lucide-icons name="userRound" color="#c1c5d5" [size]="20" />
-    </button>
-  </div>
-</header>
-<aside [hidden]="!panel()"></aside>
-<main [ngClass]="{ expanded: !panel() }">
-  <router-outlet />
-</main>
+<dashboard-header />
+<dashboard-sidebar [hidden]="!panel()" />
+<dashboard-main />

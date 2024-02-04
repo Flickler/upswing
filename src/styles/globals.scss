@@ -60,10 +60,6 @@ a {
   transition: 0.3s ease-in;
   cursor: pointer;
 
-  &:hover {
-    text-decoration: underline;
-  }
-
   &:focus {
     outline: none;
   }
@@ -117,6 +113,11 @@ input {
   }
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 input[type="checkbox"] {
   width: $small;
   height: $small;
@@ -132,8 +133,8 @@ input[type="checkbox"] {
 
 input[type="radio"] {
   appearance: none;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: $spacing-7;
+  height: $spacing-7;
   aspect-ratio: 1/1;
   background-color: $gray-scale-10;
   border: 1px solid $gray-scale-10;
@@ -143,7 +144,7 @@ input[type="radio"] {
 
   &:checked {
     background-color: $primary-color;
-    border: 3px solid $white-color;
+    border: 1px solid $white-color;
     outline: 1px solid $primary-30;
   }
 }
@@ -168,6 +169,62 @@ input[type="date"] {
   flex-direction: column;
   gap: $spacing-4;
 }
+
+.form_control_row {
+  display: flex;
+  align-items: center;
+  gap: $spacing-5;
+}
+
+// CUSTOM SELECT INPUT
+
+.custom_select_container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  position: relative;
+}
+
+.custom_select {
+  border: 1px solid $gray-scale-60;
+  padding: $spacing-5;
+  border-radius: $radius-2;
+  width: 100%;
+}
+
+.custom_options_container {
+  display: none;
+  flex-direction: column;
+
+  position: absolute;
+  top: 105%;
+
+  box-shadow: $shadow-container;
+  background-color: $white-color;
+  width: 100%;
+  z-index: 2;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.custom_option {
+  display: block;
+  font-size: $base;
+
+  padding: $spacing-2 $spacing-4;
+  border-bottom: 1px solid $gray-scale-30;
+  width: 100%;
+  transition: 0.1s;
+
+  &:hover {
+    color: $white-color;
+    background-color: $primary-80;
+  }
+}
+
+// CUSTOM SCROLL BAR
 
 ::-webkit-scrollbar {
   background-color: $primary-10;
