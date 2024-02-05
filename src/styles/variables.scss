@@ -1,18 +1,18 @@
-$primary-color: #3866fb;
-$primary-80: #2048ce;
-$primary-60: #839ef7;
-$primary-30: #c3d1fe;
-$primary-10: #ebefff;
-$primary-5: #f9faff;
+$primary-color: hsl(226, 96%, 60%);
+$primary-80: hsl(226, 96%, 46%);
+$primary-60: hsl(226, 96%, 76%);
+$primary-30: hsl(226, 96%, 86%);
+$primary-10: hsl(226, 96%, 96%);
+$primary-5: hsl(226, 96%, 99%);
 
 $secondary: #d9ff6b;
 $gradient: linear-gradient(0deg, #d9ff6b 20%, #badf90 100%);
 
-$gray-scale-100: #41444d;
-$gray-scale-80: #666c84;
-$gray-scale-60: #c1c5d5;
-$gray-scale-30: #dbdfef;
-$gray-scale-10: #f1f2f8;
+$gray-scale-100: hsl(228, 20%, 20%);
+$gray-scale-80: hsl(228, 20%, 40%);
+$gray-scale-60: hsl(228, 20%, 60%);
+$gray-scale-30: hsl(228, 20%, 80%);
+$gray-scale-10: hsl(228, 20%, 96%);
 
 $white-color: #fff;
 $black: #20273e;
