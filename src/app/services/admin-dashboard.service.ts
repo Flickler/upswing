@@ -1,9 +1,11 @@
 import { Injectable, signal } from '@angular/core';
 
+import { AdminDashboardComponent } from '@@Admin/admin-dashboard/admin-dashboard.component';
+
 @Injectable({
-  providedIn: DashboardService,
+  providedIn: AdminDashboardComponent,
 })
-export class DashboardService {
+export class AdminDashboardService {
   isPanelActive = signal(true);
 
   getPanel() {

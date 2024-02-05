@@ -1,0 +1,22 @@
+<label>Selecione um curso</label>
+<span class="custom_select" (click)="optionsContainerToggle()">{{
+  selected
+}}</span>
+
+<div
+  [ngClass]="
+    optionsContainer
+      ? 'custom_options_container active'
+      : 'custom_options_container'
+  "
+>
+  @for (course of courses$ | async; track $index) {
+  <span class="custom_option" (click)="optionClick(course)">
+    {{ course.courseName }}
+  </span>
+  }
+</div>
+
+@if (submitted && invalid){
+<toast type="warn">É necessário vincular um curso</toast>
+}

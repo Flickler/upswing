@@ -1,0 +1,30 @@
+<div class="heading">
+  <lucide-icons
+    name="chevronLeft"
+    [size]="24"
+    color="#666c84"
+    routerLink="../"
+  />
+  <h1>Alunos</h1>
+</div>
+@for (student of students; track $index) {
+<div class="student_card">
+  <lucide-icons class="student_options" name="moreVertical" color="#666c84" />
+  <lucide-icons
+    class="student_avatar"
+    name="circleUserRound"
+    color="#666c84"
+    [size]="32"
+  />
+  <p>{{ student.name }}</p>
+</div>
+}
+<div class="pagination_control">
+  <button (click)="previous()">
+    <lucide-icons name="chevronLeft" />
+  </button>
+  <span>{{ pagination() + 1 }} / {{ lastPage }}</span>
+  <button (click)="next()">
+    <lucide-icons name="chevronRight" />
+  </button>
+</div>

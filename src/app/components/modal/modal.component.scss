@@ -25,10 +25,10 @@
   background-color: $white-color;
 }
 
-lucide-icons[name="chevronLeft"] {
+a {
   position: absolute;
-  top: $spacing-10;
-  right: $spacing-10;
+  top: $spacing-12;
+  right: $spacing-12;
   padding: $spacing-3;
   border-radius: 50%;
   transition: 0.3s;

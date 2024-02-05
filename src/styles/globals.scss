@@ -16,7 +16,7 @@
 html,
 body {
   min-height: 100dvh;
-  font-size: $small;
+  font-size: $base;
   font-weight: $regular;
   color: $gray-scale-80;
   scroll-behavior: smooth;
@@ -93,9 +93,9 @@ form {
 
 input {
   color: $primary-80;
-  border: 1px solid $gray-scale-60;
   padding: $spacing-5;
   border-radius: $radius-2;
+  border: 1px solid $gray-scale-60;
   width: 100%;
 
   &:focus {
@@ -151,6 +151,29 @@ input[type="radio"] {
 
 input[type="date"] {
   color: $gray-scale-60;
+}
+
+textarea {
+  height: $spacing-12;
+  min-height: $spacing-11;
+  color: $primary-80;
+  border-radius: $radius-2;
+  border: 1px solid $gray-scale-60;
+  padding: $spacing-5 $spacing-6;
+
+  &:focus {
+    background-color: $primary-5;
+    border: 1px solid $primary-color;
+    outline: 3px solid $primary-10;
+  }
+
+  &::placeholder {
+    color: $gray-scale-60;
+  }
+
+  &:focus::placeholder {
+    color: $primary-80;
+  }
 }
 
 .form_heading {
@@ -222,6 +245,16 @@ input[type="date"] {
     color: $white-color;
     background-color: $primary-80;
   }
+}
+
+// ROUTER CARD
+
+.router_card {
+  transition: 0.3s;
+}
+
+.router_card:hover lucide-icons svg {
+  stroke: $primary-color !important;
 }
 
 // CUSTOM SCROLL BAR

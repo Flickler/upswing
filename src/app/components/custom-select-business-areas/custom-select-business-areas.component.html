@@ -1,0 +1,23 @@
+<label>Selecionar área de atuação</label>
+<span class="custom_select" (click)="optionsContainerToggle()">{{
+  selected
+}}</span>
+
+<div
+  [ngClass]="
+    optionsContainer
+      ? 'custom_options_container active'
+      : 'custom_options_container'
+  "
+>
+  @for (bussinesArea of bussinesAreas$ | async; track $index) {
+  <span class="custom_option" (click)="optionClick(bussinesArea)">
+    {{ bussinesArea.businessArea }}
+  </span>
+
+  }
+</div>
+
+@if (submitted && invalid){
+<toast type="warn">É necessário vincular uma area de atuação</toast>
+}

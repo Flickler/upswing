@@ -6,8 +6,4 @@
   overflow-y: auto;
   border-bottom-right-radius: $radius-3;
   padding: $spacing-11;
-
-  &.expanded {
-    grid-column: span 2;
-  }
 }

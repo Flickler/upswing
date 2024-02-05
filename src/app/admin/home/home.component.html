@@ -1,10 +1,31 @@
-<h1 class="welcome">Bem vindo, Admin.</h1>
-<a class="router_card register" routerLink="./register">
-  <lucide-icons name="plus" [size]="32" color="#c1c5d5" />
-  <span>Cadastrar</span>
-</a>
-<a class="router_card">Cursos</a>
-<a class="router_card">Turmas</a>
-<a class="router_card">Empresas</a>
-<a class="router_card">Alunos</a>
-<a class="router_card" routerLink="./admins">Admin</a>
+<div [ngClass]="{ expanded: !panel() }">
+  <h1 class="welcome">Bem vindo, Admin.</h1>
+  <a class="router_card register" routerLink="register">
+    <lucide-icons name="plus" [size]="24" color="#839ef7" />
+    <span>Cadastrar</span>
+  </a>
+  <a class="router_card" routerLink="courses">
+    <lucide-icons name="bookOpen" [size]="20" color="#666c84" />
+    <span>Cursos</span>
+  </a>
+  <a class="router_card" routerLink="classes">
+    <lucide-icons name="graduationCap" [size]="20" color="#666c84" />
+    <span>Turmas</span>
+  </a>
+  <a class="router_card" routerLink="students">
+    <lucide-icons name="userRound" [size]="20" color="#666c84" />
+    <span>Alunos</span>
+  </a>
+  <a class="router_card" routerLink="companies">
+    <lucide-icons name="building" [size]="20" color="#666c84" />
+    <span>Empresas</span>
+  </a>
+  <a class="router_card" routerLink="job-offers">
+    <lucide-icons name="briefcase" [size]="20" color="#666c84" />
+    <span>Vagas</span>
+  </a>
+  <a class="router_card" routerLink="admins">
+    <lucide-icons name="shield" [size]="20" color="#666c84" />
+    <span>Admin</span>
+  </a>
+</div>

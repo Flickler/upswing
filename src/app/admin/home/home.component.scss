@@ -1,15 +1,22 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-:host {
+:host div {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $spacing-7;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-8;
+
+  &.expanded {
+    grid-template-columns: repeat(6, 1fr);
+    .welcome {
+      grid-column: span 6;
+    }
+  }
 }
 
 .welcome {
-  grid-column: span 3;
-  border-bottom: 2px solid $gray-scale-60;
+  grid-column: span 4;
+  border-bottom: 1px solid $gray-scale-30;
   padding-bottom: $spacing-8;
 }
 
@@ -17,15 +24,16 @@
   @include linkCard;
 
   &.register {
-    border: 4px dashed $gray-scale-30;
+    flex-direction: column;
+    border: 2px dashed $primary-60;
+    color: $primary-60;
 
     &:is(:hover, :focus) {
-      border: 4px dashed $primary-color;
+      border: 2px dashed transparent;
     }
   }
 }
 
 button {
-  font-size: $h4;
-  color: $gray-scale-60;
+  color: $gray-scale-80;
 }

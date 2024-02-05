@@ -18,6 +18,11 @@ dashboard-main {
 
 dashboard-header {
   grid-column: span 2;
+  border-radius: $radius-4 $radius-4 0 0;
+}
+
+dashboard-sidebar {
+  border-radius: 0 0 0 $radius-4;
 }
 
 dashboard-main {
@@ -26,7 +31,7 @@ dashboard-main {
   gap: $spacing-9;
 
   overflow-y: auto;
-  border-bottom-right-radius: $radius-3;
+  border-radius: 0 0 $radius-4 0;
   padding: $spacing-11;
 
   &.expanded {

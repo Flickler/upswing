@@ -21,8 +21,8 @@ export const routes: Routes = [
         path: '',
         pathMatch: 'prefix',
         loadComponent: () =>
-          import('./pages/dashboard/dashboard.component').then(
-            (c) => c.DashboardComponent
+          import('./admin/admin-dashboard/admin-dashboard.component').then(
+            (c) => c.AdminDashboardComponent
           ),
         children: [
           {
@@ -69,12 +69,54 @@ export const routes: Routes = [
                     './admin/register/register-class/register-class.component'
                   ).then((c) => c.RegisterClassComponent),
               },
+              {
+                path: 'subject',
+                loadComponent: () =>
+                  import(
+                    './admin/register/register-subject/register-subject.component'
+                  ).then((c) => c.RegisterSubjectComponent),
+              },
             ],
+          },
+          {
+            path: 'courses',
+            loadComponent: () =>
+              import(
+                './admin/views/course-viewer/course-viewer.component'
+              ).then((c) => c.CourseViewerComponent),
+          },
+          {
+            path: 'classes',
+            loadComponent: () =>
+              import('./admin/views/class-viewer/class-viewer.component').then(
+                (c) => c.ClassViewerComponent
+              ),
+          },
+          {
+            path: 'students',
+            loadComponent: () =>
+              import(
+                './admin/views/student-viewer/student-viewer.component'
+              ).then((c) => c.StudentViewerComponent),
+          },
+          {
+            path: 'companies',
+            loadComponent: () =>
+              import(
+                './admin/views/company-viewer/company-viewer.component'
+              ).then((c) => c.CompanyViewerComponent),
+          },
+          {
+            path: 'job-offers',
+            loadComponent: () =>
+              import(
+                './admin/views/job-offer-viewer/job-offer-viewer.component'
+              ).then((c) => c.JobOfferViewerComponent),
           },
           {
             path: 'admins',
             loadComponent: () =>
-              import('./admin/admin-viewer/admin-viewer.component').then(
+              import('./admin/views/admin-viewer/admin-viewer.component').then(
                 (c) => c.AdminViewerComponent
               ),
           },
@@ -89,7 +131,7 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./pages/login/login.component').then((c) => c.LoginComponent),
+          import('./admin/login/login.component').then((c) => c.LoginComponent),
       },
     ],
   },

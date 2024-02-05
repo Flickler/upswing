@@ -15,31 +15,11 @@
       }
     </div>
 
-    <div class="custom_select_container">
-      <label>Selecionar área de atuação</label>
-      <span class="custom_select" (click)="optionsContainerToggle()">{{
-        selected
-      }}</span>
-
-      <div
-        [ngClass]="
-          optionsContainer
-            ? 'custom_options_container active'
-            : 'custom_options_container'
-        "
-      >
-        @for (businessArea of businessAreas$ | async; track $index) {
-        <span class="custom_option" (click)="optionClick(businessArea)">
-          {{ businessArea.businessArea }}
-        </span>
-
-        }
-      </div>
-
-      @if (submitted && businessAreaId.errors?.['required']){
-      <toast type="warn">É necessário selecionar uma categoria</toast>
-      }
-    </div>
+    <custom-select-bussines-areas
+      (setValue)="businessAreaId.setValue($event)"
+      [submitted]="submitted"
+      [invalid]="businessAreaId.invalid"
+    />
 
     <div class="form_group">
       <label>Selecione a nivel de ensino do curso</label>

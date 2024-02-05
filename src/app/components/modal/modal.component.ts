@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink, LucideIcons],
   template: `
     <div class="modal">
-      <lucide-icons name="chevronLeft" routerLink="../" />
+      <a routerLink="../"><lucide-icons name="x" /></a>
       <ng-content />
     </div>
   `,

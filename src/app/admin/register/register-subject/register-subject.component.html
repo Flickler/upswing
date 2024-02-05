@@ -1,0 +1,40 @@
+<modal>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class="form_heading">Cadastro de disciplina</h2>
+
+    <div class="form_control">
+      <label for="subjectName">Nome da disciplina</label>
+      <input
+        type="text"
+        id="subjectName"
+        formControlName="subjectName"
+        placeholder="Informe o nome da disciplina"
+      />
+
+      @if(submitted && subjectName.invalid ){
+      <toast type="warn">É necessário informar um nome para a disciplina</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label for="description">Descrição</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Escreva uma breve descrição sobre as atividades da disciplina"
+      ></textarea>
+
+      @if(submitted && description.invalid ){
+      <toast type="warn">É necessário informar um nome para a disciplina</toast>
+      }
+    </div>
+
+    <custom-select-courses
+      [submitted]="submitted"
+      [invalid]="courseId.invalid"
+      (setValue)="courseId.setValue($event)"
+    />
+
+    <button type="submit">Cadastrar</button>
+  </form>
+</modal>

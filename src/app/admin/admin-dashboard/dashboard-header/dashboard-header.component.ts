@@ -1,5 +1,5 @@
 import { LucideIcons } from '@@Icons/lucide-icons.component';
-import { DashboardService } from '@@Services/dashboard.service';
+import { AdminDashboardService } from '@@Services/admin-dashboard.service';
 import { Component, inject } from '@angular/core';
 
 @Component({
@@ -7,10 +7,10 @@ import { Component, inject } from '@angular/core';
   standalone: true,
   imports: [LucideIcons],
   templateUrl: './dashboard-header.component.html',
-  styleUrl: './dashboard-header.component.scss'
+  styleUrl: './dashboard-header.component.scss',
 })
 export class DashboardHeaderComponent {
-  private dashboardService = inject(DashboardService);
+  private dashboardService = inject(AdminDashboardService);
   protected panel = this.dashboardService.getPanel();
 
   panelToggle() {
