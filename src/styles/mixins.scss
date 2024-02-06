@@ -38,19 +38,22 @@
   justify-content: center;
   gap: $spacing-4;
 
-  color: $gray-scale-80;
-  border: 1px solid $gray-scale-30;
-  border-radius: $radius-4;
   height: 10rem;
   width: 100%;
+  color: $gray-scale-80;
+  border-radius: $radius-4;
+  border: 1px solid $gray-scale-30;
+  transition: 0.4s ease-out;
 
-  &:hover {
-    color: $primary-5;
-    background-color: $primary-color;
-    border: 1px solid $white-color;
+  &:is(:hover, :focus) {
+    color: $white-color;
     font-weight: $medium;
+    background-color: $primary-color;
     box-shadow: 2px 2px 16px 4px hsla(213, 100%, 55%, 0.178);
-    transition: 0.4s ease-out;
+
+    svg {
+      stroke: $white-color !important;
+    }
   }
 
   &:focus {
@@ -61,7 +64,6 @@
     );
     background-position: right center;
     outline: 4px solid $primary-10;
-    transition: 0.4s ease-out;
   }
 }
 

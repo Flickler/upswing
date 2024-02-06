@@ -20,20 +20,6 @@
   padding-bottom: $spacing-8;
 }
 
-.router_card {
-  @include linkCard;
-
-  &.register {
-    flex-direction: column;
-    border: 2px dashed $primary-60;
-    color: $primary-60;
-
-    &:is(:hover, :focus) {
-      border: 2px dashed transparent;
-    }
-  }
-}
-
 button {
   color: $gray-scale-80;
 }
