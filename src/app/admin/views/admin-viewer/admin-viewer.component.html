@@ -1,4 +1,6 @@
 <viewer-heading>Administradores</viewer-heading>
-@for (admin of (admins$ | async); track $index) {
-<admin-card [admin]="admin" />
-}
+<load-section>
+  @for (admin of (admins$ | async); track $index) {
+  <admin-card [admin]="admin" />
+  }
+</load-section>

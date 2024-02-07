@@ -8,6 +8,8 @@ import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-headi
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { StudentsCards } from '@@Types/Student';
+import { StudentCardComponent } from '@@Components/student-card/student-card.component';
+import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 
 @Component({
   selector: 'upswing-student-viewer',
@@ -16,6 +18,8 @@ import { StudentsCards } from '@@Types/Student';
     RouterLink,
     AsyncPipe,
     ViewerHeadingComponent,
+    LoadSectionComponent,
+    StudentCardComponent,
     PaginationSectionComponent,
     LucideIcons,
   ],

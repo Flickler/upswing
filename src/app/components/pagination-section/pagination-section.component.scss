@@ -1,3 +1,4 @@
+@use 'variables' as *;
 :host {
   grid-column: span 3;
   display: flex;
@@ -5,7 +6,26 @@
   justify-content: space-around;
   width: 100%;
 
+  .pagination_wrapper{
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    padding: $spacing-2;
+    border-radius: 2rem;
+    background-color: $primary-10;
+  }
+
   button {
-    background-color: transparent;
+    padding: $spacing-4;
+    border-radius: 50%;
+    background-color: $primary-10;
+
+    &:hover{
+      background-color: $white-color;
+    }
+  }
+
+  span{
+    color: $gray-scale-80;
   }
 }

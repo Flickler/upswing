@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { CourseCardComponent } from '@@Components/course-card/course-card.component';
+import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 
 @Component({
   selector: 'upswing-course-viewer',
@@ -11,6 +12,7 @@ import { CourseCardComponent } from '@@Components/course-card/course-card.compon
   imports: [
     RouterLink,
     ViewerHeadingComponent,
+    LoadSectionComponent,
     CourseCardComponent,
     LucideIcons,
   ],

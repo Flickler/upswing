@@ -9,6 +9,7 @@ import { AdminCardComponent } from '@@Components/admin-card/admin-card.component
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { Pagination } from '@@Types/Pagination';
 import { Admins } from '@@Types/Admin';
+import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 
 @Component({
   selector: 'app-admin-viewer',
@@ -17,6 +18,7 @@ import { Admins } from '@@Types/Admin';
     RouterLink,
     AsyncPipe,
     ViewerHeadingComponent,
+    LoadSectionComponent,
     AdminCardComponent,
     LucideIcons,
   ],

@@ -1,14 +1,7 @@
 <viewer-heading>Alunos</viewer-heading>
-@for (student of students; track $index) {
-<div class="student_card">
-  <lucide-icons class="student_options" name="moreVertical" color="#666c84" />
-  <lucide-icons
-    class="student_avatar"
-    name="circleUserRound"
-    color="#666c84"
-    [size]="32"
-  />
-  <p>{{ student.name }}</p>
-</div>
-}
-<pagination-section [lastPage]="lastPage" (onPageChange)="getPage($event)" />
+<load-section>
+  @for (student of students; track $index) {
+    <student-card [student]="student"/>
+  }
+  <pagination-section [lastPage]="lastPage" (onPageChange)="getPage($event)" />
+</load-section>

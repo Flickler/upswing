@@ -463,6 +463,26 @@ export const icons = {
   },
 };
 
+// export colors: {[key: string]: string} = {
+//   '$primary-color': 'hsl(226, 96%, 60%)',
+//   '$primary-80': 'hsl(226, 96%, 46%)',
+//   '$primary-60': 'hsl(226, 96%, 76%)',
+//   '$primary-30': 'hsl(226, 96%, 86%)',
+//   '$primary-10': 'hsl(226, 96%, 96%)',
+//   '$primary-5': 'hsl(226, 96%, 99%)',
+
+//   '$secondary': '#d9ff6b',
+
+//   '$gray-scale-100': 'hsl(228, 20%, 20%)',
+//   '$gray-scale-80': 'hsl(228, 20%, 40%)',
+//   '$gray-scale-60': 'hsl(228, 20%, 60%)',
+//   '$gray-scale-30': 'hsl(228, 20%, 80%)',
+//   '$gray-scale-10': 'hsl(228, 20%, 96%)',
+
+//   '$white-color': '#fff',
+//   '$black': '#20273e',
+// }
+
 export type Icons = keyof typeof icons;
 
 export type IconProps = {

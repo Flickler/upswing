@@ -1,0 +1,12 @@
+@use 'variables' as *;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  gap: $spacing-8;
+  border-top:1px solid $gray-scale-30;
+  border-bottom: 1px solid $gray-scale-30;
+  padding: $spacing-8;
+}

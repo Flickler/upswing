@@ -14,7 +14,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
       color="#666c84"
       routerLink="../"
     />
-    <h1><ng-content /></h1>
+    <ng-content />
   `,
   styleUrl: './viewer-heading.component.scss',
 })
