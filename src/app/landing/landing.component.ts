@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LandHeaderComponent } from '@@Components/land-header/land-header.component';
+import { LandHeaderComponent } from './land-header/land-header.component';
 
 @Component({
   selector: 'app-landing',
@@ -9,4 +9,4 @@ import { LandHeaderComponent } from '@@Components/land-header/land-header.compon
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
 })
-export class LandingComponent { }
+export class LandingComponent {}

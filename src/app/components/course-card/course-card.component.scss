@@ -1,0 +1,89 @@
+@use "variables" as *;
+
+:host {
+  width: 240px;
+  min-height: 190px;
+  flex-direction: column;
+  padding: $spacing-6;
+  color: $gray-scale-80;
+  border: 1px solid $gray-scale-30;
+  user-select: none;
+  transition: 0.4s ease-in;
+
+  &:hover {
+    border: 1px solid $primary-color;
+    background-color: $primary-5;
+    box-shadow: $shadow-container;
+  }
+}
+
+:host,
+.card_header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: $radius-4;
+}
+
+.card_header {
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: $spacing-4;
+  padding: $spacing-2;
+  border-radius: $radius-4;
+}
+
+.card_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  padding: $spacing-2;
+  font-size: $small;
+  color: $gray-scale-80;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $primary-30;
+    background-color: $white-color;
+  }
+  &:hover {
+    text-decoration: underline;
+    color: $primary-10;
+  }
+}
+
+.card_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: $spacing-4;
+  gap: $spacing-4;
+  color: $gray-scale-80;
+}
+
+.card_container h4 {
+  font-weight: $semibold;
+  text-transform: uppercase;
+}
+
+.card_container .class_section {
+  padding: $spacing-2;
+  background-color: $primary-5;
+  border-radius: $radius-2;
+  cursor: pointer;
+}
+
+.class_section ul li {
+  color: $primary-60;
+  padding: $spacing-2;
+  cursor: default;
+}
+
+.class_section summary {
+  color: $primary-color;
+  padding: $spacing-2;
+}

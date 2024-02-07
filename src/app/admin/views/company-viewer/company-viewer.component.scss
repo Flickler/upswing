@@ -2,12 +2,5 @@
 @use "mixins" as *;
 
 :host {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  gap: $spacing-4;
-}
-
-.heading {
-  @include heading-2;
+  @include mainContainer;
 }

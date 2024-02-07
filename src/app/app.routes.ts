@@ -5,9 +5,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/landing/landing.component').then(
-        (c) => c.LandingComponent
-      ),
+      import('./landing/landing.component').then((c) => c.LandingComponent),
     pathMatch: 'full',
   },
 

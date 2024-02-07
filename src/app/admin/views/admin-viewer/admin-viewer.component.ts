@@ -4,6 +4,8 @@ import { AsyncPipe } from '@angular/common';
 import { map } from 'rxjs';
 
 import { ListService } from '@@Services/list.service';
+import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
+import { AdminCardComponent } from '@@Components/admin-card/admin-card.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { Pagination } from '@@Types/Pagination';
 import { Admins } from '@@Types/Admin';
@@ -11,7 +13,13 @@ import { Admins } from '@@Types/Admin';
 @Component({
   selector: 'app-admin-viewer',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, LucideIcons],
+  imports: [
+    RouterLink,
+    AsyncPipe,
+    ViewerHeadingComponent,
+    AdminCardComponent,
+    LucideIcons,
+  ],
   templateUrl: './admin-viewer.component.html',
   styleUrl: './admin-viewer.component.scss',
 })

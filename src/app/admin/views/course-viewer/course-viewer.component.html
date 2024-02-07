@@ -1,32 +1,9 @@
-<div class="heading">
-  <lucide-icons
-    name="chevronLeft"
-    [size]="20"
-    color="#666c84"
-    routerLink="../"
-  />
-  <h1>Cursos</h1>
-</div>
-
-<!--CARD COMPONENT-->
-<div class="card">
-  <div class="card_header">
-    <lucide-icons name="code2" color="#ffffff" [size]="20" />
-    <button class="card_btn">
-      <lucide-icons name="moreVertical" color="#666c84" [size]="16" />
-    </button>
-  </div>
-  <div class="card_container">
-    <h4>curso.nome</h4>
-    <p>Cód.:curso.id</p>
-    <p>Nível:curso.nivel</p>
-    <p>curso.cargaHoraria horas</p>
-    <p>Grade Curricular:</p>
-    <details class="class_section">
-      <ul>
-        <li>turma.id + " " + turma.nomeCurso</li>
-      </ul>
-      <summary>Turmas Vinculadas</summary>
-    </details>
-  </div>
-</div>
+<viewer-heading>Cursos</viewer-heading>
+<course-card />
+<course-card />
+<course-card />
+<course-card />
+<course-card />
+<course-card />
+<course-card />
+<course-card />

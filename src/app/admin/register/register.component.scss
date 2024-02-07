@@ -7,10 +7,6 @@
   gap: $spacing-6;
 }
 
-.heading {
-  @include heading-2;
-}
-
 .register_category {
   display: flex;
   flex-direction: column;
