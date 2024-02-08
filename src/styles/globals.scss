@@ -75,6 +75,10 @@ button {
   border-radius: $spacing-2;
   transition: 0.3s ease-in;
   cursor: pointer;
+
+  &:is(:hover, :focus) {
+    outline: none;
+  }
 }
 
 ul {
@@ -262,6 +266,13 @@ textarea {
       border: 2px solid $primary-color;
     }
   }
+}
+
+// SELECT BUTTON
+
+.select_button:hover lucide-icons svg,
+.select_button.active lucide-icons svg {
+  stroke: $white-color;
 }
 
 // CUSTOM SCROLL BAR

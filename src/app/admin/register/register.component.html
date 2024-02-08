@@ -1,27 +1,88 @@
-<div class="heading">
-  <lucide-icons
-    name="chevronLeft"
-    [size]="24"
-    color="#666c84"
-    routerLink="../"
-  />
-  <h1>Area de Cadastro</h1>
-</div>
+<modal>
+  <h1 class="form_heading">Área de cadastro</h1>
 
-<div class="register_category">
-  <h2>usuarios</h2>
-  <div class="register_options">
-    <a class="register_link" routerLink="student">Aluno</a>
-    <a class="register_link" routerLink="admin">Administrador</a>
+  <div class="select_container">
+    <button
+      class="select_button"
+      [ngClass]="{ active: container == 'user' }"
+      (click)="setContainer('user')"
+    >
+      <lucide-icons name="userRound" color="hsl(226, 96%, 60%)" />
+      <span>Usuarios</span>
+    </button>
+    <button
+      class="select_button"
+      [ngClass]="{ active: container == 'academic' }"
+      (click)="setContainer('academic')"
+    >
+      <lucide-icons name="bookOpenCheck" color="hsl(226, 96%, 60%)" />
+      <span>Acadêmico</span>
+    </button>
   </div>
-</div>
 
-<div class="register_category">
-  <h2>Academico</h2>
-  <div class="register_options">
-    <a class="register_link" routerLink="course">Curso</a>
-    <a class="register_link" routerLink="class">Turma</a>
-    <a class="register_link" routerLink="subject">Disciplina</a>
+  @switch (container) { @case ('academic') {
+  <div class="select_options">
+    <div class="form_control_row">
+      <input
+        type="radio"
+        id="course"
+        name="academic"
+        (click)="setRoute('course')"
+      />
+      <label for="course">Cursos</label>
+    </div>
+    <div class="form_control_row">
+      <input
+        type="radio"
+        id="class"
+        name="academic"
+        (click)="setRoute('class')"
+      />
+      <label for="class">Turmas</label>
+    </div>
+    <div class="form_control_row">
+      <input
+        type="radio"
+        id="subject"
+        name="academic"
+        (click)="setRoute('subject')"
+      />
+      <label for="subject">Disciplina</label>
+    </div>
   </div>
-</div>
+  } @default {
+  <div class="select_options">
+    <div class="form_control_row">
+      <input
+        type="radio"
+        id="student"
+        name="user"
+        (click)="setRoute('student')"
+      />
+      <label for="student">Aluno</label>
+    </div>
+    <div class="form_control_row">
+      <input type="radio" id="admin" name="user" (click)="setRoute('admin')" />
+      <label for="admin">Administrador</label>
+    </div>
+  </div>
+  } }
+
+  <div class="register_category">
+    <h2>usuarios</h2>
+    <div class="register_options">
+      <a class="register_link" routerLink="student">Aluno</a>
+      <a class="register_link" routerLink="admin">Administrador</a>
+    </div>
+  </div>
+
+  <div class="register_category">
+    <h2>Academico</h2>
+    <div class="register_options">
+      <a class="register_link" routerLink="course">Curso</a>
+      <a class="register_link" routerLink="class">Turma</a>
+      <a class="register_link" routerLink="subject">Disciplina</a>
+    </div>
+  </div>
+</modal>
 <router-outlet />

@@ -17,7 +17,6 @@ import { CustomSelectCoursesComponent } from '@@Components/custom-select-courses
   standalone: true,
   imports: [ReactiveFormsModule, AsyncPipe, CustomSelectCoursesComponent, ModalComponent, ToastComponent],
   templateUrl: './register-subject.component.html',
-  styleUrl: './register-subject.component.scss',
 })
 export class RegisterSubjectComponent {
   private fb = inject(NonNullableFormBuilder);
