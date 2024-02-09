@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-9;
+
+  overflow-y: auto;
+  border-bottom-right-radius: $radius-3;
+  padding: $spacing-11;
+}

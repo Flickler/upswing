@@ -12,6 +12,8 @@ import { RegisterService } from '@@Services/register.service';
 import { MatchDirective } from '@@Directives/match.directive';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
+import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-register-student',
@@ -21,13 +23,17 @@ import { ToastComponent } from '@@Components/toast/toast.component';
     NgxMaskDirective,
     ModalComponent,
     ToastComponent,
+    ModalNotificationComponent,
+    LucideIcons,
   ],
   templateUrl: './register-student.component.html',
+  styles: ':host:has(modal-notification) modal{display:none;}',
 })
 export class RegisterStudentComponent {
   private fb = inject(NonNullableFormBuilder);
   private registerService = inject(RegisterService);
   protected submitted = false;
+  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
 
   protected form = this.fb.group({
     account: this.fb.group({
@@ -144,11 +150,18 @@ export class RegisterStudentComponent {
         .registerStudent(this.form.value)
         .pipe(take(1))
         .subscribe((res) => {
-          this.submitted = false;
-          this.confirmPassword.enable();
-          this.optionalPhone.enable();
-          this.form.reset();
-          console.log(res);
+          if (res.id) {
+            this.submitted = false;
+            this.confirmPassword.enable();
+            this.optionalPhone.enable();
+            this.form.reset();
+            this.formStatus = 'sucess';
+          } else {
+            this.submitted = false;
+            this.confirmPassword.enable();
+            this.optionalPhone.enable();
+            this.formStatus = 'error';
+          }
         });
     }
   }

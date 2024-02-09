@@ -1,5 +1,21 @@
 @use "variables" as *;
 
+@mixin mask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100dvh;
+  width: 100dvw;
+
+  background-color: #0000008d;
+  backdrop-filter: blur(1rem);
+}
+
 @mixin heading {
   font-size: $h3;
   border-bottom: 4px solid $primary-color;

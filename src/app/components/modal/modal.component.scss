@@ -1,21 +1,15 @@
 @use "variables" as *;
+@use "mixins" as *;
 
 :host {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  height: 100dvh;
-  width: 100dvw;
-  background-color: #0000008d;
-  backdrop-filter: blur(1rem);
+  @include mask;
 }
 
 .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   position: relative;
   width: 60dvw;
   height: 80dvh;

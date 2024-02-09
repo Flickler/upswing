@@ -1,0 +1,40 @@
+@use "variables" as *;
+
+:host {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 4rem 1fr;
+
+  background-color: $gray-scale-10;
+  padding: 2rem;
+  height: 100dvh;
+}
+
+dashboard-header,
+dashboard-sidebar,
+dashboard-main {
+  background-color: $white-color;
+}
+
+dashboard-header {
+  grid-column: span 2;
+  border-radius: $radius-4 $radius-4 0 0;
+}
+
+dashboard-sidebar {
+  border-radius: 0 0 0 $radius-4;
+}
+
+dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-9;
+
+  overflow-y: auto;
+  border-radius: 0 0 $radius-4 0;
+  padding: $spacing-11;
+
+  &.expanded {
+    grid-column: span 2;
+  }
+}

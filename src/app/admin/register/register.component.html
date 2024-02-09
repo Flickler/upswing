@@ -1,5 +1,5 @@
 <modal>
-  <h1 class="form_heading">Área de cadastro</h1>
+  <h1 class="form_heading">Cadastrar</h1>
 
   <div class="select_container">
     <button
@@ -26,6 +26,7 @@
       <input
         type="radio"
         id="course"
+        [checked]="selected == 'course'"
         name="academic"
         (click)="setRoute('course')"
       />
@@ -35,6 +36,7 @@
       <input
         type="radio"
         id="class"
+        [checked]="selected == 'class'"
         name="academic"
         (click)="setRoute('class')"
       />
@@ -44,6 +46,7 @@
       <input
         type="radio"
         id="subject"
+        [checked]="selected == 'subject'"
         name="academic"
         (click)="setRoute('subject')"
       />
@@ -56,33 +59,34 @@
       <input
         type="radio"
         id="student"
+        [checked]="selected == 'student'"
         name="user"
         (click)="setRoute('student')"
       />
       <label for="student">Aluno</label>
     </div>
     <div class="form_control_row">
-      <input type="radio" id="admin" name="user" (click)="setRoute('admin')" />
+      <input
+        type="radio"
+        id="admin"
+        [checked]="selected == 'admin'"
+        name="user"
+        (click)="setRoute('admin')"
+      />
       <label for="admin">Administrador</label>
     </div>
   </div>
   } }
 
-  <div class="register_category">
-    <h2>usuarios</h2>
-    <div class="register_options">
-      <a class="register_link" routerLink="student">Aluno</a>
-      <a class="register_link" routerLink="admin">Administrador</a>
-    </div>
-  </div>
-
-  <div class="register_category">
-    <h2>Academico</h2>
-    <div class="register_options">
-      <a class="register_link" routerLink="course">Curso</a>
-      <a class="register_link" routerLink="class">Turma</a>
-      <a class="register_link" routerLink="subject">Disciplina</a>
-    </div>
+  <div class="router_container">
+    <a class="register_link_previous" routerLink="../">
+      <lucide-icons name="chevronLeft" color="hsl(228, 20%, 60%)" />
+      <span>voltar</span>
+    </a>
+    <a class="register_link_next" [routerLink]="selected">
+      <span>Avançar</span>
+      <lucide-icons name="chevronRight" color="hsl(226, 96%, 60%)" />
+    </a>
   </div>
 </modal>
 <router-outlet />

@@ -1,0 +1,23 @@
+@use "variables" as *;
+
+:host {
+  display: block;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid $gray-scale-30;
+  padding: 0 $spacing-4;
+
+  height: 4rem;
+  width: 100%;
+
+  button {
+    padding: 1rem 1rem;
+    background-color: transparent;
+    border-radius: 50%;
+  }
+}

@@ -20,7 +20,13 @@ export class RegisterComponent {
     this.selected = route;
   }
 
-  setContainer(target: string) {
-    this.container = target;
+  setContainer(target: 'user' | 'academic') {
+    if (target == 'user') {
+      this.selected = 'student';
+      this.container = target;
+    } else {
+      this.selected = 'course';
+      this.container = target;
+    }
   }
 }

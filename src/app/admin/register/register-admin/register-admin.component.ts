@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { take } from 'rxjs';
 import { NgxMaskDirective } from 'ngx-mask';
+
 import { MatchDirective } from '@@Directives/match.directive';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { RegisterService } from '@@Services/register.service';
-import { take } from 'rxjs';
 
 @Component({
   selector: 'upswing-register-admin',
@@ -15,7 +16,7 @@ import { take } from 'rxjs';
     ReactiveFormsModule,
     NgxMaskDirective,
     ModalComponent,
-    ToastComponent
+    ToastComponent,
   ],
   templateUrl: './register-admin.component.html',
 })
