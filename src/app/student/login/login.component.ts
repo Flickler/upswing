@@ -6,7 +6,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'upswing-admin-login',
+  selector: 'upswing-stundent-login',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule, NgOptimizedImage, LucideIcons],
   templateUrl: './login.component.html',

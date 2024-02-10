@@ -4,20 +4,20 @@
     <h3>Informações da empresa</h3>
     <div class="form_control">
       <label class="form_label">Razão social</label>
-      <input 
+      <input
         type="text"
         placeholder="Digite a razão social da empresa"
         formControlName="companyName"
       />
 
       @if (submitted && companyName.invalid) {
-        <toast type="warn">Por favor, preecha a razão social da empresa</toast>
+      <toast type="warn">Por favor, preecha a razão social da empresa</toast>
       }
     </div>
 
     <div class="form_control">
       <label class="form_label">CNPJ</label>
-      <input 
+      <input
         type="text"
         placeholder="Digite a CNPJ da empresa"
         mask="00000000/0000-00"
@@ -25,32 +25,29 @@
       />
 
       @if (submitted && companyCode.invalid) {
-        @if(companyCode.errors?.['required']){
-          <toast type="warn">Por favor, preecha a CNPJ da empresa</toast>
-        }
-        @if(companyCode.errors?.['minlength'] || companyCode.errors?.['maxlength']){
-          <toast type="warn">O CNPJ deve ter 14 digitos</toast>
-        }
-      }
+      @if(companyCode.errors?.['required']){
+      <toast type="warn">Por favor, preecha a CNPJ da empresa</toast>
+      } @if(companyCode.errors?.['minlength'] ||
+      companyCode.errors?.['maxlength']){
+      <toast type="warn">O CNPJ deve ter 14 digitos</toast>
+      } }
     </div>
 
-    <div formGroupName="businessArea" class="form_group">
-    </div>
-    <div formGroupName="socialNetworks" class="form_group">
-    </div>
+    <div formGroupName="businessArea" class="form_group"></div>
+    <div formGroupName="socialNetworks" class="form_group"></div>
 
     <h3>Informações da conta</h3>
     <div formGroupName="account" class="form_group">
       <div class="form_control">
         <label class="form_label">Nome fantasia</label>
-        <input 
+        <input
           type="text"
           placeholder="Nome e Sobrenome"
           formControlName="name"
         />
 
         @if (submitted && name.invalid) {
-          <toast type="warn">Por favor, preencha um nome fantasia</toast>
+        <toast type="warn">Por favor, preencha um nome fantasia</toast>
         }
       </div>
 
@@ -63,7 +60,7 @@
         />
 
         @if (submitted && email.invalid) {
-          <toast type="warn">Por favor, preencha um email valido</toast>
+        <toast type="warn">Por favor, preencha um email valido</toast>
         }
       </div>
 
@@ -76,13 +73,11 @@
         />
 
         @if (submitted && password.invalid) {
-          @if(password.errors?.['required']){
-            <toast type="warn">É necessário informar uma senha</toast>
-          }
-          @if(password.errors?.['minlength'] || password.errors?.['maxlength']){
-            <toast type="warn">A senha deve deve ter entre 8 a 16 caracteres</toast>
-          }
-        }
+        @if(password.errors?.['required']){
+        <toast type="warn">É necessário informar uma senha</toast>
+        } @if(password.errors?.['minlength'] || password.errors?.['maxlength']){
+        <toast type="warn">A senha deve deve ter entre 8 a 16 caracteres</toast>
+        } }
       </div>
 
       <div class="form_control">
@@ -94,13 +89,11 @@
         />
 
         @if (submitted && confirmPassword.invalid) {
-          @if(confirmPassword.errors?.['required']){
-            <toast type="warn">É necessário confirmar a sua senha</toast>
-          }
-          @if(confirmPassword.errors?.['notEqual']){
-            <toast type="warn">A informada não é igual a anterior</toast>
-          }
-        }
+        @if(confirmPassword.errors?.['required']){
+        <toast type="warn">É necessário confirmar a sua senha</toast>
+        } @if(confirmPassword.errors?.['notEqual']){
+        <toast type="warn">A informada não é igual a anterior</toast>
+        } }
       </div>
 
       <div class="form_control">
@@ -113,7 +106,9 @@
         />
 
         @if (submitted && mainPhone.invalid){
-          <toast type="warn">Não é permitido valores parciais do numero de telefone</toast>
+        <toast type="warn"
+          >Não é permitido valores parciais do numero de telefone</toast
+        >
         }
       </div>
 
@@ -128,7 +123,9 @@
       </div>
 
       @if (submitted && optionalPhone.invalid){
-        <toast type="warn">Não é permitido valores parciais do numero de telefone</toast>
+      <toast type="warn"
+        >Não é permitido valores parciais do numero de telefone</toast
+      >
       }
     </div>
 
@@ -145,64 +142,50 @@
           />
 
           @if (submitted && zipCode.invalid) {
-            @if(zipCode.errors?.['required']){
-              <toast type="warn">Preencha uma CEP válido</toast>
-            }
-            @if(zipCode.errors?.['minlength'] || zipCode.errors?.['maxlength']){
-              <toast type="warn">O numero de CEP deve conter 8 digitos</toast>
-            }
-          }
+          @if(zipCode.errors?.['required']){
+          <toast type="warn">Preencha uma CEP válido</toast>
+          } @if(zipCode.errors?.['minlength'] || zipCode.errors?.['maxlength']){
+          <toast type="warn">O numero de CEP deve conter 8 digitos</toast>
+          } }
         </div>
 
         <div class="form_control">
           <label class="form_label">Logradouro</label>
-          <input 
+          <input
             type="text"
             placeholder="Digite o logradouro"
             formControlName="street"
           />
 
           @if (submitted && street.invalid) {
-            <toast type="warn">É necessário informar um logradouro</toast>
+          <toast type="warn">É necessário informar um logradouro</toast>
           }
         </div>
 
         <div class="form_control">
           <label class="form_label">Bairro</label>
-          <input 
-            type="text" 
-            placeholder="Bairro" 
-            formControlName="area"
-          />
+          <input type="text" placeholder="Bairro" formControlName="area" />
 
           @if (submitted && area.invalid) {
-            <toast type="warn">É necessário informar um bairro</toast>
+          <toast type="warn">É necessário informar um bairro</toast>
           }
         </div>
 
         <div class="form_control">
           <label class="form_label">Cidade</label>
-          <input 
-            type="text"
-            placeholder="Cidade"
-            formControlName="city"
-          />
+          <input type="text" placeholder="Cidade" formControlName="city" />
 
           @if (submitted && city.invalid) {
-            <toast type="warn">É necessário informar a cidade</toast>
+          <toast type="warn">É necessário informar a cidade</toast>
           }
         </div>
 
         <div class="form_control">
           <label class="form_label">Estado</label>
-          <input 
-            type="text"
-            placeholder="UF"
-            formControlName="state"
-          />
+          <input type="text" placeholder="UF" formControlName="state" />
 
           @if (submitted && state.invalid) {
-            <toast type="warn">É necessário informar o estado</toast>
+          <toast type="warn">É necessário informar o estado</toast>
           }
         </div>
       </div>
@@ -212,7 +195,7 @@
         <input placeholder="Numero" type="number" formControlName="number" />
 
         @if (submitted && number.invalid) {
-          <toast type="warn">É necessário informar o numero</toast>
+        <toast type="warn">É necessário informar o numero</toast>
         }
       </div>
 
@@ -222,6 +205,41 @@
       </div>
     </div>
     <!--SUBMIT-->
-    <button type="submit">Cadastrar</button>
+    <button type="submit" [disabled]="disable">Cadastrar</button>
   </form>
 </modal>
+@if (formStatus == 'sucess') {
+<modal-notification>
+  <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
+  <h3>Sucesso</h3>
+  <p>O aluno foi cadastrado com exito</p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: hsl(226, 96%, 60%);
+      border: 1px solid hsl(226, 96%, 60%);
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</modal-notification>
+} @if (formStatus == 'error') {
+<modal-notification>
+  <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
+  <h3>Algo Aconteceu</h3>
+  <p style="max-width: 80%">Ops! algo aconteceu, tente novamente mais tarde</p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: #fa3664;
+      border: 1px solid #fa3664;
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</modal-notification>
+}

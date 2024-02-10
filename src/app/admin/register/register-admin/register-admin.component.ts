@@ -8,6 +8,8 @@ import { MatchDirective } from '@@Directives/match.directive';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { RegisterService } from '@@Services/register.service';
+import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-register-admin',
@@ -17,12 +19,17 @@ import { RegisterService } from '@@Services/register.service';
     NgxMaskDirective,
     ModalComponent,
     ToastComponent,
+    ModalNotificationComponent,
+    LucideIcons
   ],
   templateUrl: './register-admin.component.html',
 })
 export class RegisterAdminComponent {
   private fb = inject(NonNullableFormBuilder);
   private registerService = inject(RegisterService);
+  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
+  protected disable = false;
+
   protected form = this.fb.group({
     position: ['', Validators.required],
     account: this.fb.group({

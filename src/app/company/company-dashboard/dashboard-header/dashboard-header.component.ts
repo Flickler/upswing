@@ -1,5 +1,7 @@
+import { Component, inject } from '@angular/core';
+
+import { CompanyDashboardService } from '@@Services/company-dashboard.service';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'company-dashboard-header',
@@ -9,9 +11,9 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard-header.component.scss',
 })
 export class CompanyDashboardHeaderComponent {
-  // private dashboardService = inject(AdminDashboardService);
-  // protected panel = this.dashboardService.getPanel();
-  // panelToggle() {
-  //   this.dashboardService.panelToggle();
-  // }
+  private dashboardService = inject(CompanyDashboardService);
+  protected panel = this.dashboardService.getPanel();
+  panelToggle() {
+    this.dashboardService.panelToggle();
+  }
 }

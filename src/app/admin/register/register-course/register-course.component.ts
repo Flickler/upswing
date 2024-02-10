@@ -7,11 +7,22 @@ import { RegisterService } from '@@Services/register.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { CustomSelectBusinessAreasComponent } from '@@Components/custom-select-business-areas/custom-select-business-areas.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
 
 @Component({
   selector: 'upswing-register-course',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, NgClass, ModalComponent, ToastComponent, CustomSelectBusinessAreasComponent],
+  imports: [
+    ReactiveFormsModule,
+    AsyncPipe,
+    NgClass,
+    ModalComponent,
+    ToastComponent,
+    ModalNotificationComponent,
+    LucideIcons,
+    CustomSelectBusinessAreasComponent,
+  ],
   templateUrl: './register-course.component.html',
 })
 export class RegisterCourseComponent {
@@ -26,6 +37,8 @@ export class RegisterCourseComponent {
     totalCost: new FormControl<number | null>(null, Validators.required),
   })
   submitted = false;
+  protected disable = false;
+  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
 
   protected get courseName() { return this.form.controls.courseName }
   protected get businessAreaId() { return this.form.controls.businessAreaId }

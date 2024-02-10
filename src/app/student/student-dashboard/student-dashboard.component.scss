@@ -10,22 +10,22 @@
   height: 100dvh;
 }
 
-dashboard-header,
-dashboard-sidebar,
-dashboard-main {
+student-dashboard-header,
+student-dashboard-sidebar,
+student-dashboard-main {
   background-color: $white-color;
 }
 
-dashboard-header {
+student-dashboard-header {
   grid-column: span 2;
   border-radius: $radius-4 $radius-4 0 0;
 }
 
-dashboard-sidebar {
+student-dashboard-sidebar {
   border-radius: 0 0 0 $radius-4;
 }
 
-dashboard-main {
+student-dashboard-main {
   display: flex;
   flex-direction: column;
   gap: $spacing-9;

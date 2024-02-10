@@ -81,6 +81,10 @@ button {
   }
 }
 
+button[disabled] {
+  background-color: $gray-scale-60;
+}
+
 ul {
   list-style: none;
 }

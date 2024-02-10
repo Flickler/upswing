@@ -12,6 +12,8 @@ import { RegisterService } from '@@Services/register.service';
 import { SelectService } from '@@Services/select.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
+import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { OptionCourse } from '@@Types/Course';
 
 @Component({
@@ -23,6 +25,8 @@ import { OptionCourse } from '@@Types/Course';
     NgClass,
     ModalComponent,
     ToastComponent,
+    ModalNotificationComponent,
+    LucideIcons
   ],
   templateUrl: './register-class.component.html',
 })
@@ -31,6 +35,10 @@ export class RegisterClassComponent {
   private registerService = inject(RegisterService);
   private selectService = inject(SelectService);
   protected courses$ = this.selectService.getCourses();
+
+  protected disable = false;
+  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
+
   protected form = this.fb.group({
     courseId: ['', Validators.required],
     mode: ['', Validators.required],
@@ -64,7 +72,18 @@ export class RegisterClassComponent {
     if(this.form.valid){
       this.registerService.registerClass(this.form.value)
         .pipe(take(1))
-        .subscribe(res => console.log(res));
+        .subscribe(res => {
+          if(res.id){
+            this.submitted = false;
+            this.form.reset();
+            this.formStatus = 'sucess';
+            this.disable = false;
+          } else {
+            this.submitted = false;
+            this.formStatus = 'error';
+            this.disable = false;
+          }
+        });
     }
   }
 }

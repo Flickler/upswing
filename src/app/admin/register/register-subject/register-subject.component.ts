@@ -11,11 +11,21 @@ import { RegisterService } from '@@Services/register.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { CustomSelectCoursesComponent } from '@@Components/custom-select-courses/custom-select-courses.component';
+import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-register-subject',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, CustomSelectCoursesComponent, ModalComponent, ToastComponent],
+  imports: [
+    ReactiveFormsModule,
+    AsyncPipe,
+    CustomSelectCoursesComponent,
+    ModalComponent,
+    ToastComponent,
+    ModalNotificationComponent,
+    LucideIcons,
+  ],
   templateUrl: './register-subject.component.html',
 })
 export class RegisterSubjectComponent {
@@ -27,6 +37,8 @@ export class RegisterSubjectComponent {
     courseId: ['', Validators.required],
   });
   submitted = false;
+  protected disable = false;
+  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
   
   protected get subjectName() { return this.form.controls.subjectName }
   protected get description() { return this.form.controls.description }

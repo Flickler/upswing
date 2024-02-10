@@ -5,16 +5,28 @@ import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { MatchDirective } from '@@Directives/match.directive';
 import { NgxMaskDirective } from 'ngx-mask';
+import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-register-company',
   standalone: true,
-  imports: [ReactiveFormsModule, NgxMaskDirective, ModalComponent, ToastComponent],
+  imports: [
+    ReactiveFormsModule,
+    NgxMaskDirective,
+    ModalComponent,
+    ToastComponent,
+    ModalNotificationComponent,
+    LucideIcons,
+  ],
   templateUrl: './register-company.component.html',
 })
 export class RegisterCompanyComponent {
   private fb = inject(NonNullableFormBuilder);
   protected submitted = false;
+  protected disable = false;
+  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
+  
   protected form = this.fb.group({
     companyName: ['', Validators.required],
     companyCode: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],

@@ -1,0 +1,89 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: $primary-5;
+  height: 100dvh;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+
+  width: 50rem;
+  background-color: $white-color;
+  box-shadow: $shadow-container;
+}
+
+h1 {
+  @include heading;
+  margin-left: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+form {
+  width: 40rem;
+  align-self: center;
+}
+
+.form_group {
+  @include formGroup;
+  margin-bottom: $spacing-6;
+}
+
+.form_group_row {
+  @include formGroup(row);
+
+  .form_check {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+  }
+}
+
+.pass_box {
+  width: 100%;
+  position: relative;
+}
+
+.pass_box lucide-icons {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+a {
+  color: $primary-color;
+}
+
+button {
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.return_link {
+  align-self: center;
+  margin: 2rem 0;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0.6;
+}
+
+.footer_copy {
+  color: $gray-scale-80;
+  font-size: $base;
+  font-weight: $semibold;
+}

@@ -33,6 +33,7 @@ export class RegisterStudentComponent {
   private fb = inject(NonNullableFormBuilder);
   private registerService = inject(RegisterService);
   protected submitted = false;
+  protected disable = false;
   protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
 
   protected form = this.fb.group({
@@ -142,6 +143,7 @@ export class RegisterStudentComponent {
   }
 
   protected onSubmit() {
+    this.disable = true;
     this.submitted = true;
     if (this.form.valid) {
       this.confirmPassword.disable();
@@ -156,11 +158,13 @@ export class RegisterStudentComponent {
             this.optionalPhone.enable();
             this.form.reset();
             this.formStatus = 'sucess';
+            this.disable = false;
           } else {
             this.submitted = false;
             this.confirmPassword.enable();
             this.optionalPhone.enable();
             this.formStatus = 'error';
+            this.disable = false;
           }
         });
     }

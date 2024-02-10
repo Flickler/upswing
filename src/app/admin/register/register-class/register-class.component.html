@@ -125,6 +125,41 @@
       }
     </div>
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit" [disabled]="disable">Cadastrar</button>
   </form>
 </modal>
+@if (formStatus == 'sucess') {
+<modal-notification>
+  <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
+  <h3>Sucesso</h3>
+  <p>O aluno foi cadastrado com exito</p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: hsl(226, 96%, 60%);
+      border: 1px solid hsl(226, 96%, 60%);
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</modal-notification>
+} @if (formStatus == 'error') {
+<modal-notification>
+  <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
+  <h3>Algo Aconteceu</h3>
+  <p style="max-width: 80%">Ops! algo aconteceu, tente novamente mais tarde</p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: #fa3664;
+      border: 1px solid #fa3664;
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</modal-notification>
+}

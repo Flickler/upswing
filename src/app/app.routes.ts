@@ -15,6 +15,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./admin/admin.component').then((c) => c.AdminComponent),
     children: [
+      // DASHBOARD DO ADMINISTRADOR
       {
         path: '',
         pathMatch: 'prefix',
@@ -23,6 +24,7 @@ export const routes: Routes = [
             (c) => c.AdminDashboardComponent
           ),
         children: [
+          // PAGINA CENTRAL DO ADMINISTRADOR
           {
             path: '',
             pathMatch: 'prefix',
@@ -76,6 +78,7 @@ export const routes: Routes = [
               },
             ],
           },
+          // PAGINAS DE VISUALIZAÇÃO DO ADMINISTRADOR
           {
             path: 'courses',
             loadComponent: () =>
@@ -120,12 +123,12 @@ export const routes: Routes = [
           },
         ],
       },
+      // PAGINA DE LOGIN DO ADMINISTRADOR
       {
         path: '',
         pathMatch: 'prefix',
         redirectTo: 'login',
       },
-      // PAGINA DE LOGIN
       {
         path: 'login',
         loadComponent: () =>
@@ -133,8 +136,64 @@ export const routes: Routes = [
       },
     ],
   },
-
   // ALUNO
-
+  {
+    path: 'st',
+    loadComponent: () =>
+      import('./student/student.component').then((c) => c.StudentComponent),
+    children: [
+      // DASHBOARD DO ALUNO
+      {
+        path: '',
+        pathMatch: 'prefix',
+        loadComponent: () =>
+          import(
+            './student/student-dashboard/student-dashboard.component'
+          ).then((c) => c.StudentDashboardComponent),
+      },
+      // PAGINA DE LOGIN DO ALUNO
+      {
+        path: '',
+        pathMatch: 'prefix',
+        redirectTo: 'login',
+      },
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./student/login/login.component').then(
+            (c) => c.LoginComponent
+          ),
+      },
+    ],
+  },
   // CORPORATIVO
+  {
+    path: 'co',
+    loadComponent: () =>
+      import('./company/company.component').then((c) => c.CompanyComponent),
+    children: [
+      // DASHBOARD DO ALUNO
+      {
+        path: '',
+        pathMatch: 'prefix',
+        loadComponent: () =>
+          import(
+            './company/company-dashboard/company-dashboard.component'
+          ).then((c) => c.CompanyDashboardComponent),
+      },
+      // PAGINA DE LOGIN DO ALUNO
+      {
+        path: '',
+        pathMatch: 'prefix',
+        redirectTo: 'login',
+      },
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./company/login/login.component').then(
+            (c) => c.LoginComponent
+          ),
+      },
+    ],
+  },
 ];

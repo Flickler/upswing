@@ -10,22 +10,22 @@
   height: 100dvh;
 }
 
-dashboard-header,
-dashboard-sidebar,
-dashboard-main {
+company-dashboard-header,
+company-dashboard-sidebar,
+company-dashboard-main {
   background-color: $white-color;
 }
 
-dashboard-header {
+company-dashboard-header {
   grid-column: span 2;
   border-radius: $radius-4 $radius-4 0 0;
 }
 
-dashboard-sidebar {
+company-dashboard-sidebar {
   border-radius: 0 0 0 $radius-4;
 }
 
-dashboard-main {
+company-dashboard-main {
   display: flex;
   flex-direction: column;
   gap: $spacing-9;
