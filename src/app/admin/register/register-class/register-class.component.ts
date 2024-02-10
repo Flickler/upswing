@@ -58,15 +58,16 @@ export class RegisterClassComponent {
   protected get closingDate() { return this.form.controls.closingDate }
   protected get vacancyNumber() { return this.form.controls.vacancyNumber }
 
-  optionsContainerToggle() {
+  protected optionsContainerToggle() {
     this.optionsContainer = !this.optionsContainer;
   }
 
-  optionClick(option: OptionCourse) {
+  protected optionClick(option: OptionCourse) {
     this.selected = option.courseName;
     this.courseId.setValue(option.id);
     this.optionsContainer = false;
   }
+
   protected onSubmit() {
     this.submitted = true;
     if(this.form.valid){

@@ -44,12 +44,23 @@ export class RegisterSubjectComponent {
   protected get description() { return this.form.controls.description }
   protected get courseId() { return this.form.controls.courseId }
 
-  onSubmit() {
+  protected onSubmit() {
     this.submitted = true;
     if(this.form.valid){
       this.registerService.registerSubject(this.form.value)
         .pipe(take(1))
-        .subscribe(res => console.log(res));
+        .subscribe((res) => {
+          if (res.courseId) {
+            this.submitted = false;
+            this.form.reset();
+            this.formStatus = 'sucess';
+            this.disable = false;
+          } else {
+            this.submitted = false;
+            this.formStatus = 'error';
+            this.disable = false;
+          }
+        });
     }
   }
 }

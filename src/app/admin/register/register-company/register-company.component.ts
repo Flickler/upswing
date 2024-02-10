@@ -87,7 +87,7 @@ export class RegisterCompanyComponent {
   get number() { return this.form.controls.address.controls.number }
   get complement() { return this.form.controls.address.controls.complement }
 
-  onSubmit() {
+  protected onSubmit() {
     this.submitted = true;
     if(this.form.valid){
       this.confirmPassword.disable();

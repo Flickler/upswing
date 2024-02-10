@@ -51,19 +51,28 @@ export class RegisterAdminComponent {
   protected get password() { return this.form.controls.account.controls.password };
   protected get confirmPassword() { return this.form.controls.account.controls.confirmPassword };
 
-  onSubmit() {
+  protected onSubmit() {
     this.submitted = true;
     if (this.form.valid) {
       this.confirmPassword.disable();
       if (this.optionalPhone.value == '') this.optionalPhone.disable();
       this.registerService.registerAdmin(this.form.value)
         .pipe(take(1))
-        .subscribe(res => {
-          this.submitted = false;
-          this.confirmPassword.enable();
-          this.optionalPhone.enable();
-          this.form.reset();
-          console.log(res);
+        .subscribe((res) => {
+          if (res.id) {
+            this.submitted = false;
+            this.confirmPassword.enable();
+            this.optionalPhone.enable();
+            this.form.reset();
+            this.formStatus = 'sucess';
+            this.disable = false;
+          } else {
+            this.submitted = false;
+            this.confirmPassword.enable();
+            this.optionalPhone.enable();
+            this.formStatus = 'error';
+            this.disable = false;
+          }
         });
     }
   }

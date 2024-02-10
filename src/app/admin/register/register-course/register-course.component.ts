@@ -52,7 +52,18 @@ export class RegisterCourseComponent {
     if (this.form.valid) {
       this.registerService.registerCourse(this.form.value)
         .pipe(take(1))
-        .subscribe(res => console.log(res));
+        .subscribe((res) => {
+          if (res.id) {
+            this.submitted = false;
+            this.form.reset();
+            this.formStatus = 'sucess';
+            this.disable = false;
+          } else {
+            this.submitted = false;
+            this.formStatus = 'error';
+            this.disable = false;
+          }
+        });
     }
   }
 }
