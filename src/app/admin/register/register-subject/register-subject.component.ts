@@ -38,22 +38,30 @@ export class RegisterSubjectComponent {
   });
   submitted = false;
   protected disable = false;
-  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
-  
-  protected get subjectName() { return this.form.controls.subjectName }
-  protected get description() { return this.form.controls.description }
-  protected get courseId() { return this.form.controls.courseId }
+  protected formStatus: 'notSubmitted' | 'error' | 'success' = 'notSubmitted';
+
+  protected get subjectName() {
+    return this.form.controls.subjectName;
+  }
+  protected get description() {
+    return this.form.controls.description;
+  }
+  protected get courseId() {
+    return this.form.controls.courseId;
+  }
 
   protected onSubmit() {
     this.submitted = true;
-    if(this.form.valid){
-      this.registerService.registerSubject(this.form.value)
+    if (this.form.valid) {
+      this.disable = true;
+      this.registerService
+        .registerSubject(this.form.value)
         .pipe(take(1))
         .subscribe((res) => {
           if (res.courseId) {
             this.submitted = false;
             this.form.reset();
-            this.formStatus = 'sucess';
+            this.formStatus = 'success';
             this.disable = false;
           } else {
             this.submitted = false;

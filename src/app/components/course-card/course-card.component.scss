@@ -3,10 +3,14 @@
 :host {
   width: 240px;
   min-height: 190px;
+  display: flex;
   flex-direction: column;
-  padding: $spacing-6;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: $spacing-8;
   color: $gray-scale-80;
   border: 1px solid $gray-scale-30;
+  border-radius: $radius-4;
   user-select: none;
   transition: 0.4s ease-in;
 
@@ -17,20 +21,31 @@
   }
 }
 
-:host,
 .card_header {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+.card_header .flex {
+  display: flex;
   justify-content: space-between;
-  border-radius: $radius-4;
+  border: 1px solid red;
 }
 
-.card_header {
-  width: 100%;
-  justify-content: space-between;
-  padding-bottom: $spacing-4;
-  padding: $spacing-2;
-  border-radius: $radius-4;
+.card_header .flex button {
+  padding: $spacing-4;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: $white-color;
+    border: none;
+  }
+}
+
+.card_header .card_heading {
+  font-size: $base;
+  font-weight: $semibold;
+  padding: $spacing-3 $spacing-3 0 0;
 }
 
 .card_btn {

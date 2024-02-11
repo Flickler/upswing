@@ -110,7 +110,7 @@
     <button type="submit" [disabled]="disable">Cadastrar</button>
   </form>
 </modal>
-@if (formStatus == 'sucess') {
+@if (formStatus == 'success') {
 <modal-notification>
   <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
   <h3>Sucesso</h3>
@@ -131,7 +131,9 @@
 <modal-notification>
   <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
   <h3>Algo Aconteceu</h3>
-  <p style="max-width: 80%">Ops! algo aconteceu, tente novamente mais tarde</p>
+  <p style="max-width: 80%">
+    Algo de errado aconteceu! Atualize a pagina e tente novamente
+  </p>
   <button
     style="
       width: 40%;

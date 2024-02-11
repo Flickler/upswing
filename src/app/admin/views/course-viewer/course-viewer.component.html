@@ -1,11 +1,7 @@
 <viewer-heading>Cursos</viewer-heading>
 <load-section>
-  <course-card />
-  <course-card />
-  <course-card />
-  <course-card />
-  <course-card />
-  <course-card />
-  <course-card />
-  <course-card />
+  @for (course of courses$ | async | coursesCardContent; track course.courseId)
+  {
+  <course-card [course]="course" />
+  }
 </load-section>

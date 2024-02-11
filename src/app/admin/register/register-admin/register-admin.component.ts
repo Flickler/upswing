@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { take } from 'rxjs';
+import { catchError, of, take } from 'rxjs';
 import { NgxMaskDirective } from 'ngx-mask';
 
 import { MatchDirective } from '@@Directives/match.directive';
@@ -27,7 +27,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
 export class RegisterAdminComponent {
   private fb = inject(NonNullableFormBuilder);
   private registerService = inject(RegisterService);
-  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
+  protected formStatus: 'notSubmitted' | 'error' | 'success' = 'notSubmitted';
   protected disable = false;
 
   protected form = this.fb.group({
@@ -54,23 +54,28 @@ export class RegisterAdminComponent {
   protected onSubmit() {
     this.submitted = true;
     if (this.form.valid) {
+      this.disable = true;
       this.confirmPassword.disable();
       if (this.optionalPhone.value == '') this.optionalPhone.disable();
       this.registerService.registerAdmin(this.form.value)
-        .pipe(take(1))
-        .subscribe((res) => {
-          if (res.id) {
-            this.submitted = false;
-            this.confirmPassword.enable();
-            this.optionalPhone.enable();
-            this.form.reset();
-            this.formStatus = 'sucess';
-            this.disable = false;
-          } else {
+        .pipe(
+          take(1),
+          catchError(() => {
             this.submitted = false;
             this.confirmPassword.enable();
             this.optionalPhone.enable();
             this.formStatus = 'error';
+            this.disable = false;
+            return of(null);
+          })
+        )
+        .subscribe((res) => {
+          if (res) {
+            this.submitted = false;
+            this.confirmPassword.enable();
+            this.optionalPhone.enable();
+            this.form.reset();
+            this.formStatus = 'success';
             this.disable = false;
           }
         });

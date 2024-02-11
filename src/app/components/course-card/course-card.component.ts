@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { CourseCard } from '@@Types/Course';
 
 @Component({
   selector: 'course-card',
@@ -9,4 +10,6 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.scss',
 })
-export class CourseCardComponent {}
+export class CourseCardComponent {
+  @Input({ required: true }) course!: CourseCard;
+}

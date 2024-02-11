@@ -1,16 +1,19 @@
 <div class="card_header">
-  <lucide-icons name="code2" color="#ffffff" [size]="20" />
-  <button class="card_btn">
-    <lucide-icons name="moreVertical" color="#666c84" [size]="16" />
-  </button>
+  <div class="flex">
+    <lucide-icons name="code2" color="#ffffff" [size]="20" />
+    <button class="card_btn">
+      <lucide-icons name="moreVertical" color="#666c84" [size]="16" />
+    </button>
+  </div>
+  <p class="card_heading">Área do curso</p>
 </div>
-<div class="card_container">
-  <h4>curso.nome</h4>
+<div class="card_section">
+  <p>Nome do curso</p>
   <p>Cód.:curso.id</p>
   <p>Nível:curso.nivel</p>
   <p>curso.cargaHoraria horas</p>
   <p>Grade Curricular:</p>
-  <details class="class_section">
+  <details class="class_accordion">
     <ul>
       <li>turma.id + " " + turma.nomeCurso</li>
     </ul>

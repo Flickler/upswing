@@ -29,7 +29,7 @@ export class CustomSelectCoursesComponent {
 
   optionClick(option: OptionCourse) {
     this.selected = option.courseName;
-    this.setValue.emit(option.id);
+    this.setValue.emit(option.courseId);
     this.optionsContainer = false;
   }
 }

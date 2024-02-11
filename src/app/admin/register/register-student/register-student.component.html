@@ -30,38 +30,6 @@
       </div>
 
       <div class="form_control">
-        <label class="form_label">Senha</label>
-        <input
-          type="password"
-          placeholder="Digite sua senha"
-          formControlName="password"
-        />
-
-        @if (submitted && password.invalid) {
-        @if(password.errors?.['required']){
-        <toast type="warn">É necessário informar uma senha</toast>
-        } @if(password.errors?.['minlength'] || password.errors?.['maxlength']){
-        <toast type="warn">A senha deve deve ter entre 8 a 16 caracteres</toast>
-        } }
-      </div>
-
-      <div class="form_control">
-        <label class="form_label">Confirmar senha</label>
-        <input
-          type="password"
-          placeholder="confirme a sua senha"
-          formControlName="confirmPassword"
-        />
-
-        @if (submitted && confirmPassword.invalid) {
-        @if(confirmPassword.errors?.['required']){
-        <toast type="warn">É necessário confirmar a sua senha</toast>
-        } @if(confirmPassword.errors?.['notEqual']){
-        <toast type="warn">A informada não é igual a anterior</toast>
-        } }
-      </div>
-
-      <div class="form_control">
         <label class="form_label">Telefone principal</label>
         <input
           type="text"
@@ -207,7 +175,7 @@
     <button type="submit" [disabled]="disable">Cadastrar</button>
   </form>
 </modal>
-@if (formStatus == 'sucess') {
+@if (formStatus == 'success') {
 <modal-notification>
   <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
   <h3>Sucesso</h3>
@@ -228,7 +196,9 @@
 <modal-notification>
   <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
   <h3>Algo Aconteceu</h3>
-  <p style="max-width: 80%">Ops! algo aconteceu, tente novamente mais tarde</p>
+  <p style="max-width: 80%">
+    Algo de errado aconteceu! Atualize a pagina e tente novamente
+  </p>
   <button
     style="
       width: 40%;

@@ -6,12 +6,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { take } from 'rxjs';
+import { catchError, of, take } from 'rxjs';
 
 import { RegisterService } from '@@Services/register.service';
 import { SelectService } from '@@Services/select.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
+import { CustomSelectCoursesComponent } from '@@Components/custom-select-courses/custom-select-courses.component';
 import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { OptionCourse } from '@@Types/Course';
@@ -25,8 +26,9 @@ import { OptionCourse } from '@@Types/Course';
     NgClass,
     ModalComponent,
     ToastComponent,
+    CustomSelectCoursesComponent,
     ModalNotificationComponent,
-    LucideIcons
+    LucideIcons,
   ],
   templateUrl: './register-class.component.html',
 })
@@ -37,7 +39,7 @@ export class RegisterClassComponent {
   protected courses$ = this.selectService.getCourses();
 
   protected disable = false;
-  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
+  protected formStatus: 'notSubmitted' | 'error' | 'success' = 'notSubmitted';
 
   protected form = this.fb.group({
     courseId: ['', Validators.required],
@@ -51,12 +53,24 @@ export class RegisterClassComponent {
   optionsContainer = false;
   selected = 'Vincule um curso a turma';
 
-  protected get courseId() { return this.form.controls.courseId }
-  protected get mode() { return this.form.controls.mode }
-  protected get shift() { return this.form.controls.shift }
-  protected get startDate() { return this.form.controls.startDate }
-  protected get closingDate() { return this.form.controls.closingDate }
-  protected get vacancyNumber() { return this.form.controls.vacancyNumber }
+  protected get courseId() {
+    return this.form.controls.courseId;
+  }
+  protected get mode() {
+    return this.form.controls.mode;
+  }
+  protected get shift() {
+    return this.form.controls.shift;
+  }
+  protected get startDate() {
+    return this.form.controls.startDate;
+  }
+  protected get closingDate() {
+    return this.form.controls.closingDate;
+  }
+  protected get vacancyNumber() {
+    return this.form.controls.vacancyNumber;
+  }
 
   protected optionsContainerToggle() {
     this.optionsContainer = !this.optionsContainer;
@@ -64,24 +78,30 @@ export class RegisterClassComponent {
 
   protected optionClick(option: OptionCourse) {
     this.selected = option.courseName;
-    this.courseId.setValue(option.id);
+    this.courseId.setValue(option.courseId);
     this.optionsContainer = false;
   }
 
   protected onSubmit() {
     this.submitted = true;
-    if(this.form.valid){
-      this.registerService.registerClass(this.form.value)
-        .pipe(take(1))
-        .subscribe(res => {
-          if(res.id){
+    if (this.form.valid) {
+      this.disable = true;
+      this.registerService
+        .registerClass(this.form.value)
+        .pipe(
+          take(1),
+          catchError(() => {
+            this.formStatus = 'error';
+            this.submitted = false;
+            this.disable = false;
+            return of(null);
+          })
+        )
+        .subscribe((res) => {
+          if (res) {
             this.submitted = false;
             this.form.reset();
-            this.formStatus = 'sucess';
-            this.disable = false;
-          } else {
-            this.submitted = false;
-            this.formStatus = 'error';
+            this.formStatus = 'success';
             this.disable = false;
           }
         });

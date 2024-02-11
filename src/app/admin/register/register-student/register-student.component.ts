@@ -5,11 +5,10 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { take } from 'rxjs';
+import { catchError, of, take } from 'rxjs';
 
 import { NgxMaskDirective } from 'ngx-mask';
 import { RegisterService } from '@@Services/register.service';
-import { MatchDirective } from '@@Directives/match.directive';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
@@ -27,36 +26,18 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     LucideIcons,
   ],
   templateUrl: './register-student.component.html',
-  styles: ':host:has(modal-notification) modal{display:none;}',
 })
 export class RegisterStudentComponent {
   private fb = inject(NonNullableFormBuilder);
   private registerService = inject(RegisterService);
   protected submitted = false;
   protected disable = false;
-  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
+  protected formStatus: 'notSubmitted' | 'error' | 'success' = 'notSubmitted';
 
   protected form = this.fb.group({
     account: this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(16),
-        ],
-      ],
-      confirmPassword: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(16),
-          MatchDirective.match('password'),
-        ],
-      ],
       mainPhone: [
         '',
         [
@@ -102,12 +83,6 @@ export class RegisterStudentComponent {
   protected get email() {
     return this.form.controls.account.controls.email;
   }
-  protected get password() {
-    return this.form.controls.account.controls.password;
-  }
-  protected get confirmPassword() {
-    return this.form.controls.account.controls.confirmPassword;
-  }
   protected get mainPhone() {
     return this.form.controls.account.controls.mainPhone;
   }
@@ -143,27 +118,28 @@ export class RegisterStudentComponent {
   }
 
   protected onSubmit() {
-    this.disable = true;
     this.submitted = true;
     if (this.form.valid) {
-      this.confirmPassword.disable();
+      this.disable = true;
       if (this.optionalPhone.value == '') this.optionalPhone.disable();
       this.registerService
         .registerStudent(this.form.value)
-        .pipe(take(1))
-        .subscribe((res) => {
-          if (res.id) {
+        .pipe(
+          take(1),
+          catchError(() => {
             this.submitted = false;
-            this.confirmPassword.enable();
-            this.optionalPhone.enable();
-            this.form.reset();
-            this.formStatus = 'sucess';
-            this.disable = false;
-          } else {
-            this.submitted = false;
-            this.confirmPassword.enable();
-            this.optionalPhone.enable();
             this.formStatus = 'error';
+            this.disable = false;
+            this.optionalPhone.enable();
+            return of(null);
+          })
+        )
+        .subscribe((res) => {
+          if (res) {
+            this.form.reset();
+            this.optionalPhone.enable();
+            this.submitted = false;
+            this.formStatus = 'success';
             this.disable = false;
           }
         });

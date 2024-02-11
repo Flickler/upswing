@@ -9,6 +9,19 @@ export type Course = {
   active: boolean;
 };
 
+export type Courses = Course[];
+
+export type CourseCard = {
+  courseId: string;
+  courseName: string;
+  businessArea: string;
+  educationLevel: string;
+  schedule: string;
+  subject: string[];
+};
+
+export type CoursesCards = CourseCard[];
+
 export type RegisterCourse = Partial<{
   bussinesAreaId: string;
   courseName: string;
@@ -19,7 +32,7 @@ export type RegisterCourse = Partial<{
 }>;
 
 export type OptionCourse = {
-  id: string;
+  courseId: string;
   courseName: string;
 };
 

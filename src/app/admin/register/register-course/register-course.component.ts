@@ -1,7 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
-import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { take } from 'rxjs';
+import {
+  FormControl,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { catchError, of, take } from 'rxjs';
 
 import { RegisterService } from '@@Services/register.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
@@ -35,32 +40,49 @@ export class RegisterCourseComponent {
     schedule: new FormControl<number | null>(null, Validators.required),
     monthlyCost: new FormControl<number | null>(null, Validators.required),
     totalCost: new FormControl<number | null>(null, Validators.required),
-  })
+  });
   submitted = false;
   protected disable = false;
-  protected formStatus: 'notSubmitted' | 'error' | 'sucess' = 'notSubmitted';
+  protected formStatus: 'notSubmitted' | 'error' | 'success' = 'notSubmitted';
 
-  protected get courseName() { return this.form.controls.courseName }
-  protected get businessAreaId() { return this.form.controls.businessAreaId }
-  protected get educationalLevel() { return this.form.controls.educationalLevel }
-  protected get schedule() { return this.form.controls.schedule }
-  protected get monthlyCost() { return this.form.controls.monthlyCost }
-  protected get totalCost() { return this.form.controls.totalCost }
+  protected get courseName() {
+    return this.form.controls.courseName;
+  }
+  protected get businessAreaId() {
+    return this.form.controls.businessAreaId;
+  }
+  protected get educationalLevel() {
+    return this.form.controls.educationalLevel;
+  }
+  protected get schedule() {
+    return this.form.controls.schedule;
+  }
+  protected get monthlyCost() {
+    return this.form.controls.monthlyCost;
+  }
+  protected get totalCost() {
+    return this.form.controls.totalCost;
+  }
 
   protected onSubmit() {
     this.submitted = true;
     if (this.form.valid) {
-      this.registerService.registerCourse(this.form.value)
-        .pipe(take(1))
+      this.registerService
+        .registerCourse(this.form.value)
+        .pipe(
+          take(1),
+          catchError(() => {
+            this.formStatus = 'error';
+            this.submitted = false;
+            this.disable = false;
+            return of(null);
+          })
+        )
         .subscribe((res) => {
-          if (res.id) {
+          if (res) {
             this.submitted = false;
             this.form.reset();
-            this.formStatus = 'sucess';
-            this.disable = false;
-          } else {
-            this.submitted = false;
-            this.formStatus = 'error';
+            this.formStatus = 'success';
             this.disable = false;
           }
         });

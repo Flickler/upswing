@@ -3,31 +3,11 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <h3 class="body-base-md subtitle">Informações sobre a turma</h3>
 
-    <div class="custom_select_container">
-      <label>Selecionar área de atuação</label>
-      <span class="custom_select" (click)="optionsContainerToggle()">{{
-        selected
-      }}</span>
-
-      <div
-        [ngClass]="
-          optionsContainer
-            ? 'custom_options_container active'
-            : 'custom_options_container'
-        "
-      >
-        @for (course of courses$ | async; track $index) {
-        <span class="custom_option" (click)="optionClick(course)">
-          {{ course.courseName }}
-        </span>
-
-        }
-      </div>
-
-      @if (submitted && courseId.errors?.['required']){
-      <toast type="warn">É necessário vincular um curso</toast>
-      }
-    </div>
+    <custom-select-courses
+      [invalid]="courseId.invalid"
+      (setValue)="courseId.setValue($event)"
+      [submitted]="submitted"
+    />
 
     <div class="form_group">
       <label>Selecione a modalidade da turma</label>
@@ -128,7 +108,7 @@
     <button type="submit" [disabled]="disable">Cadastrar</button>
   </form>
 </modal>
-@if (formStatus == 'sucess') {
+@if (formStatus == 'success') {
 <modal-notification>
   <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
   <h3>Sucesso</h3>
@@ -149,7 +129,9 @@
 <modal-notification>
   <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
   <h3>Algo Aconteceu</h3>
-  <p style="max-width: 80%">Ops! algo aconteceu, tente novamente mais tarde</p>
+  <p style="max-width: 80%">
+    Algo de errado aconteceu! Atualize a pagina e tente novamente
+  </p>
   <button
     style="
       width: 40%;

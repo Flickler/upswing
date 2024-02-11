@@ -11,7 +11,7 @@ import {
   standalone: true,
 })
 export class ToastDirective {
-  @Input({ required: true }) type!: 'info' | 'warn' | 'sucess';
+  @Input({ required: true }) type!: 'info' | 'warn' | 'success';
   @HostBinding('class')
   get classType() {
     return `toast toast_${this.type}`;
