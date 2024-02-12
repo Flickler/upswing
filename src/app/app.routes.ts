@@ -121,6 +121,14 @@ export const routes: Routes = [
                 (c) => c.AdminViewerComponent
               ),
           },
+          // PAGINA DE CONFIGURAÇÕES DE PERFIL DO ADMINISTRADOR
+          {
+            path: 'settings',
+            loadComponent: () =>
+              import('./admin/settings/settings.component').then(
+                (c) => c.SettingsComponent
+              ),
+          },
         ],
       },
       // PAGINA DE LOGIN DO ADMINISTRADOR

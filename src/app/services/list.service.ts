@@ -22,11 +22,4 @@ export class ListService {
   listAdminById(id: string) {
     return this.http.get<Admin>(this.path + '/admin/' + id);
   }
-
-  listStudents(page: number) {
-    return this.http.get<Pagination<StudentsCards>>(
-      this.path + '/admin/students',
-      { params: { page: page } }
-    );
-  }
 }

@@ -1,1 +1,40 @@
-<p>company-card works!</p>
+<div class="card_header">
+  <div class="flex">
+    <lucide-icons name="building" [size]="20" color="hsl(228, 20%, 60%)" />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+      <!--
+        <lucide-icons name="x" color="hsl(228, 20%, 60%)" [size]="20" />
+      -->
+    </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
+  </div>
+  <p class="card_title">{{ company.name }}</p>
+</div>
+
+<div class="card_content">
+  <p class="card_data">{{ company.socialNetworks }}</p>
+</div>
+<!--CARD CONTENT SECTIONS-->
+<div class="card_content">
+  <p class="card_data">Telefone</p>
+  <p class="card_data">{{ company.mainPhone | phone }}</p>
+  <p class="card_data">{{ company.email }}</p>
+  <p class="card_data">{{ company.companyCode }}</p>
+  <p class="card_data">
+    {{ company.address.zipCode.city }}, {{ company.address.zipCode.state }}
+  </p>
+</div>

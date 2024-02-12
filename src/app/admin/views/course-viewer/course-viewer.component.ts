@@ -25,6 +25,6 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
   styleUrl: './course-viewer.component.scss',
 })
 export class CourseViewerComponent {
-  dashboardService = inject(AdminDashboardService);
-  courses$ = this.dashboardService.getCourses(0);
+  private dashboardService = inject(AdminDashboardService);
+  protected courses$ = this.dashboardService.getCourses(0);
 }

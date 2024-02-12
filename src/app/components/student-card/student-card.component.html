@@ -1,8 +1,42 @@
-<lucide-icons class="student_options" name="moreVertical" color="#666c84" />
-<lucide-icons
-  class="student_avatar"
-  name="circleUserRound"
-  color="#666c84"
-  [size]="32"
-/>
-<p>{{ student.name }}</p>
+<div class="card_header">
+  <div class="flex">
+    <img src="" alt="avatar" />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+      <!--
+        <lucide-icons name="x" color="hsl(228, 20%, 60%)" [size]="20" />
+      -->
+    </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
+  </div>
+  <p class="card_title">{{ student.name }}</p>
+</div>
+
+<!--CARD CONTENT SECTIONS-->
+<div class="card_content">
+  <p class="card_data">data</p>
+</div>
+
+<div class="card_content">
+  <details class="card_accordion">
+    <ul>
+      @for (classItem of student.classes; track $index) {
+      <li>{{ classItem.code }} - {{ classItem.courseName }}</li>
+      }
+    </ul>
+    <summary class="summary">Turmas</summary>
+  </details>
+</div>

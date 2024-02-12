@@ -4,7 +4,7 @@ header {
   padding: 1rem 0;
   border-bottom: 1px solid $gray-scale-30;
   border-radius: $radius-3 $radius-3 0 0;
-  background-color: $white-color;
+  background-color: $white;
 }
 
 nav {
@@ -60,7 +60,7 @@ nav {
   position: absolute;
   top: 3.75rem;
 
-  background-color: $white-color;
+  background-color: $white;
   border-radius: $radius-4;
   box-shadow: $shadow-container;
   z-index: 1;

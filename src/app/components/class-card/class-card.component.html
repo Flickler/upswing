@@ -1,19 +1,40 @@
-<p>class-card works!</p>
 <div class="card_header">
-    <lucide-icons name="code2" color="#ffffff" [size]="20" />
-    <button class="card_btn">
-      <lucide-icons name="moreVertical" color="#666c84" [size]="16" />
+  <div class="flex">
+    <lucide-icons name="graduationCap" [size]="20" color="hsl(228, 20%, 60%)" />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+      <!--
+          <lucide-icons name="x" color="hsl(228, 20%, 60%)" [size]="20" />
+        -->
     </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
+  </div>
+  <p class="card_title">{{ classItem.code }} - {{ classItem.courseName }}</p>
 </div>
-<div class="card_container">
-    <h4>titulo</h4>
-    <p>row</p>
-    <p>row</p>
-    <p>row</p>
-    <details class="class_section">
-        <ul>
-        <li>lista</li>
-        </ul>
-        <summary>titulo da lista</summary>
-    </details>
+
+<div class="card_content">
+  <p class="card_data">{{ classItem.mode }}</p>
+  <p class="card_data">{{ classItem.shift }}</p>
+  <p class="card_data">Numero de vagas: {{ classItem.vacancyNumber }}</p>
+  <div class="card_details">
+    <p>Data de inicio</p>
+    <p>Data de fim</p>
+  </div>
+  <div class="card_details">
+    <p>{{ classItem.startDate | date : "dd/MM/yyyy" }}</p>
+    <p>{{ classItem.closingDate | date : "dd/MM/yyyy" }}</p>
+  </div>
 </div>

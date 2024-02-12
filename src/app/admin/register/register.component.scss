@@ -40,7 +40,7 @@
     background-color: transparent;
 
     &:is(:hover, :focus, .active) {
-      color: $white-color;
+      color: $white;
       background-color: $primary-color;
     }
   }

@@ -18,3 +18,15 @@ export type RegisterClass = Partial<{
   closingDate: string;
   vacancyNumber: number | null;
 }>;
+
+export type ClassCard = {
+  courseName: string;
+  code: number;
+  mode: string;
+  shift: string;
+  vacancyNumber: number;
+  startDate: string;
+  closingDate: string;
+};
+
+export type ClassesCards = ClassCard[];

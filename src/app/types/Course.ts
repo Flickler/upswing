@@ -17,7 +17,7 @@ export type CourseCard = {
   businessArea: string;
   educationLevel: string;
   schedule: string;
-  subject: string[];
+  subjects: string[];
 };
 
 export type CoursesCards = CourseCard[];

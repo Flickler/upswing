@@ -1,4 +1,6 @@
 <viewer-heading>Turmas</viewer-heading>
 <load-section>
-    
+  @for (classItem of class$ | async | classesCardContent; track $index) {
+  <class-card [classItem]="classItem" />
+  }
 </load-section>

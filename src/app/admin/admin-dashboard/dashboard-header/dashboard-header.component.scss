@@ -21,3 +21,72 @@ header {
     border-radius: 50%;
   }
 }
+
+.header_drops {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .drop {
+    position: relative;
+
+    .drop_container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      position: absolute;
+      top: 105%;
+      right: 0;
+
+      background-color: $white;
+      border-radius: $radius-2;
+      box-shadow: $shadow-container;
+
+      &.active {
+        display: flex;
+      }
+
+      .drop_item {
+        display: flex;
+        align-items: center;
+        gap: $spacing-4;
+
+        color: $gray-scale-60;
+        font-size: $small;
+
+        padding: $spacing-4;
+        width: 100%;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $primary-10;
+        }
+
+        &:nth-child(2) {
+          border-top: 1px solid $gray-scale-60;
+          border-bottom: 1px solid $gray-scale-60;
+          width: 80%;
+          margin-inline: auto;
+
+          &:hover {
+            background-color: $white;
+          }
+
+          button {
+            color: $gray-scale-60;
+            font-size: $small;
+            padding: $spacing-1 $spacing-2;
+            border-radius: $radius-1;
+            width: 100%;
+
+            &:hover {
+              background-color: $primary-10;
+            }
+          }
+        }
+      }
+    }
+  }
+}

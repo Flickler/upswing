@@ -1,22 +1,41 @@
 <div class="card_header">
   <div class="flex">
-    <lucide-icons name="code2" color="#ffffff" [size]="20" />
-    <button class="card_btn">
-      <lucide-icons name="moreVertical" color="#666c84" [size]="16" />
+    <lucide-icons name="bookOpen" [size]="20" color="hsl(228, 20%, 60%)" />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
     </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
   </div>
-  <p class="card_heading">Área do curso</p>
+  <p class="card_title">{{ course.courseName }}</p>
 </div>
-<div class="card_section">
-  <p>Nome do curso</p>
-  <p>Cód.:curso.id</p>
-  <p>Nível:curso.nivel</p>
-  <p>curso.cargaHoraria horas</p>
-  <p>Grade Curricular:</p>
-  <details class="class_accordion">
+
+<div class="card_content">
+  <div class="card_details">
+    <p>{{ course.educationLevel }}</p>
+    <p>{{ course.schedule }}h</p>
+  </div>
+</div>
+
+<div class="card_content">
+  <details class="card_accordion">
     <ul>
-      <li>turma.id + " " + turma.nomeCurso</li>
+      @for (subject of course.subjects; track $index) {
+      <li>{{ subject }}</li>
+      }
     </ul>
-    <summary>Turmas Vinculadas</summary>
+    <summary class="summary">Grade curricular</summary>
   </details>
 </div>

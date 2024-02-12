@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { take } from 'rxjs';
 
-import { ListService } from '@@Services/list.service';
+import { AdminDashboardService } from '@@Services/admin-dashboard.service';
+import { StudentsCardsContentPipe } from '@@Pipes/get-students-cards-content.pipe';
+import { LastPagePipe } from '@@Pipes/last-page.pipe';
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
-import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
-import { LucideIcons } from '@@Icons/lucide-icons.component';
-import { StudentsCards } from '@@Types/Student';
 import { StudentCardComponent } from '@@Components/student-card/student-card.component';
 import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
+import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-student-viewer',
@@ -17,6 +17,8 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
   imports: [
     RouterLink,
     AsyncPipe,
+    StudentsCardsContentPipe,
+    LastPagePipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     StudentCardComponent,
@@ -27,19 +29,10 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
   styleUrl: './student-viewer.component.scss',
 })
 export class StudentViewerComponent {
-  private listService = inject(ListService);
-  protected pagination = 0;
-  private students$ = this.getPage({ currPage: 0, lastPage: 0 });
-  protected students?: StudentsCards;
-  protected lastPage = 0;
+  private dashboardService = inject(AdminDashboardService);
+  protected students$ = this.dashboardService.getStudents(0);
 
-  getPage(page: { currPage: number; lastPage: number }) {
-    return this.listService
-      .listStudents(page.currPage)
-      .pipe(take(1))
-      .subscribe((res) => {
-        this.students = res.content;
-        this.lastPage = res.totalPages;
-      });
+  getPage(page: number) {
+    this.students$ = this.dashboardService.getStudents(page);
   }
 }

@@ -1,4 +1,6 @@
 <viewer-heading>Vagas</viewer-heading>
 <load-section>
-    
+  @for (job of jobs$ | async | jobOffersCardContent; track $index) {
+  <job-offer-card [job]="job" />
+  }
 </load-section>

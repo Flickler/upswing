@@ -179,6 +179,11 @@ export const icons = {
     paths: ['m18 16 4-4-4-4', 'm6 8-4 4 4 4', 'm14.5 4-5 16'],
   },
 
+  clock4: {
+    circles: [{ cx: 12, cy: 12, r: 10 }],
+    polylines: ['12 6 12 12 16 14'],
+  },
+
   databaseZap: {
     ellipses: [{ cx: 12, cy: 5, rx: 9, ry: 3 }],
     paths: [
@@ -354,6 +359,14 @@ export const icons = {
     paths: ['m21 21-4.3-4.3'],
   },
 
+  settings2: {
+    paths: ['M20 7h-9', 'M14 17H5'],
+    circles: [
+      { cx: 17, cy: 17, r: 3 },
+      { cx: 7, cy: 7, r: 3 },
+    ],
+  },
+
   squarePen: {
     paths: [
       'M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7',
@@ -479,7 +492,7 @@ export const icons = {
 //   '$gray-scale-30': 'hsl(228, 20%, 80%)',
 //   '$gray-scale-10': 'hsl(228, 20%, 96%)',
 
-//   '$white-color': '#fff',
+//   '$white': '#fff',
 //   '$black': '#20273e',
 // }
 

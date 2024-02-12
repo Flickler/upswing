@@ -1,7 +1,10 @@
 <viewer-heading>Alunos</viewer-heading>
 <load-section>
-  @for (student of students; track $index) {
-    <student-card [student]="student"/>
+  @for (student of students$ | async | studentsCardContent; track $index) {
+  <student-card [student]="student" />
   }
-  <pagination-section [lastPage]="lastPage" (onPageChange)="getPage($event)" />
+  <pagination-section
+    [lastPage]="students$ | async | lastPage"
+    (onPageChange)="getPage($event)"
+  />
 </load-section>

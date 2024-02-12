@@ -10,11 +10,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PaginationSectionComponent {
   currPage = 0;
-  @Input() lastPage = 0;
-  @Output() onPageChange = new EventEmitter<{
-    currPage: number;
-    lastPage: number;
-  }>();
+  @Input() lastPage?: number;
+  @Output() onPageChange = new EventEmitter<number>();
 
   previous() {
     if (this.currPage > 0) {
@@ -24,16 +21,14 @@ export class PaginationSectionComponent {
   }
 
   next() {
-    if (this.currPage < this.lastPage - 1) {
-      this.currPage++;
-      this.emit();
-    }
+    if (this.lastPage)
+      if (this.currPage < this.lastPage - 1) {
+        this.currPage++;
+        this.emit();
+      }
   }
 
   emit() {
-    this.onPageChange.emit({
-      currPage: this.currPage,
-      lastPage: this.lastPage,
-    });
+    this.onPageChange.emit(this.currPage);
   }
 }

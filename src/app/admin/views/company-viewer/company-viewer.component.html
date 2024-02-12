@@ -1,4 +1,7 @@
 <viewer-heading>Empresas</viewer-heading>
 <load-section>
-    
+  @for (company of companies$ | async | companiesCardContent; track $index) {
+  <company-card [company]="company" />
+  }
+  <pagination-section [lastPage]="companies$ | async | lastPage" />
 </load-section>
