@@ -3,4 +3,8 @@
   @for (job of jobs$ | async | jobOffersCardContent; track $index) {
   <job-offer-card [job]="job" />
   }
+  <pagination-section
+    [lastPage]="jobs$ | async | lastPage"
+    (onPageChange)="getPage($event)"
+  />
 </load-section>

@@ -3,5 +3,8 @@
   @for (company of companies$ | async | companiesCardContent; track $index) {
   <company-card [company]="company" />
   }
-  <pagination-section [lastPage]="companies$ | async | lastPage" />
+  <pagination-section
+    [lastPage]="companies$ | async | lastPage"
+    (onPageChange)="getPage($event)"
+  />
 </load-section>

@@ -4,4 +4,8 @@
   {
   <course-card [course]="course" />
   }
+  <pagination-section
+    [lastPage]="courses$ | async | lastPage"
+    (onPageChange)="getPage($event)"
+  />
 </load-section>

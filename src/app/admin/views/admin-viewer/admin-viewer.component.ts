@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { map } from 'rxjs';
 
 import { ListService } from '@@Services/list.service';
+import { LastPagePipe } from '@@Pipes/last-page.pipe';
+import { AdminsCardsContentPipe } from '@@Pipes/get-admins-cards-content.pipe';
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
+import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 import { AdminCardComponent } from '@@Components/admin-card/admin-card.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
-import { Pagination } from '@@Types/Pagination';
-import { Admins } from '@@Types/Admin';
-import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
+import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 
 @Component({
   selector: 'app-admin-viewer',
@@ -17,9 +17,12 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
   imports: [
     RouterLink,
     AsyncPipe,
+    LastPagePipe,
+    AdminsCardsContentPipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     AdminCardComponent,
+    PaginationSectionComponent,
     LucideIcons,
   ],
   templateUrl: './admin-viewer.component.html',
@@ -27,7 +30,9 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
 })
 export class AdminViewerComponent {
   listService = inject(ListService);
-  admins$ = this.listService
-    .listAdmins(0)
-    .pipe(map((pagination: Pagination<Admins>) => pagination.content));
+  admins$ = this.listService.listAdmins(0);
+
+  getPage(page: number) {
+    this.admins$ = this.listService.listAdmins(page);
+  }
 }

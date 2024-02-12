@@ -3,4 +3,8 @@
   @for (classItem of class$ | async | classesCardContent; track $index) {
   <class-card [classItem]="classItem" />
   }
+  <pagination-section
+    [lastPage]="class$ | async | lastPage"
+    (onPageChange)="getPage($event)"
+  />
 </load-section>

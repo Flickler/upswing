@@ -7,7 +7,9 @@ import { JobOffersCardsContentPipe } from '@@Pipes/get-job-offers-cards-content.
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
 import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 import { JobOfferCardComponent } from '@@Components/job-offer-card/job-offer-card.component';
+import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { LastPagePipe } from '@@Pipes/last-page.pipe';
 
 @Component({
   selector: 'upswing-job-offer-viewer',
@@ -16,9 +18,11 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     RouterLink,
     AsyncPipe,
     JobOffersCardsContentPipe,
+    LastPagePipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     JobOfferCardComponent,
+    PaginationSectionComponent,
     LucideIcons,
   ],
   templateUrl: './job-offer-viewer.component.html',
