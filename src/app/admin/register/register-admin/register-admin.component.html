@@ -40,7 +40,7 @@
         @if (submitted && password.invalid) {
         @if(password.errors?.['required']){
         <toast type="warn">É necessário informar uma senha</toast>
-        } @if(password.errors?.['maxLenght'] || password.errors?.['minLenght']){
+        } @if(password.errors?.['maxlength'] || password.errors?.['minlength']){
         <toast type="warn">A senha deve deve ter entre 8 a 16 caracteres</toast>
         } }
       </div>

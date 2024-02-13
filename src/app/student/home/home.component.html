@@ -1,0 +1,11 @@
+<div [ngClass]="{ expanded: !panel() }">
+  <h2 class="welcome">Olá, Aluno!</h2>
+  <a class="router_card" routerLink="job-offers">
+    <lucide-icons name="plus" [size]="24" color="#666c84" />
+    <span>Minhas Vagas</span>
+  </a>
+  <a class="router_card" routerLink="my-courses">
+    <lucide-icons name="bookOpen" [size]="20" color="#666c84" />
+    <span>Meus Cursos</span>
+  </a>
+</div>

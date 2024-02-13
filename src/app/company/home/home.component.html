@@ -1,0 +1,11 @@
+<div [ngClass]="{ expanded: !panel() }">
+  <h2 class="welcome">Olá, Empresa!</h2>
+  <a class="router_card register" routerLink="register-job-offer">
+    <lucide-icons name="plus" [size]="24" color="#839ef7" />
+    <span>Cadastrar</span>
+  </a>
+  <a class="router_card" routerLink="my-job-offers">
+    <lucide-icons name="bookOpen" [size]="20" color="#666c84" />
+    <span>Minhas Vagas</span>
+  </a>
+</div>

@@ -1,0 +1,276 @@
+<modal>
+  <h2 class="form_heading">Cadastro de vagas</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h3 class="body-base-md subtitle">Informações Pessoais</h3>
+
+    <div class="form_control">
+      <label class="form_label">Cargo</label>
+      <input
+        type="text"
+        placeholder="Digite a posição oferecida"
+        formControlName="position"
+      />
+
+      @if (submitted && position.invalid) {
+      <toast type="warn">Por favor, preencha uma posição</toast>
+      }
+    </div>
+
+    <custom-select-courses />
+    @if (submitted && bussinessArea.invalid) {
+    <toast type="warn">Por favor, defina o curso alvo</toast>
+    }
+
+    <div style="display: flex; flex-direction: column; gap: 0.5rem">
+      <p>Selecione um nivel educacional</p>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="medio"
+          [checked]="educationLevel.value == 'medio'"
+          name="educationLevel"
+          (click)="educationLevel.setValue('medio')"
+        />
+        <label for="medio">Medio</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="técnico"
+          [checked]="educationLevel.value == 'técnico'"
+          name="educationLevel"
+          (click)="educationLevel.setValue('técnico')"
+        />
+        <label for="técnico">Técnico</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="superior"
+          [checked]="educationLevel.value == 'superior'"
+          name="educationLevel"
+          (click)="educationLevel.setValue('superior')"
+        />
+        <label for="superior">Superior</label>
+      </div>
+
+      @if (submitted && educationLevel.invalid) {
+      <toast type="warn">Por favor, defina o nivel educacional</toast>
+      }
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.5rem">
+      <p>Selecione a jornada de trabalho</p>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="matutino"
+          [checked]="journey.value == 'matutino'"
+          name="journey"
+          (click)="journey.setValue('matutino')"
+        />
+        <label for="matutino">Matutino</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="vespertino"
+          [checked]="journey.value == 'vespertino'"
+          name="journey"
+          (click)="journey.setValue('vespertino')"
+        />
+        <label for="vespertino">Vespertino</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="noturno"
+          [checked]="journey.value == 'noturno'"
+          name="journey"
+          (click)="journey.setValue('noturno')"
+        />
+        <label for="noturno">Noturno</label>
+      </div>
+
+      @if (submitted && journey.invalid) {
+      <toast type="warn">Por favor, defina a jornada</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Salario</label>
+      <input
+        type="number"
+        placeholder="Digite o valor de remuneração"
+        formControlName="salary"
+      />
+
+      @if (submitted && salary.invalid) {
+      <toast type="warn">Por favor, um valor válido</toast>
+      }
+    </div>
+
+    <div class="form_control_row">
+      <input
+        id="disablePerson"
+        type="checkbox"
+        formControlName="disablePerson"
+      />
+      <label class="form_label" for="disablePerson">
+        Pessoa com deficiência (PCD)
+      </label>
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Quantidade de vagas</label>
+      <input
+        type="number"
+        placeholder="Digite a quantidade de vagas para esta posição"
+        formControlName="offerQty"
+      />
+
+      @if (submitted && offerQty.invalid) {
+      <toast type="warn">Por favor, um valor válido</toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Escala de trabalho</label>
+      <input
+        type="text"
+        placeholder="Descreva a escala de trabalho"
+        formControlName="workSchedule"
+      />
+
+      @if (submitted && workSchedule.invalid) {
+      <toast type="warn"
+        >Por favor, faça uma descrição breve sobre a jornada
+      </toast>
+      }
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Descrição da vaga</label>
+      <textarea
+        type="text"
+        placeholder="Descreva a escala de trabalho"
+        formControlName="offerDescription"
+      ></textarea>
+
+      @if (submitted && offerDescription.invalid) {
+      @if(offerDescription.errors?.['required']) {
+      <toast type="warn">É necessario adicionar uma descrição da vaga </toast>
+      } @if (offerDescription.errors?.['minlength'] ||
+      offerDescription.errors?.['maxlength']) {
+      <toast type="warn">A descrição deve ter entre 15 a 200 caracteres </toast>
+      } }
+    </div>
+
+    <div class="form_control_row">
+      <input
+        id="benefitsMobility"
+        type="checkbox"
+        formControlName="benefitsMobility"
+      />
+      <label class="form_label" for="benefitsMobility"> Vale Transporte </label>
+    </div>
+
+    <div class="form_control_row">
+      <input
+        id="benefitsEducation"
+        type="checkbox"
+        formControlName="benefitsEducation"
+      />
+      <label class="form_label" for="benefitsEducation"> Vale Educação </label>
+    </div>
+
+    <div class="form_control_row">
+      <input
+        id="benefitsHealthWellness"
+        type="checkbox"
+        formControlName="benefitsHealthWellness"
+      />
+      <label class="form_label" for="benefitsHealthWellness">
+        Plano de saúde
+      </label>
+    </div>
+
+    <div class="form_control_row">
+      <input
+        id="benefitsChildcare"
+        type="checkbox"
+        formControlName="benefitsChildcare"
+      />
+      <label class="form_label" for="benefitsChildcare"> Auxílo creche </label>
+    </div>
+
+    <div class="form_control_row">
+      <input id="benefitsMeal" type="checkbox" formControlName="benefitsMeal" />
+      <label class="form_label" for="benefitsMeal">
+        Vale Alimentação e/ou Refeição
+      </label>
+    </div>
+
+    <div class="form_control_row">
+      <input
+        id="benefitsCultural"
+        type="checkbox"
+        formControlName="benefitsCultural"
+      />
+      <label class="form_label" for="benefitsCultural"> Vale Cultura </label>
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Data de encerramento</label>
+      <input
+        type="date"
+        placeholder="Digite a posição oferecida"
+        formControlName="closingDate"
+      />
+
+      @if (submitted && closingDate.invalid) {
+      <toast type="warn">Por favor, preencha uma data de encerramento</toast>
+      }
+    </div>
+
+    <button type="submit" [disabled]="disable">Cadastrar</button>
+  </form>
+</modal>
+
+@if (formStatus == 'success') {
+<popup-modal>
+  <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
+  <h3>Sucesso</h3>
+  <p>O aluno foi cadastrado com exito</p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: hsl(226, 96%, 60%);
+      border: 1px solid hsl(226, 96%, 60%);
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</popup-modal>
+} @if (formStatus == 'error') {
+<popup-modal>
+  <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
+  <h3>Algo Aconteceu</h3>
+  <p style="max-width: 80%">
+    Algo de errado aconteceu! Atualize a pagina e tente novamente
+  </p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: #fa3664;
+      border: 1px solid #fa3664;
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</popup-modal>
+}

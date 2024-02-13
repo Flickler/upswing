@@ -6,15 +6,41 @@
       [size]="20"
     />
   </button>
-  <div>
-    <button>
-      <lucide-icons name="search" color="#c1c5d5" [size]="20" />
-    </button>
-    <button>
-      <lucide-icons name="bell" color="#c1c5d5" [size]="20" />
-    </button>
-    <button>
-      <lucide-icons name="userRound" color="#c1c5d5" [size]="20" />
-    </button>
+  <div class="header_drops">
+    <div class="drop">
+      <button>
+        <lucide-icons name="search" color="#c1c5d5" [size]="20" />
+      </button>
+      <div class="drop_container"></div>
+    </div>
+    <div class="drop">
+      <button>
+        <lucide-icons name="bell" color="#c1c5d5" [size]="20" />
+      </button>
+      <div class="drop_container"></div>
+    </div>
+    <div class="drop">
+      <button (click)="settings = !settings">
+        <lucide-icons name="userRound" color="#c1c5d5" [size]="20" />
+      </button>
+      <div [ngClass]="settings ? 'drop_container active' : 'drop_container'">
+        <a routerLink="settings" class="drop_item">
+          <lucide-icons
+            name="settings2"
+            [size]="16"
+            color="hsl(228, 16%, 60%)"
+          />
+          <span>Configurações</span>
+        </a>
+        <div class="drop_item">
+          <button>Claro</button>
+          <button>Escuro</button>
+        </div>
+        <a class="drop_item">
+          <lucide-icons name="logOut" [size]="16" color="hsl(228, 20%, 60%)" />
+          <span>Sair</span>
+        </a>
+      </div>
+    </div>
   </div>
 </header>

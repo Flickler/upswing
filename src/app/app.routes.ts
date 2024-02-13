@@ -158,6 +158,30 @@ export const routes: Routes = [
           import(
             './student/student-dashboard/student-dashboard.component'
           ).then((c) => c.StudentDashboardComponent),
+        children: [
+          {
+            path: '',
+            pathMatch: 'prefix',
+            loadComponent: () =>
+              import('./student/home/home.component').then(
+                (c) => c.HomeComponent
+              ),
+          },
+          {
+            path: 'job-offers',
+            loadComponent: () =>
+              import(
+                './student/views/job-offers-viewer/job-offers-viewer.component'
+              ).then((c) => c.JobOffersViewerComponent),
+          },
+          {
+            path: 'my-courses',
+            loadComponent: () =>
+              import(
+                './student/views/courses-viewer/courses-viewer.component'
+              ).then((c) => c.CoursesViewerComponent),
+          },
+        ],
       },
       // PAGINA DE LOGIN DO ALUNO
       {
@@ -188,6 +212,30 @@ export const routes: Routes = [
           import(
             './company/company-dashboard/company-dashboard.component'
           ).then((c) => c.CompanyDashboardComponent),
+        children: [
+          {
+            path: '',
+            pathMatch: 'prefix',
+            loadComponent: () =>
+              import('./company/home/home.component').then(
+                (c) => c.HomeComponent
+              ),
+          },
+          {
+            path: 'my-job-offers',
+            loadComponent: () =>
+              import(
+                './company/job-offers-viewer/job-offers-viewer.component'
+              ).then((c) => c.JobOffersViewerComponent),
+          },
+          {
+            path: 'register-job-offer',
+            loadComponent: () =>
+              import('./company/register/register.component').then(
+                (c) => c.RegisterComponent
+              ),
+          },
+        ],
       },
       // PAGINA DE LOGIN DO ALUNO
       {

@@ -111,7 +111,7 @@
           @if (submitted && zipCode.invalid) {
           @if(zipCode.errors?.['required']){
           <toast type="warn">Preencha uma CEP válido</toast>
-          } @if(zipCode.errors?.['minLenght'] || zipCode.errors?.['minLenght']){
+          } @if(zipCode.errors?.['minlength'] || zipCode.errors?.['minlength']){
           <toast type="warn">O numero de CEP deve conter 8 digitos</toast>
           } }
         </div>

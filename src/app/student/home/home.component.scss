@@ -1,0 +1,25 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-8;
+
+  &.expanded {
+    grid-template-columns: repeat(6, 1fr);
+    .welcome {
+      grid-column: span 6;
+    }
+  }
+}
+
+.welcome {
+  grid-column: span 4;
+  border-bottom: 1px solid $gray-scale-30;
+  padding-bottom: $spacing-8;
+}
+
+button {
+  color: $gray-scale-80;
+}

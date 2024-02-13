@@ -76,27 +76,13 @@ export class RegisterAdminComponent {
   });
   protected submitted = false;
 
-  protected get position() {
-    return this.form.controls.position;
-  }
-  protected get name() {
-    return this.form.controls.account.controls.name;
-  }
-  protected get mainPhone() {
-    return this.form.controls.account.controls.mainPhone;
-  }
-  protected get optionalPhone() {
-    return this.form.controls.account.controls.optionalPhone;
-  }
-  protected get email() {
-    return this.form.controls.account.controls.email;
-  }
-  protected get password() {
-    return this.form.controls.account.controls.password;
-  }
-  protected get confirmPassword() {
-    return this.form.controls.account.controls.confirmPassword;
-  }
+  protected get position() { return this.form.controls.position }
+  protected get name() { return this.form.controls.account.controls.name }
+  protected get mainPhone() { return this.form.controls.account.controls.mainPhone }
+  protected get optionalPhone() { return this.form.controls.account.controls.optionalPhone }
+  protected get email() { return this.form.controls.account.controls.email }
+  protected get password() { return this.form.controls.account.controls.password }
+  protected get confirmPassword() { return this.form.controls.account.controls.confirmPassword }
 
   protected onSubmit() {
     this.submitted = true;
