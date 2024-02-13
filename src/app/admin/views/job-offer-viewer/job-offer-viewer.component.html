@@ -1,5 +1,6 @@
 <viewer-heading>Vagas</viewer-heading>
 <load-section>
+  <status-filter [active]="filter" (onFilterChange)="setFilter($event)" />
   @for (job of jobs$ | async | jobOffersCardContent; track $index) {
   <job-offer-card [job]="job" />
   }

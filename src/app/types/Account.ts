@@ -2,7 +2,7 @@ export type Account = {
   name: string;
   mainPhone: string;
   optionalPhone?: string;
-  email: string;
+  mail: string;
   activeProfile?: boolean;
 };
 

@@ -9,26 +9,27 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './pagination-section.component.scss',
 })
 export class PaginationSectionComponent {
-  currPage = 0;
+  @Input() currPage?: number;
   @Input() lastPage?: number;
   @Output() onPageChange = new EventEmitter<number>();
 
   previous() {
-    if (this.currPage > 0) {
-      this.currPage--;
-      this.emit();
+    if (this.currPage != undefined && this.currPage > 0) {
+      this.emit(this.currPage - 1);
     }
   }
 
   next() {
-    if (this.lastPage)
-      if (this.currPage < this.lastPage - 1) {
-        this.currPage++;
-        this.emit();
-      }
+    if (
+      this.currPage != undefined &&
+      this.lastPage != undefined &&
+      this.currPage < this.lastPage - 1
+    ) {
+      this.emit(this.currPage + 1);
+    }
   }
 
-  emit() {
-    this.onPageChange.emit(this.currPage);
+  emit(page: number) {
+    this.onPageChange.emit(page);
   }
 }

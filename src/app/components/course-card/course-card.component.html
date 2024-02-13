@@ -20,22 +20,46 @@
     </div>
   </div>
   <p class="card_title">{{ course.courseName }}</p>
+  <button (click)="modal = true">Ver mais</button>
 </div>
 
-<div class="card_content">
-  <div class="card_details">
-    <p>{{ course.educationLevel }}</p>
-    <p>{{ course.schedule }}h</p>
+@if(modal){
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="bookOpen"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
   </div>
-</div>
-
-<div class="card_content">
-  <details class="card_accordion">
-    <ul>
+  <div class="card_content">
+    <p class="card_title">{{ course.courseName }}</p>
+  </div>
+  <div class="card_content">
+    <div class="card_details">
+      <p>{{ course.educationLevel }}</p>
+      <p>{{ course.schedule }}h</p>
+    </div>
+  </div>
+  <div class="card_content">
+    <button class="summary" (click)="subject = !subject">
+      <span>Turmas</span>
+      <lucide-icons
+        [ngClass]="subject ? 'inverted' : 'normal'"
+        [size]="20"
+        name="chevronDown"
+        color="hsl(228, 20%, 60%)"
+      />
+    </button>
+    <div [ngClass]="subject ? 'card_accordion active' : 'card_accordion'">
       @for (subject of course.subjects; track $index) {
-      <li>{{ subject }}</li>
+      <span>{{ subject }}</span>
       }
-    </ul>
-    <summary class="summary">Grade curricular</summary>
-  </details>
-</div>
+    </div>
+  </div>
+</popup-modal>
+}

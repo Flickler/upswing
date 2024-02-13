@@ -1,9 +1,11 @@
 <viewer-heading>Empresas</viewer-heading>
 <load-section>
+  <status-filter [active]="filter" (onFilterChange)="setFilter($event)" />
   @for (company of companies$ | async | companiesCardContent; track $index) {
   <company-card [company]="company" />
   }
   <pagination-section
+    [currPage]="companies$ | async | currPage"
     [lastPage]="companies$ | async | lastPage"
     (onPageChange)="getPage($event)"
   />

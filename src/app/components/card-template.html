@@ -1,0 +1,157 @@
+<div class="card_header">
+  <div class="flex">
+    <img src="" alt="avatar" />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+      <!--
+        <lucide-icons name="x" color="hsl(228, 20%, 60%)" [size]="20" />
+      -->
+    </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
+  </div>
+  <p class="card_title">Título</p>
+  <button (click)="modal = true">Ver mais</button>
+</div>
+
+<!--CARD CONTENT SECTIONS-->
+<div class="card_content">
+  <div class="card_header_expand">
+    <lucide-icons
+      name="userRound"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
+  </div>
+  <div class="card_details">
+    <p>Técnico</p>
+    <p>Horas</p>
+  </div>
+  <p class="card_data">data</p>
+  <p class="card_data">data</p>
+  <!--TEXTAREA DESCRIPTION -->
+  <p class="more-info">Mais informações</p>
+</div>
+
+<div class="card_content">
+  <!--ACCORDION LIST-->
+  <div class="card_content">
+    <button class="summary" (click)="classes = !classes">
+      <span>Título</span>
+      <lucide-icons
+        [ngClass]="classes ? 'inverted' : 'normal'"
+        [size]="20"
+        name="chevronDown"
+        color="hsl(228, 20%, 60%)"
+      />
+    </button>
+    <div class="details">
+      <span>item</span>
+      <span>item</span>
+      <span>item</span>
+    </div>
+  </div>
+
+  <!--ACCORDION COM CHECKBOX-->
+  <details class="card_accordion">
+    <ul>
+      <li>
+        <input class="form-check-input" type="checkbox" />
+        item
+      </li>
+      <li>
+        <input class="form-check-input" type="checkbox" />
+        item
+      </li>
+      <li>
+        <input class="form-check-input" type="checkbox" />
+        item
+      </li>
+    </ul>
+    <summary class="summary">Title</summary>
+  </details>
+</div>
+
+<!--CTA BUTTON-->
+<button class="primary-btn">Mais Informações</button>
+
+<!-- STATUS DATA SET -->
+<div class="card_content">
+  <div class="card_details">
+    <p>dt. conclusao</p>
+    <span class="status_chip">Ativo</span>
+  </div>
+</div>
+
+<!-- ICONS GROUP -->
+<div class="card_content">
+  <div class="icons-group">
+    <div class="icon-placeholder">
+      <lucide-icons name="busFront" color="hsl(228, 20%, 60%)" [size]="16" />
+    </div>
+    <div class="icon-placeholder">
+      <lucide-icons name="utencils" color="hsl(228, 20%, 60%)" [size]="16" />
+    </div>
+    <div class="icon-placeholder">
+      <lucide-icons
+        name="bookOpenCheck"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+    </div>
+    <div class="icon-placeholder">
+      <lucide-icons name="bike" color="hsl(228, 20%, 60%)" [size]="16" />
+    </div>
+    <div class="icon-placeholder">
+      <lucide-icons name="heartPulse" color="hsl(228, 20%, 60%)" [size]="16" />
+    </div>
+    <div class="icon-placeholder">
+      <lucide-icons name="baby" color="hsl(228, 20%, 60%)" [size]="16" />
+    </div>
+    <div class="icon-placeholder">
+      <lucide-icons
+        name="ticketPercent"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+    </div>
+  </div>
+</div>
+<!-- AVATARS GROUP -->
+<div class="card_content">
+  <div class="avatar-group">
+    <div class="avatar-placeholder">
+      <img src="" alt="avatar" />
+    </div>
+    <div class="avatar-placeholder">
+      <img src="" alt="avatar" />
+    </div>
+    <div class="avatar-placeholder">
+      <img src="" alt="avatar" />
+    </div>
+    <div class="avatar-placeholder">
+      <img src="" alt="avatar" />
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="card_content">
+  <progress value="70" max="100">70%</progress>
+</div>

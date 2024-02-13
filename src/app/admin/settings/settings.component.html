@@ -1,2 +1,74 @@
 <viewer-heading>Configurações</viewer-heading>
-<load-section></load-section>
+<load-section>
+  <div class="content_section">
+    <p class="label">Preferências</p>
+    <div class="info_group flex">
+      <lucide-icons
+        name="camera"
+        [size]="20"
+        color="hsl(228, 20%, 80%)"
+        class="portrait"
+      />
+      <div class="info_group">
+        <p class="info_details">Nome do usuário</p>
+        <p class="info_details">Ocupação</p>
+        <p class="info_details">Data de Nascimento</p>
+      </div>
+    </div>
+  </div>
+  <div class="content_section">
+    <p class="label">Informações de Contato</p>
+    <div class="info_group">
+      <p class="info_details">Telefone 1: (27) 999 999 999</p>
+      <p class="info_details">Telefone 2: (27) 999 999 998</p>
+      <p class="info_details">Email: rh/mail.com</p>
+    </div>
+  </div>
+  <div class="content_section">
+    <p class="label">Segurança</p>
+    <label class="form_label">Cadastrar nova senha:</label>
+    <div class="form_group">
+      <label class="form_label">Senha atual:</label>
+      <input
+        class="form_input form_placeholder"
+        type="text"
+        placeholder="Digite sua senha atual"
+      />
+      <label class="form_label">Nova senha:</label>
+      <input
+        class="form_input form_placeholder"
+        type="text"
+        placeholder="Digite sua nova senha"
+      />
+      <input
+        class="form_input form_placeholder"
+        type="text"
+        placeholder="Confirme sua nova senha"
+      />
+      <button>Salvar Alterações</button>
+    </div>
+    <div class="info_group deactivate">
+      <p class="info_details">Desativar Conta:</p>
+      <button class="deactivate-btn">Desativar</button>
+    </div>
+  </div>
+  <div class="content_section">
+    <p class="label">Acessibilidade</p>
+    <div class="info_group">
+      <p class="info_details">Habilitar Alto-Contraste</p>
+      <label class="switch">
+        <input type="checkbox" />
+        <span class="slider"></span>
+      </label>
+      <p class="info_details">Habilitar Tema Escuro</p>
+      <label class="switch">
+        <input type="checkbox" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  <div class="btn_group">
+    <button class="btn_tertiary">Cancelar</button>
+    <button>Salvar</button>
+  </div>
+</load-section>

@@ -10,6 +10,8 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
 import { CompanyCardComponent } from '@@Components/company-card/company-card.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { StatusFilterComponent } from '@@Components/status-filter/status-filter.component';
+import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
 
 @Component({
   selector: 'upswing-company-viewer',
@@ -17,11 +19,13 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
   imports: [
     RouterLink,
     AsyncPipe,
+    CurrentPagePipe,
     LastPagePipe,
     CompaniesCardsContentPipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     CompanyCardComponent,
+    StatusFilterComponent,
     PaginationSectionComponent,
     LucideIcons,
   ],
@@ -38,6 +42,15 @@ export class CompanyViewerComponent {
       this.companies$ = this.dashboardService.getPedingCompanies(page);
     } else {
       this.companies$ = this.dashboardService.getApprovedCompanies(page);
+    }
+  }
+
+  setFilter(type: 'pending' | 'approved') {
+    this.filter = type;
+    if (this.filter == 'pending') {
+      this.companies$ = this.dashboardService.getPedingCompanies(0);
+    } else {
+      this.companies$ = this.dashboardService.getApprovedCompanies(0);
     }
   }
 }

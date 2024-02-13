@@ -13,7 +13,7 @@ import { SelectService } from '@@Services/select.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { CustomSelectCoursesComponent } from '@@Components/custom-select-courses/custom-select-courses.component';
-import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { OptionCourse } from '@@Types/Course';
 
@@ -27,7 +27,7 @@ import { OptionCourse } from '@@Types/Course';
     ModalComponent,
     ToastComponent,
     CustomSelectCoursesComponent,
-    ModalNotificationComponent,
+    PopupModalComponent,
     LucideIcons,
   ],
   templateUrl: './register-class.component.html',

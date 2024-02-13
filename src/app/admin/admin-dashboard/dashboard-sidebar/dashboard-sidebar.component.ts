@@ -13,5 +13,5 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
 })
 export class DashboardSidebarComponent {
   private dashboardService = inject(AdminDashboardService);
-  panel = this.dashboardService.getPanel();
+  protected panel = this.dashboardService.getPanel();
 }

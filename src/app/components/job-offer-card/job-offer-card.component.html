@@ -20,53 +20,77 @@
     </div>
   </div>
   <p class="card_title">{{ job.position }}</p>
+  <button (click)="modal = true">Ver mais</button>
 </div>
 
-<div class="card_content">
-  <p class="card_data">{{ job.name }}</p>
-  <div class="card_details">
-    <p>{{ job.educationLevel }}</p>
-    <p>{{ job.contract }}</p>
+@if (modal) {
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="briefcase"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
   </div>
-  <p class="more-info">{{ job.offerDescription }}</p>
-</div>
 
-<div class="card_content">
-  <div class="icons-group">
-    @if(job.benefitsMobility){
-    <div class="icon-placeholder">
-      <lucide-icons name="busFront" color="hsl(228, 20%, 60%)" [size]="16" />
+  <div class="card_content">
+    <p class="card_title">{{ job.position }}</p>
+    <p class="card_data">{{ job.name }}</p>
+    <div class="card_details">
+      <p>{{ job.educationLevel }}</p>
+      <p>{{ job.contract }}</p>
     </div>
-    } @if(job.benefitsMealVoucher){
-    <div class="icon-placeholder">
-      <lucide-icons name="utencils" color="hsl(228, 20%, 60%)" [size]="16" />
-    </div>
-    } @if(job.benefitsEducation){
-    <div class="icon-placeholder">
-      <lucide-icons
-        name="bookOpenCheck"
-        color="hsl(228, 20%, 60%)"
-        [size]="16"
-      />
-    </div>
-    } @if(job.benefitsHealthInsurance){
-    <div class="icon-placeholder">
-      <lucide-icons name="heartPulse" color="hsl(228, 20%, 60%)" [size]="16" />
-    </div>
-    } @if(job.benefitsCulture){
-    <div class="icon-placeholder">
-      <lucide-icons
-        name="ticketPercent"
-        color="hsl(228, 20%, 60%)"
-        [size]="16"
-      />
-    </div>
-    }
+    <p class="more-info">{{ job.offerDescription }}</p>
   </div>
-</div>
 
-<div class="card_content">
-  <p class="card_data">Salario: R$ {{ job.salary }}</p>
-  <p class="card_data">Vagas: {{ job.offerQty }}</p>
-  <p class="card_data">Fecha em: {{ job.closingDate | date : "dd/MM/yyyy" }}</p>
-</div>
+  <div class="card_content">
+    <div class="icons-group">
+      @if(job.benefitsMobility){
+      <div class="icon-placeholder">
+        <lucide-icons name="busFront" color="hsl(228, 20%, 60%)" [size]="16" />
+      </div>
+      } @if(job.benefitsMealVoucher){
+      <div class="icon-placeholder">
+        <lucide-icons name="utencils" color="hsl(228, 20%, 60%)" [size]="16" />
+      </div>
+      } @if(job.benefitsEducation){
+      <div class="icon-placeholder">
+        <lucide-icons
+          name="bookOpenCheck"
+          color="hsl(228, 20%, 60%)"
+          [size]="16"
+        />
+      </div>
+      } @if(job.benefitsHealthInsurance){
+      <div class="icon-placeholder">
+        <lucide-icons
+          name="heartPulse"
+          color="hsl(228, 20%, 60%)"
+          [size]="16"
+        />
+      </div>
+      } @if(job.benefitsCulture){
+      <div class="icon-placeholder">
+        <lucide-icons
+          name="ticketPercent"
+          color="hsl(228, 20%, 60%)"
+          [size]="16"
+        />
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="card_content">
+    <p class="card_data">Salário: R$ {{ job.salary }}</p>
+    <p class="card_data">Número de vagas: {{ job.offerQty }}</p>
+    <p class="card_data">
+      Encerra em: {{ job.closingDate | date : "dd/MM/yyyy" }}
+    </p>
+  </div>
+</popup-modal>
+}

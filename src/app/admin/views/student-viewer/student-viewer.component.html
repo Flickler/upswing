@@ -4,6 +4,7 @@
   <student-card [student]="student" />
   }
   <pagination-section
+    [currPage]="students$ | async | currPage"
     [lastPage]="students$ | async | lastPage"
     (onPageChange)="getPage($event)"
   />

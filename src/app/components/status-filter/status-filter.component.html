@@ -1,0 +1,12 @@
+<button
+  (click)="onClick('pending')"
+  [ngClass]="active == 'pending' ? 'active' : 'not_active'"
+>
+  Pendentes
+</button>
+<button
+  (click)="onClick('approved')"
+  [ngClass]="active == 'approved' ? 'active' : 'not_active'"
+>
+  Aprovados
+</button>

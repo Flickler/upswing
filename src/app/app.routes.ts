@@ -204,4 +204,9 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'mail',
+    loadComponent: () =>
+      import('./mail/mail.component').then((c) => c.MailComponent),
+  },
 ];

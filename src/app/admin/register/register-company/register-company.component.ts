@@ -10,7 +10,7 @@ import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { MatchDirective } from '@@Directives/match.directive';
 import { NgxMaskDirective } from 'ngx-mask';
-import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
@@ -21,7 +21,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     NgxMaskDirective,
     ModalComponent,
     ToastComponent,
-    ModalNotificationComponent,
+    PopupModalComponent,
     LucideIcons,
   ],
   templateUrl: './register-company.component.html',

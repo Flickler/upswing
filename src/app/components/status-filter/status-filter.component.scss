@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: $spacing-5;
+
+  width: 100%;
+}
+
+.not_active {
+  background-color: $white;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+}
+
+.active {
+  background-color: $primary-color;
+}

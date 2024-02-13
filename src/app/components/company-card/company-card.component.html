@@ -7,9 +7,6 @@
         color="hsl(228, 20%, 60%)"
         [size]="16"
       />
-      <!--
-        <lucide-icons name="x" color="hsl(228, 20%, 60%)" [size]="20" />
-      -->
     </button>
     <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
       <button class="action-btn">
@@ -23,18 +20,42 @@
     </div>
   </div>
   <p class="card_title">{{ company.name }}</p>
+  <button (click)="modal = true">Ver mais</button>
 </div>
-
-<div class="card_content">
-  <p class="card_data">{{ company.socialNetworks }}</p>
-</div>
-<!--CARD CONTENT SECTIONS-->
-<div class="card_content">
-  <p class="card_data">Telefone</p>
-  <p class="card_data">{{ company.mainPhone | phone }}</p>
-  <p class="card_data">{{ company.email }}</p>
-  <p class="card_data">{{ company.companyCode }}</p>
-  <p class="card_data">
-    {{ company.address.zipCode.city }}, {{ company.address.zipCode.state }}
-  </p>
-</div>
+@if (modal) {
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="building"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
+  </div>
+  <div class="card_content">
+    <p class="card_title">{{ company.name }}</p>
+    <p class="card_data">{{ company.companyCode | cnpj }}</p>
+  </div>
+  <div class="card_content">
+    <p class="card_data">Telefone: {{ company.mainPhone | phone }}</p>
+    <p class="card_data">{{ company.email }}</p>
+    <p class="card_data">
+      {{ company.address.zipCode.city }}, {{ company.address.zipCode.state }}
+    </p>
+  </div>
+  <div class="card_content">
+    @if (company.socialNetworks) { @if (company.socialNetworks.socialOne) {
+    <p class="card_data">{{ company.socialNetworks.socialOne }}</p>
+    } @if (company.socialNetworks.socialTwo) {
+    <p class="card_data">{{ company.socialNetworks.socialTwo }}</p>
+    } @if (company.socialNetworks.socialThree) {
+    <p class="card_data">{{ company.socialNetworks.socialThree }}</p>
+    } @if (company.socialNetworks.socialFour) {
+    <p class="card_data">{{ company.socialNetworks.socialFour }}</p>
+    } }
+  </div>
+</popup-modal>
+}

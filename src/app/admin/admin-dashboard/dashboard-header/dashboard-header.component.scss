@@ -37,27 +37,33 @@ header {
       justify-content: center;
 
       position: absolute;
-      top: 105%;
-      right: 0;
+      top: 120%;
+      right: 1%;
+      padding: $spacing-1 $spacing-4;
 
       background-color: $white;
       border-radius: $radius-2;
       box-shadow: $shadow-container;
+
+      user-select: none;
+      cursor: pointer;
 
       &.active {
         display: flex;
       }
 
       .drop_item {
+        width: 100%;
         display: flex;
         align-items: center;
         gap: $spacing-4;
+        padding: $spacing-4;
+        margin: $spacing-2;
 
         color: $gray-scale-60;
         font-size: $small;
 
-        padding: $spacing-4;
-        width: 100%;
+        border-radius: $radius-2;
         cursor: pointer;
 
         &:hover {
@@ -65,9 +71,11 @@ header {
         }
 
         &:nth-child(2) {
-          border-top: 1px solid $gray-scale-60;
-          border-bottom: 1px solid $gray-scale-60;
-          width: 80%;
+          border-top: 1px solid $gray-scale-30;
+          border-bottom: 1px solid $gray-scale-30;
+          border-radius: 0;
+          padding: $spacing-2;
+          width: 90%;
           margin-inline: auto;
 
           &:hover {
@@ -75,13 +83,14 @@ header {
           }
 
           button {
-            color: $gray-scale-60;
-            font-size: $small;
-            padding: $spacing-1 $spacing-2;
-            border-radius: $radius-1;
+            padding: $spacing-4;
+            border-radius: $radius-2;
             width: 100%;
+            color: $gray-scale-30;
+            font-size: $small;
 
             &:hover {
+              color: $gray-scale-80;
               background-color: $primary-10;
             }
           }

@@ -1,6 +1,12 @@
+@if(!modal) {
 <div class="card_header">
   <div class="flex">
-    <img src="" alt="avatar" />
+    <lucide-icons
+      name="userRound"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
     <button class="icon-btn" (click)="menu = !menu">
       <lucide-icons
         name="moreVertical"
@@ -20,19 +26,48 @@
     </div>
   </div>
   <p class="card_title">{{ student.name }}</p>
+  <button (click)="modal = true">Ver mais</button>
 </div>
 
-<div class="card_content">
-  <p class="card_data">data</p>
-</div>
-
-<div class="card_content">
-  <details class="card_accordion">
-    <ul>
+} @else {
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="userRound"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
+  </div>
+  <div class="card_content">
+    <p class="card_title">{{ student.name }}</p>
+  </div>
+  <div class="card_content">
+    <button class="summary" (click)="classes = !classes">
+      <span>Turmas</span>
+      <lucide-icons
+        [ngClass]="classes ? 'inverted' : 'normal'"
+        [size]="20"
+        name="chevronDown"
+        color="hsl(228, 20%, 60%)"
+      />
+    </button>
+    <div [ngClass]="classes ? 'card_accordion active' : 'card_accordion'">
       @for (classItem of student.classes; track $index) {
-      <li>{{ classItem.code }} - {{ classItem.courseName }}</li>
+      <span>{{ classItem.code }} - {{ classItem.courseName }}</span>
       }
-    </ul>
-    <summary class="summary">Turmas</summary>
-  </details>
-</div>
+    </div>
+  </div>
+  <div class="card_content">
+    <div class="card_details">
+      <span class="status_chip">{{
+        student.status ? "Ativo" : "Inativo"
+      }}</span>
+    </div>
+  </div>
+</popup-modal>
+
+}

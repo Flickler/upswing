@@ -1,5 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 import { catchError, of, take } from 'rxjs';
 import { NgxMaskDirective } from 'ngx-mask';
@@ -8,7 +12,7 @@ import { MatchDirective } from '@@Directives/match.directive';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { RegisterService } from '@@Services/register.service';
-import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
@@ -19,8 +23,8 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     NgxMaskDirective,
     ModalComponent,
     ToastComponent,
-    ModalNotificationComponent,
-    LucideIcons
+    PopupModalComponent,
+    LucideIcons,
   ],
   templateUrl: './register-admin.component.html',
 })
@@ -34,22 +38,65 @@ export class RegisterAdminComponent {
     position: ['', Validators.required],
     account: this.fb.group({
       name: ['', [Validators.required]],
-      mainPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
-      optionalPhone: ['', [Validators.nullValidator, Validators.minLength(11), Validators.maxLength(11)]],
+      mainPhone: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ],
+      ],
+      optionalPhone: [
+        '',
+        [
+          Validators.nullValidator,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ],
+      ],
       email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16), MatchDirective.match('password')]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+          MatchDirective.match('password'),
+        ],
+      ],
     }),
   });
   protected submitted = false;
 
-  protected get position() { return this.form.controls.position }
-  protected get name() { return this.form.controls.account.controls.name };
-  protected get mainPhone() { return this.form.controls.account.controls.mainPhone };
-  protected get optionalPhone() { return this.form.controls.account.controls.optionalPhone };
-  protected get email() { return this.form.controls.account.controls.email };
-  protected get password() { return this.form.controls.account.controls.password };
-  protected get confirmPassword() { return this.form.controls.account.controls.confirmPassword };
+  protected get position() {
+    return this.form.controls.position;
+  }
+  protected get name() {
+    return this.form.controls.account.controls.name;
+  }
+  protected get mainPhone() {
+    return this.form.controls.account.controls.mainPhone;
+  }
+  protected get optionalPhone() {
+    return this.form.controls.account.controls.optionalPhone;
+  }
+  protected get email() {
+    return this.form.controls.account.controls.email;
+  }
+  protected get password() {
+    return this.form.controls.account.controls.password;
+  }
+  protected get confirmPassword() {
+    return this.form.controls.account.controls.confirmPassword;
+  }
 
   protected onSubmit() {
     this.submitted = true;
@@ -57,7 +104,8 @@ export class RegisterAdminComponent {
       this.disable = true;
       this.confirmPassword.disable();
       if (this.optionalPhone.value == '') this.optionalPhone.disable();
-      this.registerService.registerAdmin(this.form.value)
+      this.registerService
+        .registerAdmin(this.form.value)
         .pipe(
           take(1),
           catchError(() => {

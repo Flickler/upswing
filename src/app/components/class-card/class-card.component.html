@@ -7,9 +7,6 @@
         color="hsl(228, 20%, 60%)"
         [size]="16"
       />
-      <!--
-          <lucide-icons name="x" color="hsl(228, 20%, 60%)" [size]="20" />
-        -->
     </button>
     <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
       <button class="action-btn">
@@ -23,18 +20,32 @@
     </div>
   </div>
   <p class="card_title">{{ classItem.code }} - {{ classItem.courseName }}</p>
+  <button (click)="modal = true">Ver mais</button>
 </div>
-
-<div class="card_content">
-  <p class="card_data">{{ classItem.mode }}</p>
-  <p class="card_data">{{ classItem.shift }}</p>
-  <p class="card_data">Numero de vagas: {{ classItem.vacancyNumber }}</p>
-  <div class="card_details">
-    <p>Data de inicio</p>
-    <p>Data de fim</p>
+@if (modal) {
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="graduationCap"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
   </div>
-  <div class="card_details">
-    <p>{{ classItem.startDate | date : "dd/MM/yyyy" }}</p>
-    <p>{{ classItem.closingDate | date : "dd/MM/yyyy" }}</p>
+  <div class="card_content">
+    <p class="card_title">{{ classItem.code }} - {{ classItem.courseName }}</p>
+    <p class="card_data">{{ classItem.mode }}</p>
+    <p class="card_data">{{ classItem.shift }}</p>
+    <p class="card_data">Número de vagas: {{ classItem.vacancyNumber }}</p>
+    <p class="card_data">
+      Ínicio: {{ classItem.startDate | date : "dd/MM/yyyy" }}
+    </p>
+    <p class="card_data">
+      Conclusão: {{ classItem.closingDate | date : "dd/MM/yyyy" }}
+    </p>
   </div>
-</div>
+</popup-modal>
+}

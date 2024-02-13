@@ -1,8 +1,9 @@
 @use "variables" as *;
 
 :host {
-  width: 30%;
-  height: 260px;
+  width: 22%;
+  height: 200px;
+  aspect-ratio: 4 / 3;
   min-width: 260px;
   display: flex;
   flex-direction: column;
@@ -21,11 +22,30 @@
   }
 }
 
+popup-modal {
+  z-index: 2;
+
+  .card_header_expand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  button:has(lucide-icons) {
+    background-color: transparent;
+    border-radius: 50%;
+    align-self: flex-end;
+  }
+}
+
 .card_header {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: $spacing-6;
   width: 100%;
+  height: 100%;
 }
 
 .card_header .flex {
@@ -35,7 +55,8 @@
   position: relative;
 }
 
-.card_header .flex img {
+.card_header .flex .card_avatar,
+.card_header_expand .card_avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -118,9 +139,9 @@
 .card_content {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  flex-direction: column;
   padding: $spacing-4;
   gap: $spacing-4;
   color: $gray-scale-60;
@@ -129,7 +150,7 @@
 
 .card_content .card_details {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
   padding: $spacing-2 0;
   font-size: $small;
@@ -145,26 +166,59 @@
   }
 }
 
-.card_content .card_accordion {
-  width: 100%;
-  padding: $spacing-4;
-  color: $primary-60;
-  background-color: $primary-10;
-  border-radius: $radius-2;
-}
+.card_content:has(.card_accordion) {
+  gap: 0;
 
-.card_content .card_accordion ul li {
-  display: flex;
-  gap: $spacing-4;
-  color: $primary-60;
-  padding: $spacing-4 0;
+  .summary {
+    display: flex;
+    justify-content: space-between;
 
-  font-size: $small;
-  text-wrap: pretty;
-  transition: all 0.4s ease;
+    width: 100%;
+    color: $gray-scale-60;
+    background-color: $primary-10;
 
-  &:hover {
-    background-color: $primary-5;
+    padding: $spacing-4;
+    color: $primary-60;
     border-radius: $radius-2;
+
+    .normal {
+      transform: rotate(0deg);
+    }
+
+    .inverted {
+      transform: rotate(180deg);
+    }
+
+    &:has(.inverted) {
+      border-radius: $radius-2 $radius-2 0 0;
+    }
+  }
+
+  .card_accordion {
+    display: none;
+    flex-direction: column;
+
+    padding: $spacing-4 $spacing-5;
+    background-color: $primary-10;
+    width: 100%;
+
+    &.active {
+      display: flex;
+    }
+
+    span {
+      font-size: $small;
+      text-align: start;
+      padding: $spacing-3 $spacing-2;
+      border-radius: $radius-2;
+
+      &:hover {
+        background-color: $primary-10;
+      }
+
+      &.empty {
+        color: $ui-red;
+      }
+    }
   }
 }

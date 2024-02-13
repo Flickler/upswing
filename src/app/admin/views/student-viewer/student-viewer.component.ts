@@ -4,6 +4,7 @@ import { AsyncPipe } from '@angular/common';
 
 import { AdminDashboardService } from '@@Services/admin-dashboard.service';
 import { StudentsCardsContentPipe } from '@@Pipes/get-students-cards-content.pipe';
+import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
 import { LastPagePipe } from '@@Pipes/last-page.pipe';
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
 import { StudentCardComponent } from '@@Components/student-card/student-card.component';
@@ -17,8 +18,9 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
   imports: [
     RouterLink,
     AsyncPipe,
-    StudentsCardsContentPipe,
+    CurrentPagePipe,
     LastPagePipe,
+    StudentsCardsContentPipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     StudentCardComponent,

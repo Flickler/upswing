@@ -1,8 +1,10 @@
 @use "variables" as *;
 
 :host {
-  width: 240px;
-  min-height: 190px;
+  width: 22%;
+  height: 200px;
+  aspect-ratio: 4 / 3;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -20,11 +22,38 @@
   }
 }
 
+popup-modal {
+  z-index: 2;
+
+  .card_header_expand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  button:has(lucide-icons) {
+    background-color: transparent;
+    border-radius: 50%;
+    align-self: flex-end;
+  }
+}
+
 .card_header {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: $spacing-6;
+  height: 100%;
   width: 100%;
+}
+
+.card_header .flex .card_avatar,
+.card_header_expand .card_avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $white;
 }
 
 .card_header .flex {
@@ -142,6 +171,10 @@
     background-color: hsl(158, 80%, 97%);
     border-radius: $radius-4;
   }
+}
+
+.card_content .card_data {
+  text-wrap: pretty;
 }
 
 .card_content .card_accordion {

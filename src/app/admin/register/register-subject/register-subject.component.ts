@@ -11,7 +11,7 @@ import { RegisterService } from '@@Services/register.service';
 import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { CustomSelectCoursesComponent } from '@@Components/custom-select-courses/custom-select-courses.component';
-import { ModalNotificationComponent } from '@@Components/modal-notification/modal-notification.component';
+import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
@@ -23,7 +23,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     CustomSelectCoursesComponent,
     ModalComponent,
     ToastComponent,
-    ModalNotificationComponent,
+    PopupModalComponent,
     LucideIcons,
   ],
   templateUrl: './register-subject.component.html',

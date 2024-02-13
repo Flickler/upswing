@@ -1,8 +1,51 @@
-<lucide-icons class="admin_options" name="moreVertical" color="#666c84" />
-<lucide-icons
-  class="admin_avatar"
-  name="circleUserRound"
-  color="#666c84"
-  [size]="32"
-/>
-<p>{{ admin.account.name }}</p>
+<div class="card_header">
+  <div class="flex">
+    <lucide-icons
+      name="circleUserRound"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+    />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+    </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
+  </div>
+  <p class="card_title">{{ admin.account.name }}</p>
+  <button (click)="modal = true">Ver mais</button>
+</div>
+@if (modal) {
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="circleUserRound"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
+  </div>
+  <div class="card_content">
+    <p class="card_title">{{ admin.account.name }}</p>
+    <p class="card_data">{{ admin.position }}</p>
+    <p class="card_data">Email: {{ admin.account.mail }}</p>
+    <p class="card_data">
+      Número de contato: {{ admin.account.mainPhone | phone }}
+    </p>
+  </div>
+</popup-modal>
+}

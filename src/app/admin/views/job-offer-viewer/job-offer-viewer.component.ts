@@ -7,6 +7,7 @@ import { JobOffersCardsContentPipe } from '@@Pipes/get-job-offers-cards-content.
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
 import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 import { JobOfferCardComponent } from '@@Components/job-offer-card/job-offer-card.component';
+import { StatusFilterComponent } from '@@Components/status-filter/status-filter.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { LastPagePipe } from '@@Pipes/last-page.pipe';
@@ -22,6 +23,7 @@ import { LastPagePipe } from '@@Pipes/last-page.pipe';
     ViewerHeadingComponent,
     LoadSectionComponent,
     JobOfferCardComponent,
+    StatusFilterComponent,
     PaginationSectionComponent,
     LucideIcons,
   ],
@@ -38,6 +40,15 @@ export class JobOfferViewerComponent {
       this.jobs$ = this.dashboardService.getPendingJobOffers(page);
     } else {
       this.jobs$ = this.dashboardService.getApprovedJobOffers(page);
+    }
+  }
+
+  setFilter(filter: 'pending' | 'approved') {
+    this.filter = filter;
+    if (this.filter == 'pending') {
+      this.jobs$ = this.dashboardService.getPendingJobOffers(0);
+    } else {
+      this.jobs$ = this.dashboardService.getApprovedJobOffers(0);
     }
   }
 }
