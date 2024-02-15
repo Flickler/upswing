@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {
+  FormArray,
   FormControl,
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -14,6 +15,7 @@ import { ToastComponent } from '@@Components/toast/toast.component';
 import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.component';
 import { CustomSelectCoursesComponent } from '@@Components/custom-select-courses/custom-select-courses.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { SameIdDirective } from '@@Directives/same-id.directive';
 
 @Component({
   selector: 'upswing-register',
@@ -21,6 +23,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
   imports: [
     ReactiveFormsModule,
     NgxMaskDirective,
+    SameIdDirective,
     ModalComponent,
     ToastComponent,
     CustomSelectCoursesComponent,
@@ -37,7 +40,7 @@ export class RegisterComponent {
 
   protected form = this.fb.group({
     position: ['', Validators.required],
-    bussinessArea: ['', Validators.required],
+    bussinessArea: this.fb.array([this.fb.control('', Validators.required)], [SameIdDirective.sameId]),
     educationLevel: ['', Validators.required],
     journey: ['', Validators.required],
     salary: new FormControl<number | null>(null, Validators.required),
@@ -61,10 +64,22 @@ export class RegisterComponent {
     closingDate: ['', Validators.required],
   });
 
+  protected addBussinesArea(){
+    this.bussinessArea.push(this.fb.control(''));
+  }
+
+  protected removeBussinesArea(index: number){
+    this.bussinessArea.removeAt(index);
+  }
+
+  protected getAreaByIndex(index: number) {
+    return this.bussinessArea.get(`${index}`);
+  }
+
   protected submitted = false;
 
   protected get position() { return this.form.controls.position }
-  protected get bussinessArea() { return this.form.controls.bussinessArea }
+  protected get bussinessArea() { return this.form.controls.bussinessArea as FormArray }
   protected get educationLevel() { return this.form.controls.educationLevel }
   protected get journey() { return this.form.controls.journey }
   protected get salary() { return this.form.controls.salary }
@@ -83,5 +98,6 @@ export class RegisterComponent {
   protected onSubmit() {
     this.submitted = true;
     console.log(this.form);
+    console.log(this.form.controls.bussinessArea.value);
   }
 }

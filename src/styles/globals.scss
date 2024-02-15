@@ -281,6 +281,56 @@ textarea {
   stroke: $gray-scale-80 !important;
 }
 
+// CUSTOM SELECT ARRAY
+
+.first_select-option,
+.others_select-options,
+.last_select-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3;
+
+  button {
+    background-color: $white;
+    height: 2.75rem;
+    width: 10%;
+
+    &:has(lucide-icons[name="plus"]) {
+      border: 1px solid $primary-color;
+    }
+    &:has(lucide-icons[name="trash2"]) {
+      border: 1px solid $ui-red;
+    }
+  }
+}
+
+.first_select-option {
+  custom-select-courses {
+    width: 100%;
+  }
+
+  &:has(button) custom-select-courses {
+    width: 90%;
+  }
+
+  button {
+    align-self: flex-end;
+  }
+}
+
+.others_select-options {
+  custom-select-courses {
+    width: 90%;
+  }
+}
+
+.last_select-option {
+  custom-select-courses {
+    width: 80%;
+  }
+}
+
 // CUSTOM SCROLL BAR
 
 ::-webkit-scrollbar {

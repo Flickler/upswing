@@ -1,6 +1,4 @@
-<div id="scroll-progress-bar"></div>
-<land-header />
-<div class="mask"></div>
+<land-header id="top" />
 <!--============== HOME =============-->
 <div class="home_section" id="home-section">
   <div class="hero_section">
@@ -16,7 +14,7 @@
         profissionais às ofertas de trabalho
       </h2>
     </div>
-    <div class="btn-group"></div>
+    <button class="btn-group-cta">Matricule-se</button>
   </div>
 </div>
 <section class="content_section" id="content-section">
@@ -53,14 +51,16 @@
         </h4>
       </div>
     </div>
-    <img src="/assets/img/dash.png" alt="" />
-  </div>
-  <!--============== BANNER SECTION =============-->
-  <div class="banner_section">
-    <h2 class="h2">Aprendizagem, habilidades e oportunidades profissionais.</h2>
+    <img src="/assets/dash.png" alt="" />
   </div>
   <!--============== MILESTONES SECTION =============-->
   <div class="milestones_section">
+    <!--============== BANNER SECTION =============-->
+    <div class="banner_section">
+      <h2 class="h2">
+        Aprendizagem, habilidades e oportunidades profissionais.
+      </h2>
+    </div>
     <div class="wrapper">
       <label class="label"> Milestones </label>
       <h2 class="h2">Colabore com os melhores talentos</h2>
@@ -97,13 +97,13 @@
   <div class="marquee_section">
     <h2 class="h2">Nossos Parceiros</h2>
     <marquee class="stripe" behavior="scroll" direction="left" scrollamount="8">
-      <img src="/assets/img/marquee-i.png" />
-      <img src="/assets/img/marquee-brand-g.png" />
-      <img src="/assets/img/marquee-i.png" />
-      <img src="/assets/img/marquee-brand-v.png" />
-      <img src="/assets/img/marquee-i.png" />
-      <img src="/assets/img/marquee-brand-m.png" />
-      <img src="/assets/img/marquee-i.png" />
+      <img src="/assets/marquee-i.png" />
+      <img src="/assets/marquee-brand-g.png" />
+      <img src="/assets/marquee-i.png" />
+      <img src="/assets/marquee-brand-v.png" />
+      <img src="/assets/marquee-i.png" />
+      <img src="/assets/marquee-brand-m.png" />
+      <img src="/assets/marquee-i.png" />
     </marquee>
   </div>
   <!--============== TESTIMONIALS SECTION =============-->
@@ -111,16 +111,16 @@
     <h2 class="h2">Depoimentos</h2>
     <div class="wrapper">
       <div class="btn_group">
-        <!-- <lucide-icon name="chevron-left" size="20"></lucide-icon> -->
+        <lucide-icons name="chevronLeft" size="36" color="white" />
       </div>
       <div class="card_group">
         <div class="card">
           <div class="ratings">
-            <!-- <lucide-icon name="star" size="16" class="lucide-icon"></lucide-icon>
-            <lucide-icon name="star" size="16" class="lucide-icon"></lucide-icon>
-            <lucide-icon name="star" size="16" class="lucide-icon"></lucide-icon>
-            <lucide-icon name="star" size="16" class="lucide-icon"></lucide-icon>
-            <lucide-icon name="star" size="16" class="lucide-icon"></lucide-icon> -->
+            <lucide-icons name="star" size="16" />
+            <lucide-icons name="star" size="16" />
+            <lucide-icons name="star" size="16" />
+            <lucide-icons name="star" size="16" />
+            <lucide-icons name="star" size="16" />
             <span class="label">5.0</span>
           </div>
           <div class="quote">
@@ -130,7 +130,7 @@
           </div>
           <div class="details">
             <div class="portrait">
-              <img src="/assets/img/testimonials_user.png" />
+              <img src="/assets/testimonials_user.png" />
             </div>
             <div class="label_group">
               <div class="label">João Silva</div>
@@ -140,7 +140,7 @@
         </div>
       </div>
       <div class="btn_group">
-        <!-- <lucide-icon name="chevron-right" size="20"></lucide-icon> -->
+        <lucide-icons name="chevronRight" size="36" color="white" />
       </div>
     </div>
   </div>
@@ -152,27 +152,22 @@
       <h4 class="h4">Ficaremos felizes em responder.</h4>
       <div class="info">
         <span>
-          <!-- <lucide-icon name="mail" size="16"></lucide-icon> -->
-          <!-- contato@upswing.mail.com -->
+          <lucide-icons name="mail" size="16" />
+          {{ "contato@upswing.mail.com" }}
         </span>
         <span>
-          <!-- <lucide-icon name="phone" size="16"></lucide-icon> -->
+          <lucide-icons name="phone" size="16" />
           +55 27 999 • 999 • 999
         </span>
         <span>
-          <!-- <lucide-icon name="map-pin" size="16"></lucide-icon> -->
+          <lucide-icons name="mapPin" size="16" />
           Av. Mal. Mascarenhas de Moraes - Bento Ferreira, Vitória - ES
         </span>
       </div>
     </div>
     <form action="" class="form">
       <div class="form_group">
-        <label class="label"> Selecione um assunto </label>
-        <!-- <custom-select text="Tipo de Manifestação" [options]="[
-            {label: 'Dúvidas', value: 0},
-            {label: 'Feedback', value: 1},
-            {label: 'Reclamação', value: 2},
-          ]"/> -->
+        <label class="label"> Entre em contato conosco </label>
         <input class="form_input" type="text" placeholder="Nome Completo" />
         <input class="form_input" type="email" placeholder="E-mail" />
         <input class="form_input" type="text" placeholder="Contato" />
@@ -184,7 +179,7 @@
           placeholder="Deixe sua mensagem"
         ></textarea>
       </div>
-      <!-- <btn class="submit" type="primary" text="Enviar" [submit]="true"/> -->
+      <button type="submit">Enviar</button>
     </form>
   </div>
   <!--============== FAQ SECTION =============-->
@@ -213,16 +208,16 @@
   </div>
   <!--============== EXTRAS HELPDESK SECTION =============-->
   <div class="extras_section">
-    <a href="#home-section" class="tooltip">
-      <!-- <lucide-icon name="chevron-up" size="16"></lucide-icon> -->
+    <a href="#top" class="tooltip">
+      <lucide-icons name="chevronUp" size="16" color="white" />
       <span class="tooltiptext"> Voltar ao topo </span>
     </a>
     <a class="tooltip">
-      <!-- <lucide-icon name="bot" size="16"></lucide-icon> -->
+      <lucide-icons name="bot" size="16" color="white" />
       <span class="tooltiptext"> Atendimento </span>
     </a>
     <a class="tooltip">
-      <!-- <lucide-icon name="star" size="16"></lucide-icon> -->
+      <lucide-icons name="star" size="16" color="white" />
       <span class="tooltiptext"> Feedback </span>
     </a>
   </div>
@@ -232,7 +227,7 @@
   <div class="card">
     <div class="card_section">
       <div class="logo">
-        <img src="/assets/img/logos3.png" alt="Logo" />
+        <img src="/assets/logos3.png" alt="Logo" />
       </div>
       <div class="list">
         <p class="label">Sobre</p>

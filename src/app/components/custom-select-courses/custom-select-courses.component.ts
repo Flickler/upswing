@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { SelectService } from '@@Services/select.service';
 import { ToastComponent } from '@@Components/toast/toast.component';
@@ -16,6 +23,7 @@ import { OptionCourse } from '@@Types/Course';
 export class CustomSelectCoursesComponent {
   @Input() submitted = false;
   @Input() invalid = false;
+  @Input({ transform: booleanAttribute }) noLabel = false;
   @Output() setValue = new EventEmitter<string>();
 
   private selectService = inject(SelectService);

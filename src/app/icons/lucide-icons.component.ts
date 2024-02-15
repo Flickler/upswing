@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, numberAttribute } from '@angular/core';
 
 import { Icons, IconProps } from './lucide-icons';
 import { LucideIconsDirective } from './lucide-icon.directive';
@@ -62,8 +62,8 @@ import { LucideIconsDirective } from './lucide-icon.directive';
 })
 export class LucideIcons implements OnChanges {
   @Input({ required: true }) name!: Icons;
-  @Input() size: number = 20;
   @Input() color: string = 'black';
+  @Input({ transform: numberAttribute }) size: number = 20;
   icon?: IconProps;
 
   async ngOnChanges() {

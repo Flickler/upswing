@@ -16,10 +16,47 @@
       }
     </div>
 
-    <custom-select-courses />
-    @if (submitted && bussinessArea.invalid) {
-    <toast type="warn">Por favor, defina o curso alvo</toast>
-    }
+    <div class="form_control">
+      @for (area of bussinessArea.controls; track $index) { @if ($first) {
+      <div class="first_select-option">
+        <custom-select-courses
+          (setValue)="getAreaByIndex($index)?.setValue($event)"
+        />
+        @if($last) {
+        <button (click)="addBussinesArea()">
+          <lucide-icons name="plus" size="20" color="hsl(226, 96%, 60%)" />
+        </button>
+        }
+      </div>
+      } @else { @if($last){
+      <div class="last_select-option">
+        <custom-select-courses
+          noLabel
+          (setValue)="getAreaByIndex($index)?.setValue($event)"
+        />
+        <button (click)="removeBussinesArea($index)">
+          <lucide-icons name="trash2" size="20" color="#fa3664" />
+        </button>
+        <button (click)="addBussinesArea()">
+          <lucide-icons name="plus" size="20" color="hsl(226, 96%, 60%)" />
+        </button>
+      </div>
+      } @else {
+      <div class="others_select-options">
+        <custom-select-courses
+          noLabel
+          (setValue)="getAreaByIndex($index)?.setValue($event)"
+        />
+        <button (click)="removeBussinesArea($index)">
+          <lucide-icons name="trash2" size="20" color="#fa3664" />
+        </button>
+      </div>
+      } } } @if (submitted && bussinessArea.invalid) {
+      <toast type="warn">Por favor, defina o curso alvo</toast>
+      } @if (bussinessArea.errors?.['sameId']) {
+      <toast type="warn">A cursos iguais selecionados</toast>
+      }
+    </div>
 
     <div style="display: flex; flex-direction: column; gap: 0.5rem">
       <p>Selecione um nivel educacional</p>
@@ -27,19 +64,19 @@
         <input
           type="radio"
           id="medio"
-          [checked]="educationLevel.value == 'medio'"
+          [checked]="educationLevel.value == 'Ensino Médio'"
           name="educationLevel"
-          (click)="educationLevel.setValue('medio')"
+          (click)="educationLevel.setValue('Ensino Médio')"
         />
-        <label for="medio">Medio</label>
+        <label for="medio">Ensino Médio</label>
       </div>
       <div class="form_control_row">
         <input
           type="radio"
           id="técnico"
-          [checked]="educationLevel.value == 'técnico'"
+          [checked]="educationLevel.value == 'Técnico'"
           name="educationLevel"
-          (click)="educationLevel.setValue('técnico')"
+          (click)="educationLevel.setValue('Técnico')"
         />
         <label for="técnico">Técnico</label>
       </div>
@@ -47,9 +84,9 @@
         <input
           type="radio"
           id="superior"
-          [checked]="educationLevel.value == 'superior'"
+          [checked]="educationLevel.value == 'Superior'"
           name="educationLevel"
-          (click)="educationLevel.setValue('superior')"
+          (click)="educationLevel.setValue('Superior')"
         />
         <label for="superior">Superior</label>
       </div>
@@ -64,32 +101,32 @@
       <div class="form_control_row">
         <input
           type="radio"
-          id="matutino"
-          [checked]="journey.value == 'matutino'"
+          id="homeOffice"
+          [checked]="journey.value == 'Remoto'"
           name="journey"
-          (click)="journey.setValue('matutino')"
+          (click)="journey.setValue('Remoto')"
         />
-        <label for="matutino">Matutino</label>
+        <label for="homeOffice">Home Office</label>
       </div>
       <div class="form_control_row">
         <input
           type="radio"
-          id="vespertino"
-          [checked]="journey.value == 'vespertino'"
+          id="presencial"
+          [checked]="journey.value == 'Presencial'"
           name="journey"
-          (click)="journey.setValue('vespertino')"
+          (click)="journey.setValue('Presencial')"
         />
-        <label for="vespertino">Vespertino</label>
+        <label for="presencial">Presencial</label>
       </div>
       <div class="form_control_row">
         <input
           type="radio"
-          id="noturno"
-          [checked]="journey.value == 'noturno'"
+          id="hibrido"
+          [checked]="journey.value == 'Hibrido'"
           name="journey"
-          (click)="journey.setValue('noturno')"
+          (click)="journey.setValue('Hibrido')"
         />
-        <label for="noturno">Noturno</label>
+        <label for="hibrido">Hibrido</label>
       </div>
 
       @if (submitted && journey.invalid) {
@@ -138,13 +175,13 @@
       <label class="form_label">Escala de trabalho</label>
       <input
         type="text"
-        placeholder="Descreva a escala de trabalho"
+        placeholder="07:00h às 15:00h"
         formControlName="workSchedule"
       />
 
       @if (submitted && workSchedule.invalid) {
       <toast type="warn"
-        >Por favor, faça uma descrição breve sobre a jornada
+        >Por favor, faça uma descrição breve sobre a escala de trabalho
       </toast>
       }
     </div>
