@@ -3,7 +3,7 @@
 </header>
 <div class="modal">
   <h1>Área de Login</h1>
-  <form [formGroup]="formLogin">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form_group">
       <label class="form_label">E-mail</label>
       <input
@@ -12,6 +12,9 @@
         formControlName="email"
         placeholder="Digite seu email"
       />
+      @if(submitted && email.invalid){
+      <toast type="warn">Por favor digite um email valido</toast>
+      }
     </div>
     <div class="form_group">
       <label class="form_label">Senha</label>
@@ -20,7 +23,7 @@
           [type]="isPassVisible ? 'text' : 'password'"
           id="password"
           placeholder="Digite sua senha"
-          formControlName="senha"
+          formControlName="password"
         />
         <lucide-icons
           [name]="isPassVisible ? 'eyeOff' : 'eye'"
@@ -29,6 +32,9 @@
           (click)="VisibilityToggle()"
         />
       </div>
+      @if(submitted && password.invalid){
+      <toast type="warn">É necessario digitar uma senha valida</toast>
+      }
     </div>
 
     <div class="form_group_row">
