@@ -62,8 +62,17 @@ aside {
   gap: $spacing-2;
 }
 
-.description h3 {
-  font-weight: $medium;
+.description {
+  h3 {
+    font-size: $h4;
+    font-weight: $medium;
+    text-align: center;
+  }
+  h4 {
+    font-size: $base;
+    font-weight: $medium;
+    text-align: center;
+  }
 }
 
 .socials {

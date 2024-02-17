@@ -11,8 +11,8 @@
         />
       </div>
       <div class="description">
-        <h3>Nome</h3>
-        <h3>ocupação</h3>
+        <h3>{{ user?.account?.name }}</h3>
+        <h4>{{ user?.position }}</h4>
       </div>
     </div>
     <div class="bio_card">
@@ -20,21 +20,14 @@
         <lucide-icons color="#666c84" name="phone" [size]="20" />
         <div class="card_info">
           <p>Contato</p>
-          <p>contato aqui</p>
+          <p>{{ (user?.account)!.mainPhone | phone }}</p>
         </div>
       </div>
       <div class="card_item">
         <lucide-icons color="#666c84" name="mail" [size]="20" />
         <div class="card_info">
           <p>Email</p>
-          <p>email aqui</p>
-        </div>
-      </div>
-      <div class="card_item">
-        <lucide-icons color="#666c84" name="mapPin" [size]="20" />
-        <div class="card_info">
-          <p>Localização</p>
-          <p>Localização aqui</p>
+          <p>{{ user?.account?.mail }}</p>
         </div>
       </div>
     </div>

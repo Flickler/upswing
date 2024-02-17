@@ -7,6 +7,7 @@ import { AdminComponent } from '@@Admin/admin.component';
 import { DecodedToken, LoginForm, TokenResponse } from '@@Types/Login';
 import { jwtDecode } from 'jwt-decode';
 import { catchError, of, take } from 'rxjs';
+import { Admin } from '@@Types/Admin';
 
 @Injectable({
   providedIn: AdminComponent,
@@ -16,9 +17,9 @@ export class AdminService {
   private http = inject(HttpClient);
   private router = inject(Router);
   private token = signal<TokenResponse | null>(null);
-  private decodedToken = computed<DecodedToken | null>(() =>
-    this.token()?.token ? jwtDecode(this.token()!.token) : null
-  );
+  private decodedToken = computed<DecodedToken | null>(() => {
+    return this.token() ? jwtDecode(this.token()!.token) : null;
+  });
 
   constructor() {
     const token = localStorage.getItem('admin-acess-token');
@@ -54,7 +55,9 @@ export class AdminService {
     this.token.set(value);
   }
 
-  getDecodedToken() {
-    return this.decodedToken();
+  getUser() {
+    return this.http.get<Admin>(
+      this.path + '/list/admin/' + this.decodedToken()!.sub
+    );
   }
 }

@@ -1,5 +1,5 @@
 <div [ngClass]="{ expanded: !panel() }">
-  <h2 class="welcome">Olá, Admin!</h2>
+  <h2 class="welcome">Olá, {{ (userName$ | async)?.account?.name }}!</h2>
   <a class="router_card register" routerLink="register">
     <lucide-icons name="plus" [size]="24" color="#839ef7" />
     <span>Cadastrar</span>
