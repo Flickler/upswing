@@ -6,3 +6,9 @@ export type LoginForm = Partial<{
 export type TokenResponse = {
   token: string;
 };
+
+export type DecodedToken = {
+  exp: number;
+  iss: string;
+  sub: string;
+};

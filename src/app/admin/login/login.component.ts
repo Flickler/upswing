@@ -6,12 +6,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { catchError, of, take } from 'rxjs';
 
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { AdminService } from '@@Services/admin.service';
-import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'upswing-admin-login',
@@ -35,10 +33,14 @@ export class LoginComponent {
   });
   protected isPassVisible = false;
   protected submitted = false;
+  protected failedToLogin = false;
 
-
-  get email() { return this.form.controls.email }
-  get password() { return this.form.controls.password }
+  get email() {
+    return this.form.controls.email;
+  }
+  get password() {
+    return this.form.controls.password;
+  }
 
   VisibilityToggle() {
     this.isPassVisible = !this.isPassVisible;
@@ -46,15 +48,8 @@ export class LoginComponent {
 
   protected onSubmit() {
     this.submitted = true;
-    console.log(this.adminService.getToken());
-    if(this.form.valid){
-      this.adminService.login(this.form.value)
-      .pipe(
-        take(1),
-        catchError(() => of(null))
-        )
-        .subscribe((res) => this.adminService.setToken(jwtDecode(res!.token)));
-      }
-    console.log(this.adminService.getToken());
+    if (this.form.valid) {
+      this.adminService.login(this.form.value);
+    }
   }
 }

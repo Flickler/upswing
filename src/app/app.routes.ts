@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { adminGuard } from './guard/admin.guard';
 
 export const routes: Routes = [
   // LANDING
@@ -23,6 +24,7 @@ export const routes: Routes = [
           import('./admin/admin-dashboard/admin-dashboard.component').then(
             (c) => c.AdminDashboardComponent
           ),
+        canActivate: [adminGuard],
         children: [
           // PAGINA CENTRAL DO ADMINISTRADOR
           {
@@ -132,11 +134,6 @@ export const routes: Routes = [
         ],
       },
       // PAGINA DE LOGIN DO ADMINISTRADOR
-      {
-        path: '',
-        pathMatch: 'prefix',
-        redirectTo: 'login',
-      },
       {
         path: 'login',
         loadComponent: () =>

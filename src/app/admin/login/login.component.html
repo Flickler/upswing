@@ -45,6 +45,11 @@
       <a> Esqueci minha senha. </a>
     </div>
     <button type="submit">Entrar</button>
+    @if(failedToLogin){
+    <toast type="warn">
+      Email ou senha invalidos, confira as suas credenciais e tente novamente
+    </toast>
+    }
   </form>
   <a routerLink="/" class="return_link"> Voltar para Website. </a>
 </div>
