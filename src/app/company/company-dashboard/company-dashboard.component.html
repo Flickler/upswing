@@ -1,3 +1,3 @@
 <company-dashboard-header />
-<company-dashboard-sidebar />
+<company-dashboard-sidebar [user]="user$ | async" />
 <company-dashboard-main [ngClass]="{ expanded: !panel() }" />

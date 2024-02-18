@@ -1,19 +1,16 @@
-import { Account, RegisterAccount } from './Account';
+import { RegisterAccount } from './Account';
 import { Address, RegisterAddress } from './Address';
 import { BusinessArea } from './BussinesArea';
 import { SocialNetWorks } from './SocialNetworks';
 
 export type Company = {
   id: string;
-  companyName: string;
-  companyCode: string;
-  account: Account;
-  businessArea: BusinessArea;
-  description: string;
-  address: Address;
-  website: string;
+  name: string;
   socialNetworks: SocialNetWorks;
-  status: unknown;
+  mainPhone: string;
+  email: string;
+  companyCode: string;
+  address: Address;
 };
 
 export type RegisterCompany = Partial<{

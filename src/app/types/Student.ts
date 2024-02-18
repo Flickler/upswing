@@ -1,14 +1,15 @@
 import { Account, RegisterAccount } from './Account';
 import { Address, RegisterAddress } from './Address';
+import { SocialNetWorks } from './SocialNetworks';
 
 export type Student = {
   id: string;
-  birthDate: string;
-  socialSecurity: string;
-  registration?: unknown[];
-  account: Account;
-  socialNetworks?: unknown[];
-  Address: Address;
+  name: string;
+  occupation: string | null;
+  socialNetworks: SocialNetWorks;
+  mainPhone: string;
+  mail: string;
+  address: Address;
 };
 
 export type Students = Student[];

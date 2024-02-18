@@ -3,7 +3,7 @@
 </header>
 <div class="modal">
   <h1>Área de Login</h1>
-  <form [formGroup]="formLogin">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form_group">
       <label class="form_label">E-mail</label>
       <input
@@ -12,6 +12,9 @@
         formControlName="email"
         placeholder="Digite seu email"
       />
+      @if(submitted && email.invalid){
+      <toast type="warn">Por favor digite um email valido</toast>
+      }
     </div>
     <div class="form_group">
       <label class="form_label">Senha</label>
@@ -20,7 +23,7 @@
           [type]="isPassVisible ? 'text' : 'password'"
           id="password"
           placeholder="Digite sua senha"
-          formControlName="senha"
+          formControlName="password"
         />
         <lucide-icons
           [name]="isPassVisible ? 'eyeOff' : 'eye'"
@@ -29,6 +32,9 @@
           (click)="VisibilityToggle()"
         />
       </div>
+      @if(submitted && password.invalid){
+      <toast type="warn">É necessario digitar uma senha valida</toast>
+      }
     </div>
 
     <div class="form_group_row">
@@ -39,6 +45,11 @@
       <a> Esqueci minha senha. </a>
     </div>
     <button type="submit">Entrar</button>
+    @if(failedToLogin){
+    <toast type="warn">
+      Email ou senha invalidos, confira as suas credenciais e tente novamente
+    </toast>
+    }
   </form>
   <a routerLink="/" class="return_link"> Voltar para Website. </a>
 </div>
@@ -46,5 +57,5 @@
   <div class="brand-2">
     <img ngSrc="assets/logo-bw.svg" width="56" height="56" alt="logo-footer" />
   </div>
-  <p class="footer_copy" href="">© 2023 Upswing</p>
+  <p class="footer_copy" href="">© 2024 Upswing</p>
 </footer>

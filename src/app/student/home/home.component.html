@@ -1,5 +1,5 @@
 <div [ngClass]="{ expanded: !panel() }">
-  <h2 class="welcome">Olá, Aluno!</h2>
+  <h2 class="welcome">Olá, {{ (studentName | async)?.name }}!</h2>
   <a class="router_card" routerLink="job-offers">
     <lucide-icons name="bookOpen" [size]="20" color="#666c84" />
     <span>Minhas Vagas</span>

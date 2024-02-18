@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { adminGuard } from './guard/admin.guard';
+import { studentGuard } from './guard/student.guard';
+import { companyGuard } from './guard/company.guard';
 
 export const routes: Routes = [
   // LANDING
@@ -155,6 +157,7 @@ export const routes: Routes = [
           import(
             './student/student-dashboard/student-dashboard.component'
           ).then((c) => c.StudentDashboardComponent),
+        canActivate: [studentGuard],
         children: [
           {
             path: '',
@@ -209,6 +212,7 @@ export const routes: Routes = [
           import(
             './company/company-dashboard/company-dashboard.component'
           ).then((c) => c.CompanyDashboardComponent),
+        canActivate: [companyGuard],
         children: [
           {
             path: '',

@@ -1,4 +1,10 @@
 <viewer-heading>Cursos</viewer-heading>
 <load-section>
+  @for (course of myCourses$ | async | studentCoursesCardContent; track $index)
+  {
+  <p>{{ course.courseName }}</p>
+  } @empty {
+  <p>nada aqui</p>
+  }
   <pagination-section />
 </load-section>

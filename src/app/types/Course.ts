@@ -37,3 +37,17 @@ export type OptionCourse = {
 };
 
 export type OptionsCourse = OptionCourse[];
+
+export type StudentCourseCard = {
+  courseId: string;
+  courseName: string;
+  educationalLevel: string;
+  schedule: number;
+  subjects: [
+    {
+      subjectName: string;
+    }
+  ];
+};
+
+export type StudentCoursesCards = StudentCourseCard[];

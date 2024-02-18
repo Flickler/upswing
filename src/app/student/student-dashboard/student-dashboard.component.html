@@ -1,3 +1,3 @@
 <student-dashboard-header />
-<student-dashboard-sidebar />
+<student-dashboard-sidebar [user]="user$ | async" />
 <student-dashboard-main [ngClass]="{ expanded: !panel() }" />

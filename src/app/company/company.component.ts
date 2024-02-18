@@ -1,3 +1,4 @@
+import { CompanyService } from '@@Services/company.service';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -6,5 +7,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: '<router-outlet/>',
+  providers: [CompanyService],
 })
 export class CompanyComponent {}

@@ -1,3 +1,4 @@
+import { StudentService } from '@@Services/student.service';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -6,5 +7,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: '<router-outlet/>',
+  providers: [StudentService],
 })
 export class StudentComponent {}
