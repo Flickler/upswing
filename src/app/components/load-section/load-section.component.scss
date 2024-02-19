@@ -7,7 +7,8 @@
   justify-content: start;
   gap: $spacing-8;
 
-  min-height: calc(100dvh - 20rem);
+  height: calc(100dvh - 20rem);
+  overflow-y: auto;
   width: 100%;
 
   border-top: 1px solid $gray-scale-30;

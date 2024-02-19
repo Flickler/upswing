@@ -5,12 +5,15 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { catchError, of, take } from 'rxjs';
 
-import { ModalComponent } from '@@Components/modal/modal.component';
 import { ToastComponent } from '@@Components/toast/toast.component';
 import { MatchDirective } from '@@Directives/match.directive';
 import { NgxMaskDirective } from 'ngx-mask';
 import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.component';
+import { ModalComponent } from '@@Components/modal/modal.component';
+import { CustomSelectBusinessAreasComponent } from '@@Components/custom-select-business-areas/custom-select-business-areas.component';
+import { CompanyService } from '@@Services/company.service';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
@@ -21,6 +24,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     NgxMaskDirective,
     ModalComponent,
     ToastComponent,
+    CustomSelectBusinessAreasComponent,
     PopupModalComponent,
     LucideIcons,
   ],
@@ -28,6 +32,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
 })
 export class RegisterCompanyComponent {
   private fb = inject(NonNullableFormBuilder);
+  private companyService = inject(CompanyService);
   protected submitted = false;
   protected disable = false;
   protected formStatus: 'notSubmitted' | 'error' | 'success' = 'notSubmitted';
@@ -38,12 +43,12 @@ export class RegisterCompanyComponent {
       '',
       [Validators.required, Validators.minLength(14), Validators.maxLength(14)],
     ],
-    businessArea: this.fb.group({
-      id: ['', Validators.required],
-      bussinesArea: ['', Validators.required],
-    }),
+    businessArea: this.fb.control<{ id: string } | null>(
+      null,
+      Validators.required
+    ),
     description: ['', Validators.required],
-    website: ['', Validators.required],
+    website: ['', Validators.nullValidator],
     socialNetworks: this.fb.group({
       socialOne: this.fb.control('', Validators.nullValidator),
       socialTwo: this.fb.control('', Validators.nullValidator),
@@ -110,11 +115,8 @@ export class RegisterCompanyComponent {
   get companyCode() {
     return this.form.controls.companyCode;
   }
-  get bussinesAreaId() {
-    return this.form.controls.businessArea.controls.id;
-  }
-  get bussinesAreaName() {
-    return this.form.controls.businessArea.controls.bussinesArea;
+  get businessArea() {
+    return this.form.controls.businessArea;
   }
   get description() {
     return this.form.controls.description;
@@ -174,12 +176,36 @@ export class RegisterCompanyComponent {
     return this.form.controls.address.controls.complement;
   }
 
-  // protected onSubmit() {
-  //   this.submitted = true;
-  //   if (this.form.valid) {
-  //     this.confirmPassword.disable();
-  //     if (this.optionalPhone.value == '') this.optionalPhone.disable();
-  //     console.log(this.form.value);
-  //   }
-  // }
+  protected onSubmit() {
+    this.submitted = true;
+    console.log(this.form);
+    if (this.form.valid) {
+      this.confirmPassword.disable();
+      if (this.optionalPhone.value == null) this.optionalPhone.disable();
+      console.log(this.form.value);
+      this.companyService
+        .registerCompany(this.form.value)
+        .pipe(
+          take(1),
+          catchError(() => {
+            this.submitted = false;
+            this.confirmPassword.enable();
+            this.optionalPhone.enable();
+            this.formStatus = 'error';
+            this.disable = false;
+            return of(null);
+          })
+        )
+        .subscribe((res) => {
+          if (res) {
+            this.submitted = false;
+            this.confirmPassword.enable();
+            this.optionalPhone.enable();
+            this.form.reset();
+            this.formStatus = 'success';
+            this.disable = false;
+          }
+        });
+    }
+  }
 }

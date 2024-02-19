@@ -15,6 +15,10 @@
     {{ bussinesArea.businessArea }}
   </span>
 
+  } @empty {
+  <span class="custom_option" (click)="optionsContainer = false">
+    Não há cursos disponiveis.
+  </span>
   }
 </div>
 

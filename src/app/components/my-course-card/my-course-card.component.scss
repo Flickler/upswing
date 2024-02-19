@@ -1,0 +1,247 @@
+@use "variables" as *;
+
+:host {
+  width: 22%;
+  height: 200px;
+  aspect-ratio: 4 / 3;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: $spacing-8 $spacing-6;
+  border: 1px solid $gray-scale-30;
+  border-radius: $radius-4;
+  user-select: none;
+  transition: 0.4s ease-in;
+
+  &:hover {
+    border: 1px solid $primary-30;
+    background-color: $primary-5;
+    box-shadow: $shadow-container;
+  }
+}
+
+popup-modal {
+  z-index: 2;
+
+  .card_header_expand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  button:has(lucide-icons) {
+    background-color: transparent;
+    border-radius: 50%;
+    align-self: flex-end;
+  }
+}
+
+.card_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $spacing-6;
+  height: 100%;
+  width: 100%;
+}
+
+.card_header .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  lucide-icons {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $white;
+  }
+}
+
+.card_header .flex button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: $white;
+    border: none;
+  }
+}
+
+.flex .menu_container {
+  display: none;
+  flex-direction: column;
+  width: 50%;
+  position: absolute;
+  top: 120%;
+  right: 0;
+
+  &.active {
+    display: flex;
+    padding: $spacing-4;
+    background-color: $white;
+    border-radius: $radius-4;
+  }
+}
+
+.flex .menu_container .action-btn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  padding: $spacing-4;
+  color: $gray-scale-60;
+  font-size: $x-small;
+  background-color: $white;
+  border-radius: $radius-4;
+  width: 100%;
+
+  &:hover {
+    font-weight: $semibold;
+    color: $gray-scale-80;
+    background-color: $primary-10;
+  }
+}
+
+.card_header .card_title {
+  font-size: $small;
+  font-weight: $bold;
+  padding: $spacing-3 $spacing-3 0 0;
+  text-transform: uppercase;
+  text-wrap: pretty;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2;
+  font-size: $small;
+  color: $gray-scale-80;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $primary-30;
+    background-color: $white;
+  }
+  &:hover {
+    text-decoration: underline;
+    color: $primary-10;
+  }
+}
+
+.card_content {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: $spacing-4;
+  gap: $spacing-4;
+  color: $gray-scale-60;
+  border-radius: $radius-2;
+}
+
+.card_content .card_details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-2 0;
+  font-size: $small;
+  color: $gray-scale-60;
+
+  .status_chip {
+    padding: $spacing-2;
+    font-size: $small;
+    font-weight: $medium;
+    color: $ui-green;
+    background-color: hsl(158, 80%, 97%);
+    border-radius: $radius-4;
+  }
+}
+
+.card_content .card_accordion {
+  width: 100%;
+  padding: $spacing-4;
+  color: $primary-60;
+  background-color: $primary-10;
+  border-radius: $radius-2;
+}
+
+.card_content .card_accordion ul li {
+  display: flex;
+  gap: $spacing-4;
+  color: $primary-60;
+  padding: $spacing-4 0;
+
+  font-size: $small;
+  text-wrap: pretty;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: $primary-5;
+    border-radius: $radius-2;
+  }
+}
+
+.card_content:has(.card_accordion) {
+  gap: 0;
+
+  .summary {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    color: $gray-scale-60;
+    background-color: $primary-10;
+
+    padding: $spacing-4;
+    color: $primary-60;
+    border-radius: $radius-2;
+
+    .normal {
+      transform: rotate(0deg);
+    }
+
+    .inverted {
+      transform: rotate(180deg);
+    }
+
+    &:has(.inverted) {
+      border-radius: $radius-2 $radius-2 0 0;
+    }
+  }
+
+  .card_accordion {
+    display: none;
+    flex-direction: column;
+    gap: $spacing-2;
+
+    padding: $spacing-4 $spacing-5;
+    background-color: $primary-10;
+    width: 100%;
+
+    &.active {
+      display: flex;
+    }
+
+    span {
+      font-size: $small;
+      text-align: start;
+      padding: $spacing-3 $spacing-2;
+      border-radius: $radius-2;
+
+      &:hover {
+        background-color: $primary-5;
+      }
+
+      &.empty {
+        color: $ui-red;
+      }
+    }
+  }
+}

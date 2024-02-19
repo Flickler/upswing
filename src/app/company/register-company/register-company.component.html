@@ -33,7 +33,12 @@
       } }
     </div>
 
-    <div formGroupName="businessArea" class="form_group"></div>
+    <custom-select-bussines-areas
+      [invalid]="businessArea.invalid"
+      [submitted]="submitted"
+      (setValue)="businessArea.setValue({ id: $event })"
+    />
+
     <div formGroupName="socialNetworks" class="form_group"></div>
 
     <h3>Informações da conta</h3>
@@ -129,6 +134,28 @@
       }
     </div>
 
+    <div class="form_control">
+      <label class="form_label">Website</label>
+      <input
+        type="text"
+        placeholder="Digite a URL do seu website"
+        formControlName="website"
+      />
+    </div>
+
+    <div class="form_control">
+      <label class="form_label">Descreva sua empresa</label>
+      <textarea
+        type="text"
+        placeholder="Faça uma descrição breve sobre a sua empresa"
+        formControlName="description"
+      ></textarea>
+
+      @if (submitted && description.invalid) {
+      <toast type="warn">É necessário falar sobre a sua empresa</toast>
+      }
+    </div>
+
     <div formGroupName="address" class="form_group">
       <h3 class="body-base-md subtitle">Endereço</h3>
       <div formGroupName="zipCode">
@@ -212,7 +239,7 @@
 <popup-modal>
   <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
   <h3>Sucesso</h3>
-  <p>O aluno foi cadastrado com exito</p>
+  <p>A Empresa foi cadastrado com exito</p>
   <button
     style="
       width: 40%;

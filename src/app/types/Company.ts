@@ -16,7 +16,7 @@ export type Company = {
 export type RegisterCompany = Partial<{
   companyName: string;
   companyCode: string;
-  businessArea: BusinessArea;
+  businessArea: { id: string } | null;
   description: string;
   website: string;
   socialNetworks: SocialNetWorks;

@@ -38,7 +38,7 @@ export type OptionCourse = {
 
 export type OptionsCourse = OptionCourse[];
 
-export type StudentCourseCard = {
+export type MyCourseCard = {
   courseId: string;
   courseName: string;
   educationalLevel: string;
@@ -50,4 +50,4 @@ export type StudentCourseCard = {
   ];
 };
 
-export type StudentCoursesCards = StudentCourseCard[];
+export type MyCoursesCards = MyCourseCard[];

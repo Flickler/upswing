@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@@Environments/environment';
 import { StudentService } from './student.service';
 import { Pagination } from '@@Types/Pagination';
-import { StudentCoursesCards } from '@@Types/Course';
+import { MyCoursesCards } from '@@Types/Course';
+import { JobOffersCards } from '@@Types/JobOffer';
 
 @Injectable({
   providedIn: StudentDashboardComponent,
@@ -14,7 +15,7 @@ export class StudentDashboardService {
   private readonly path = environment.apiUrl;
   private http = inject(HttpClient);
   private studentService = inject(StudentService);
-  private userId = this.studentService.getUserId();
+  private readonly userId = this.studentService.getUserId();
   isPanelActive = signal(true);
 
   getPanel() {
@@ -25,9 +26,21 @@ export class StudentDashboardService {
     this.isPanelActive.update((curr) => !curr);
   }
 
+  getMyJobOffers() {
+    return this.http.get<Pagination<JobOffersCards>>(
+      this.path + '/list/student/my-job-offers/' + this.userId
+    );
+  }
+
   getMyCourses() {
-    return this.http.get<Pagination<StudentCoursesCards>>(
-      this.path + '/list/student/my-courses/' + this.userId
+    return this.http.get<Pagination<MyCoursesCards>>(
+      this.path + '/list/student/my-course/' + this.userId
+    );
+  }
+
+  hasConfig() {
+    return this.http.get<boolean>(
+      this.path + '/list/student/auto-apply/' + this.userId
     );
   }
 }

@@ -181,6 +181,13 @@ export const routes: Routes = [
                 './student/views/courses-viewer/courses-viewer.component'
               ).then((c) => c.CoursesViewerComponent),
           },
+          {
+            path: 'auto-apply-config',
+            loadComponent: () =>
+              import(
+                './student/auto-apply-config/auto-apply-config.component'
+              ).then((c) => c.AutoApplyConfigComponent),
+          },
         ],
       },
       // PAGINA DE LOGIN DO ALUNO
@@ -238,7 +245,7 @@ export const routes: Routes = [
           },
         ],
       },
-      // PAGINA DE LOGIN DO ALUNO
+      // PAGINA DE LOGIN DO EMPRESA
       {
         path: '',
         pathMatch: 'prefix',
@@ -249,6 +256,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./company/login/login.component').then(
             (c) => c.LoginComponent
+          ),
+      },
+      {
+        path: 'register-company',
+        loadComponent: () =>
+          import('./company/register-company/register-company.component').then(
+            (c) => c.RegisterCompanyComponent
           ),
       },
     ],

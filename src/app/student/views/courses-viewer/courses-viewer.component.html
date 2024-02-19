@@ -2,9 +2,9 @@
 <load-section>
   @for (course of myCourses$ | async | studentCoursesCardContent; track $index)
   {
-  <p>{{ course.courseName }}</p>
+  <my-course-card [course]="course" />
   } @empty {
-  <p>nada aqui</p>
+  <nothing />
   }
   <pagination-section />
 </load-section>

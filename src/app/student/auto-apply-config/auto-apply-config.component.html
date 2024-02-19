@@ -1,0 +1,87 @@
+<modal>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class="form_heading">Aplicações automáticas</h2>
+    <h3>Escolha as preferências de acordo com o seu perfil</h3>
+
+    <div class="select_options">
+      <h4>Qual tipo de contratação é do seu interesse?</h4>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="estagio"
+          [checked]="contract.value == 'Estágio'"
+          name="contract"
+          (click)="contract.setValue('Estágio')"
+        />
+        <label for="estagio">Estágio (de 20h a 40h semanais)</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="efetivo"
+          [checked]="contract.value == 'Efetivo'"
+          name="contract"
+          (click)="contract.setValue('Efetivo')"
+        />
+        <label for="efetivo">Efetivo (até 60h semanais)</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="both"
+          [checked]="contract.value == 'Ambos'"
+          name="contract"
+          (click)="contract.setValue('Ambos')"
+        />
+        <label for="both">Ambos</label>
+      </div>
+
+      @if (submitted && contract.invalid) {
+      <toast [type]="'warn'">Selecione um tipo de contrato</toast>
+      }
+    </div>
+
+    <div class="select_options">
+      <h4>Em qual localidade você gostaria de aplicar para as vagas?</h4>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="bairro"
+          [checked]="contract.value == 'Bairro'"
+          name="offerLocation"
+          (click)="offerLocation.setValue('Bairro')"
+        />
+        <label for="bairro">Somente vagas do meu bairro</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="cidade"
+          [checked]="offerLocation.value == 'Cidade'"
+          name="offerLocation"
+          (click)="offerLocation.setValue('Cidade')"
+        />
+        <label for="cidade">Somente vagas da minha cidade</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="estado"
+          [checked]="offerLocation.value == 'Estado'"
+          name="offerLocation"
+          (click)="offerLocation.setValue('Estado')"
+        />
+        <label for="estado">Quero aplicar vagas em todo estado</label>
+      </div>
+
+      @if (submitted && offerLocation.invalid) {
+      <toast [type]="'warn'">Selecione um tipo de contrato</toast>
+      }
+    </div>
+
+    <button type="submit" [disabled]="disable">Perfeito</button>
+    @if(err){
+    <toast [type]="'warn'">Algo aconteceu, tente novamente mais tarde</toast>
+    }
+  </form>
+</modal>

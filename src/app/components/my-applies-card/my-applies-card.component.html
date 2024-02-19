@@ -1,0 +1,88 @@
+<div class="card_header">
+  <div class="flex">
+    <lucide-icons name="bookOpen" [size]="20" color="hsl(228, 20%, 60%)" />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+    </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
+  </div>
+  <p class="card_title">{{ JobOffer.position }}</p>
+  <button (click)="modal = true">Ver mais</button>
+</div>
+
+@if(modal){
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="briefcase"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
+  </div>
+
+  <div class="card_content">
+    <p class="card_title">{{ JobOffer.position }}</p>
+    <p class="card_data">{{ JobOffer.name }}</p>
+    <div class="card_details">
+      <p>{{ JobOffer.educationLevel }}</p>
+      <p>{{ JobOffer.contract }}</p>
+    </div>
+    <p class="more-info">{{ JobOffer.offerDescription }}</p>
+  </div>
+
+  <div class="card_content">
+    <div class="icons-group">
+      @if(JobOffer.benefitsMobility){
+      <div class="icon-placeholder">
+        <lucide-icons name="busFront" color="hsl(228, 20%, 60%)" [size]="16" />
+      </div>
+      } @if(JobOffer.benefitsMealVoucher){
+      <div class="icon-placeholder">
+        <lucide-icons name="utencils" color="hsl(228, 20%, 60%)" [size]="16" />
+      </div>
+      } @if(JobOffer.benefitsEducation){
+      <div class="icon-placeholder">
+        <lucide-icons
+          name="bookOpenCheck"
+          color="hsl(228, 20%, 60%)"
+          [size]="16"
+        />
+      </div>
+      } @if(JobOffer.benefitsHealthInsurance){
+      <div class="icon-placeholder">
+        <lucide-icons
+          name="heartPulse"
+          color="hsl(228, 20%, 60%)"
+          [size]="16"
+        />
+      </div>
+      } @if(JobOffer.benefitsCulture){
+      <div class="icon-placeholder">
+        <lucide-icons
+          name="ticketPercent"
+          color="hsl(228, 20%, 60%)"
+          [size]="16"
+        />
+      </div>
+      }
+    </div>
+  </div>
+</popup-modal>
+}

@@ -8,6 +8,7 @@ import { StudentComponent } from '@@Student/student.component';
 import { Student } from '@@Types/Student';
 import { DecodedToken, LoginForm, TokenResponse } from '@@Types/Login';
 import { jwtDecode } from 'jwt-decode';
+import { RegisterConfigAutoAplly } from '@@Types/Auto-apply';
 
 @Injectable({
   providedIn: StudentComponent,
@@ -24,7 +25,6 @@ export class StudentService {
   constructor() {
     const token = localStorage.getItem('student-acess-token');
     if (token) this.token.set(JSON.parse(token));
-    console.log(this.decodedToken());
   }
 
   login(form: LoginForm) {
@@ -64,5 +64,15 @@ export class StudentService {
 
   getUserId() {
     return this.decodedToken()!.sub;
+  }
+
+  setAutoApply(form: Omit<RegisterConfigAutoAplly, 'studentId'>) {
+    return this.http.post<RegisterConfigAutoAplly>(
+      this.path + '/register/student/auto-apply',
+      {
+        studentId: this.getUserId(),
+        ...form,
+      }
+    );
   }
 }

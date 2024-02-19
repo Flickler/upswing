@@ -16,14 +16,21 @@
       }
     </div>
 
+    <custom-select-bussines-areas
+      [invalid]="businessAreaId.invalid"
+      (setValue)="businessAreaId.setValue($event)"
+    />
+
+    @if(businessAreaId.valid){
     <div class="form_control">
-      @for (area of bussinessArea.controls; track $index) { @if ($first) {
+      @for (course of courses.controls; track $index) { @if ($first) {
       <div class="first_select-option">
         <custom-select-courses
-          (setValue)="getAreaByIndex($index)?.setValue($event)"
+          [targetArea]="businessAreaId.value"
+          (setValue)="getCourseByIndex($index)?.setValue({ courseId: $event })"
         />
         @if($last) {
-        <button (click)="addBussinesArea()">
+        <button (click)="addCourses()">
           <lucide-icons name="plus" size="20" color="hsl(226, 96%, 60%)" />
         </button>
         }
@@ -32,12 +39,13 @@
       <div class="last_select-option">
         <custom-select-courses
           noLabel
-          (setValue)="getAreaByIndex($index)?.setValue($event)"
+          [targetArea]="businessAreaId.value"
+          (setValue)="getCourseByIndex($index)?.setValue({ courseId: $event })"
         />
-        <button (click)="removeBussinesArea($index)">
+        <button (click)="removeCourses($index)">
           <lucide-icons name="trash2" size="20" color="#fa3664" />
         </button>
-        <button (click)="addBussinesArea()">
+        <button (click)="addCourses()">
           <lucide-icons name="plus" size="20" color="hsl(226, 96%, 60%)" />
         </button>
       </div>
@@ -45,18 +53,18 @@
       <div class="others_select-options">
         <custom-select-courses
           noLabel
-          (setValue)="getAreaByIndex($index)?.setValue($event)"
+          [targetArea]="businessAreaId.value"
+          (setValue)="getCourseByIndex($index)?.setValue({ courseId: $event })"
         />
-        <button (click)="removeBussinesArea($index)">
+        <button (click)="removeCourses($index)">
           <lucide-icons name="trash2" size="20" color="#fa3664" />
         </button>
       </div>
-      } } } @if (submitted && bussinessArea.invalid) {
+      } } } @if (submitted && courses.invalid) {
       <toast type="warn">Por favor, defina o curso alvo</toast>
-      } @if (bussinessArea.errors?.['sameId']) {
-      <toast type="warn">A cursos iguais selecionados</toast>
       }
     </div>
+    }
 
     <div style="display: flex; flex-direction: column; gap: 0.5rem">
       <p>Selecione um nivel educacional</p>
@@ -93,6 +101,34 @@
 
       @if (submitted && educationLevel.invalid) {
       <toast type="warn">Por favor, defina o nivel educacional</toast>
+      }
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.5rem">
+      <p>Selecione o tipo de contrato</p>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="efetivo"
+          [checked]="contract.value == 'Efetivo'"
+          name="contract"
+          (click)="contract.setValue('Efetivo')"
+        />
+        <label for="efetivo">Efetivo</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="estagio"
+          [checked]="contract.value == 'Estágio'"
+          name="contract"
+          (click)="contract.setValue('Estágio')"
+        />
+        <label for="estagio">Estágio</label>
+      </div>
+
+      @if (submitted && contract.invalid) {
+      <toast type="warn">Por favor, tipo de contrato</toast>
       }
     </div>
 
@@ -278,7 +314,7 @@
 <popup-modal>
   <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
   <h3>Sucesso</h3>
-  <p>O aluno foi cadastrado com exito</p>
+  <p>Sua vaga foi cadastrado com exito</p>
   <button
     style="
       width: 40%;

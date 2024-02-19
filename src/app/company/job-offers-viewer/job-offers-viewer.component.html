@@ -1,4 +1,9 @@
 <viewer-heading>Vagas</viewer-heading>
 <load-section>
+  @for (job of (myVancancies$ | async)?.content; track $index) {
+  <my-vacancy-card [job]="job" />
+  } @empty {
+  <nothing />
+  }
   <pagination-section />
 </load-section>

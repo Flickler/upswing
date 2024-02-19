@@ -1,0 +1,23 @@
+@use "variables" as *;
+
+:host {
+  display: block;
+}
+
+h3,
+h4 {
+  color: $gray-scale-60;
+}
+
+h3 {
+  font-size: $h4;
+}
+
+h4 {
+  font-size: $base;
+  margin-bottom: $spacing-3;
+}
+
+button {
+  margin-top: $spacing-8;
+}

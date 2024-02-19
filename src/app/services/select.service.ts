@@ -15,7 +15,9 @@ export class SelectService {
     return this.http.get<BusinessAreas>(this.path + '/business-area');
   }
 
-  getCourses() {
-    return this.http.get<OptionsCourse>(this.path + '/course-select');
+  getCourses(targetId?: string) {
+    return targetId
+      ? this.http.get<OptionsCourse>(this.path + '/course-select/' + targetId)
+      : this.http.get<OptionsCourse>(this.path + '/course-select');
   }
 }

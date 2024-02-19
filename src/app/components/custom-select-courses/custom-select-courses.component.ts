@@ -2,7 +2,9 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
   booleanAttribute,
   inject,
 } from '@angular/core';
@@ -20,10 +22,11 @@ import { OptionCourse } from '@@Types/Course';
     class: 'custom_select_container',
   },
 })
-export class CustomSelectCoursesComponent {
+export class CustomSelectCoursesComponent implements OnChanges {
   @Input() submitted = false;
   @Input() invalid = false;
   @Input({ transform: booleanAttribute }) noLabel = false;
+  @Input() targetArea?: string;
   @Output() setValue = new EventEmitter<string>();
 
   private selectService = inject(SelectService);
@@ -39,5 +42,11 @@ export class CustomSelectCoursesComponent {
     this.selected = option.courseName;
     this.setValue.emit(option.courseId);
     this.optionsContainer = false;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes?.['targetArea']) {
+      this.courses$ = this.selectService.getCourses(this.targetArea);
+    }
   }
 }
