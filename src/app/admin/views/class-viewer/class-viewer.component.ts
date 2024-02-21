@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
 import { AdminDashboardService } from '@@Services/admin-dashboard.service';
+import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
 import { LastPagePipe } from '@@Pipes/last-page.pipe';
 import { ClassesCardsContentPipe } from '@@Pipes/get-classes-cards-content.pipe';
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
@@ -10,6 +11,7 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
 import { ClassCardComponent } from '@@Components/class-card/class-card.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
+import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
 
 @Component({
   selector: 'upswing-class-viewer',
@@ -17,12 +19,14 @@ import { PaginationSectionComponent } from '@@Components/pagination-section/pagi
   imports: [
     RouterLink,
     AsyncPipe,
+    CurrentPagePipe,
     LastPagePipe,
     ClassesCardsContentPipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     ClassCardComponent,
     PaginationSectionComponent,
+    NothingCardComponent,
     LucideIcons,
   ],
   templateUrl: './class-viewer.component.html',

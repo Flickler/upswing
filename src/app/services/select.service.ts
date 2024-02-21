@@ -1,5 +1,6 @@
 import { environment } from '@@Environments/environment';
 import { BusinessAreas } from '@@Types/BussinesArea';
+import { OptionsClasses } from '@@Types/Class';
 import { OptionsCourse } from '@@Types/Course';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
@@ -19,5 +20,9 @@ export class SelectService {
     return targetId
       ? this.http.get<OptionsCourse>(this.path + '/course-select/' + targetId)
       : this.http.get<OptionsCourse>(this.path + '/course-select');
+  }
+
+  getClasses() {
+    return this.http.get<OptionsClasses>(this.path + '/class-select');
   }
 }

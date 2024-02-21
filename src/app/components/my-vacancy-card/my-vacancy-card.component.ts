@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { DatePipe, NgClass } from '@angular/common';
 
 import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.component';
@@ -9,7 +10,14 @@ import { RealCurrent } from '@@Pipes/real.pipe';
 @Component({
   selector: 'my-vacancy-card',
   standalone: true,
-  imports: [NgClass, DatePipe, RealCurrent, PopupModalComponent, LucideIcons],
+  imports: [
+    RouterLink,
+    NgClass,
+    DatePipe,
+    RealCurrent,
+    PopupModalComponent,
+    LucideIcons,
+  ],
   templateUrl: './my-vacancy-card.component.html',
   styleUrl: './my-vacancy-card.component.scss',
 })

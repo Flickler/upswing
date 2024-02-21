@@ -26,15 +26,19 @@ export class StudentDashboardService {
     this.isPanelActive.update((curr) => !curr);
   }
 
-  getMyJobOffers() {
+  getMyJobOffers(page: number) {
     return this.http.get<Pagination<JobOffersCards>>(
-      this.path + '/list/student/my-job-offers/' + this.userId
+      this.path + '/list/student/my-job-offers/' + this.userId,
+      { params: { page: page } }
     );
   }
 
-  getMyCourses() {
+  getMyCourses(page: number) {
     return this.http.get<Pagination<MyCoursesCards>>(
-      this.path + '/list/student/my-course/' + this.userId
+      this.path + '/list/student/my-course/' + this.userId,
+      {
+        params: { page: page },
+      }
     );
   }
 

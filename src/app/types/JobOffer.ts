@@ -1,6 +1,7 @@
 import { Address } from './Address';
 
 export type JobOfferCard = {
+  jobOfferId: string;
   name: string;
   educationLevel: string;
   position: string;

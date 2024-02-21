@@ -53,11 +53,12 @@ popup-modal {
   justify-content: space-between;
   align-items: center;
 
+  position: relative;
+
   lucide-icons {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: $white;
   }
 }
 
@@ -75,7 +76,7 @@ popup-modal {
 .flex .menu_container {
   display: none;
   flex-direction: column;
-  width: 50%;
+
   position: absolute;
   top: 120%;
   right: 0;

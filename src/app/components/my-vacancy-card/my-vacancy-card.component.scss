@@ -63,13 +63,6 @@ popup-modal {
   position: relative;
 }
 
-.card_header .flex lucide-icons {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: $white;
-}
-
 .card_header .flex button {
   width: 40px;
   height: 40px;
@@ -251,4 +244,12 @@ popup-modal {
   border-radius: 50%;
   background-color: $gray-scale-10;
   transition: margin 0.1s ease-in-out;
+}
+
+.link_action {
+  color: $white;
+  background-color: $primary-color;
+  border-radius: $radius-2;
+  padding: $spacing-2 0;
+  width: 100%;
 }

@@ -31,3 +31,14 @@ export type StudentCard = {
 };
 
 export type StudentsCards = StudentCard[];
+
+export type RegisterStudentToClass = Partial<{
+  classId: string;
+  emails: string[];
+}>;
+
+export type StudentToClassResponse = {
+  classId: string;
+  registration: number;
+  email: string;
+}[];

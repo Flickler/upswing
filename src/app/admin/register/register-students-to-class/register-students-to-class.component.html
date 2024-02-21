@@ -1,0 +1,97 @@
+<modal>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class="form_heading">Registrar Matricula</h2>
+
+    <custom-select-classes
+      [submitted]="submitted"
+      [invalid]="classId.invalid"
+      (setValue)="classId.setValue($event)"
+    />
+
+    <div class="form_control">
+      @for (mail of emails.controls; track $index) { @if ($first) {
+      <div class="first_select-option">
+        <input
+          type="text"
+          [formControl]="mail"
+          placeholder="Digite o email do aluno para vincular"
+        />
+        @if($last) {
+        <button (click)="addstudentsEmail()">
+          <lucide-icons name="plus" size="20" color="hsl(226, 96%, 60%)" />
+        </button>
+        }
+      </div>
+      } @else { @if($last){
+      <div class="last_select-option">
+        <input
+          type="text"
+          [formControl]="mail"
+          placeholder="Digite o email do aluno para vincular"
+        />
+        <button (click)="removestudentsEmail($index)">
+          <lucide-icons name="trash2" size="20" color="#fa3664" />
+        </button>
+        <button (click)="addstudentsEmail()">
+          <lucide-icons name="plus" size="20" color="hsl(226, 96%, 60%)" />
+        </button>
+      </div>
+      } @else {
+      <div class="others_select-options">
+        <input
+          type="text"
+          [formControl]="mail"
+          placeholder="Digite o email do aluno para vincular"
+        />
+        <button (click)="removestudentsEmail($index)">
+          <lucide-icons name="trash2" size="20" color="#fa3664" />
+        </button>
+      </div>
+      } } } @if (submitted && emails.invalid) {
+      <toast type="warn">
+        Por favor, defina um email para todos os campos abertos
+      </toast>
+      }
+    </div>
+
+    <button type="submit" [disabled]="disable">Cadastrar</button>
+  </form>
+</modal>
+@if (formStatus == 'success') {
+<popup-modal>
+  <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
+  <h3>Sucesso</h3>
+  <p>Matriculas cadastradas com sucesso</p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: hsl(226, 96%, 60%);
+      border: 1px solid hsl(226, 96%, 60%);
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</popup-modal>
+} @if (formStatus == 'error') {
+<popup-modal>
+  <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
+  <h3>Algo Aconteceu</h3>
+  <p style="max-width: 80%">
+    Algo de errado aconteceu! Verifique a autênticidade dos emails e tente
+    novamente.
+  </p>
+  <button
+    style="
+      width: 40%;
+      background-color: transparent;
+      color: #fa3664;
+      border: 1px solid #fa3664;
+    "
+    (click)="formStatus = 'notSubmitted'"
+  >
+    voltar
+  </button>
+</popup-modal>
+}

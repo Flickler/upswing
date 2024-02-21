@@ -7,7 +7,7 @@ import { CoursesCards } from '@@Types/Course';
 import { Pagination } from '@@Types/Pagination';
 import { ClassesCards } from '@@Types/Class';
 import { StudentsCards } from '@@Types/Student';
-import { JobOffersCards } from '@@Types/JobOffer';
+import { JobOfferCard, JobOffersCards } from '@@Types/JobOffer';
 import { CompaniesCards } from '@@Types/Company';
 
 @Injectable({
@@ -15,7 +15,8 @@ import { CompaniesCards } from '@@Types/Company';
 })
 export class AdminDashboardService {
   private http = inject(HttpClient);
-  private path = environment.apiUrl + '/list/admin';
+  private readonly pathAdmin = environment.apiUrl + '/list/admin';
+  private readonly path = environment.apiUrl;
   protected isPanelActive = signal(true);
 
   getPanel() {
@@ -27,26 +28,35 @@ export class AdminDashboardService {
   }
 
   getCourses(page: number) {
-    return this.http.get<Pagination<CoursesCards>>(this.path + '/courses', {
-      params: { page: page },
-    });
+    return this.http.get<Pagination<CoursesCards>>(
+      this.pathAdmin + '/courses',
+      {
+        params: { page: page },
+      }
+    );
   }
 
   getClasses(page: number) {
-    return this.http.get<Pagination<ClassesCards>>(this.path + '/classes', {
-      params: { page: page },
-    });
+    return this.http.get<Pagination<ClassesCards>>(
+      this.pathAdmin + '/classes',
+      {
+        params: { page: page },
+      }
+    );
   }
 
   getStudents(page: number) {
-    return this.http.get<Pagination<StudentsCards>>(this.path + '/students', {
-      params: { page: page },
-    });
+    return this.http.get<Pagination<StudentsCards>>(
+      this.pathAdmin + '/students',
+      {
+        params: { page: page },
+      }
+    );
   }
 
   getPendingJobOffers(page: number) {
     return this.http.get<Pagination<JobOffersCards>>(
-      this.path + '/job-offer-pending',
+      this.pathAdmin + '/job-offer-pending',
       {
         params: { page: page },
       }
@@ -55,7 +65,7 @@ export class AdminDashboardService {
 
   getApprovedJobOffers(page: number) {
     return this.http.get<Pagination<JobOffersCards>>(
-      this.path + '/job-offer-approved',
+      this.pathAdmin + '/job-offer-approved',
       {
         params: { page: page },
       }
@@ -64,7 +74,7 @@ export class AdminDashboardService {
 
   getPedingCompanies(page: number) {
     return this.http.get<Pagination<CompaniesCards>>(
-      this.path + '/company-pending',
+      this.pathAdmin + '/company-pending',
       {
         params: { page: page },
       }
@@ -73,10 +83,38 @@ export class AdminDashboardService {
 
   getApprovedCompanies(page: number) {
     return this.http.get<Pagination<CompaniesCards>>(
-      this.path + '/company-approved',
+      this.pathAdmin + '/company-approved',
       {
         params: { page: page },
       }
+    );
+  }
+
+  approvedJob(id: string) {
+    return this.http.patch<JobOfferCard>(
+      this.path + '/alter/job-approved/' + id,
+      null
+    );
+  }
+
+  notApprovedJob(id: string) {
+    return this.http.patch<JobOfferCard>(
+      this.path + '/alter/job-not-approved/' + id,
+      null
+    );
+  }
+
+  approvedCompany(id: string) {
+    return this.http.patch<JobOfferCard>(
+      this.path + '/alter/company-approved/' + id,
+      null
+    );
+  }
+
+  notApprovedCompany(id: string) {
+    return this.http.patch<JobOfferCard>(
+      this.path + '/alter/company-not-approved/' + id,
+      null
     );
   }
 }

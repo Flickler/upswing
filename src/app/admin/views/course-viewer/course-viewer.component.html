@@ -1,12 +1,15 @@
 <viewer-heading>Cursos</viewer-heading>
 <load-section>
-  @for (course of courses$ | async | coursesCardContent; track course.courseId)
-  {
+  @if (courses$ | async; as courses) { @for (course of courses |
+  coursesCardContent; track course.courseId) {
   <course-card [course]="course" />
+  } @empty {
+  <nothing />
   }
   <pagination-section
-    [currPage]="courses$ | async | currPage"
-    [lastPage]="courses$ | async | lastPage"
+    [currPage]="courses | currPage"
+    [lastPage]="courses | lastPage"
     (onPageChange)="getPage($event)"
   />
+  }
 </load-section>

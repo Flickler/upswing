@@ -9,8 +9,10 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
 import { JobOfferCardComponent } from '@@Components/job-offer-card/job-offer-card.component';
 import { StatusFilterComponent } from '@@Components/status-filter/status-filter.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
-import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
 import { LastPagePipe } from '@@Pipes/last-page.pipe';
+import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-job-offer-viewer',
@@ -18,13 +20,15 @@ import { LastPagePipe } from '@@Pipes/last-page.pipe';
   imports: [
     RouterLink,
     AsyncPipe,
-    JobOffersCardsContentPipe,
+    CurrentPagePipe,
     LastPagePipe,
+    JobOffersCardsContentPipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     JobOfferCardComponent,
     StatusFilterComponent,
     PaginationSectionComponent,
+    NothingCardComponent,
     LucideIcons,
   ],
   templateUrl: './job-offer-viewer.component.html',

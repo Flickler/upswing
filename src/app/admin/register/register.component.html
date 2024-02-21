@@ -22,35 +22,49 @@
 
   @switch (container) { @case ('academic') {
   <div class="select_options">
-    <div class="form_control_row">
-      <input
-        type="radio"
-        id="course"
-        [checked]="selected == 'course'"
-        name="academic"
-        (click)="setRoute('course')"
-      />
-      <label for="course">Cursos</label>
+    <div class="form_control">
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="course"
+          [checked]="selected == 'course'"
+          name="academic"
+          (click)="setRoute('course')"
+        />
+        <label for="course">Cursos</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="class"
+          [checked]="selected == 'class'"
+          name="academic"
+          (click)="setRoute('class')"
+        />
+        <label for="class">Turmas</label>
+      </div>
     </div>
-    <div class="form_control_row">
-      <input
-        type="radio"
-        id="class"
-        [checked]="selected == 'class'"
-        name="academic"
-        (click)="setRoute('class')"
-      />
-      <label for="class">Turmas</label>
-    </div>
-    <div class="form_control_row">
-      <input
-        type="radio"
-        id="subject"
-        [checked]="selected == 'subject'"
-        name="academic"
-        (click)="setRoute('subject')"
-      />
-      <label for="subject">Disciplina</label>
+    <div class="form_control">
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="subject"
+          [checked]="selected == 'subject'"
+          name="academic"
+          (click)="setRoute('subject')"
+        />
+        <label for="subject">Disciplina</label>
+      </div>
+      <div class="form_control_row">
+        <input
+          type="radio"
+          id="student-to-class"
+          [checked]="selected == 'student-to-class'"
+          name="academic"
+          (click)="setRoute('student-to-class')"
+        />
+        <label for="student-to-class">Vincular alunos</label>
+      </div>
     </div>
   </div>
   } @default {

@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
 import { ListService } from '@@Services/list.service';
+import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
 import { LastPagePipe } from '@@Pipes/last-page.pipe';
 import { AdminsCardsContentPipe } from '@@Pipes/get-admins-cards-content.pipe';
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
@@ -10,6 +11,7 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
 import { AdminCardComponent } from '@@Components/admin-card/admin-card.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
+import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
 
 @Component({
   selector: 'app-admin-viewer',
@@ -17,12 +19,14 @@ import { PaginationSectionComponent } from '@@Components/pagination-section/pagi
   imports: [
     RouterLink,
     AsyncPipe,
+    CurrentPagePipe,
     LastPagePipe,
     AdminsCardsContentPipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     AdminCardComponent,
     PaginationSectionComponent,
+    NothingCardComponent,
     LucideIcons,
   ],
   templateUrl: './admin-viewer.component.html',

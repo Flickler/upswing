@@ -1,10 +1,15 @@
 <viewer-heading>Turmas</viewer-heading>
 <load-section>
-  @for (classItem of class$ | async | classesCardContent; track $index) {
+  @if (class$ | async; as classes) { @for (classItem of classes |
+  classesCardContent; track $index) {
   <class-card [classItem]="classItem" />
+  }@empty {
+  <nothing />
   }
   <pagination-section
-    [lastPage]="class$ | async | lastPage"
+    [currPage]="classes | currPage"
+    [lastPage]="classes | lastPage"
     (onPageChange)="getPage($event)"
   />
+  }
 </load-section>

@@ -340,13 +340,12 @@ textarea {
 // CUSTOM SCROLL BAR
 
 ::-webkit-scrollbar {
-  background-color: $primary-10;
+  background-color: $primary-5;
+  border-radius: $radius-3;
   width: 6px;
-  border-top-right-radius: $radius-3;
-  border-bottom-right-radius: $radius-3;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $gray-scale-60;
+  background-color: $gray-scale-30;
   border-radius: $radius-3;
 }

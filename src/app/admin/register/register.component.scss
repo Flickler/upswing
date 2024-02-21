@@ -10,7 +10,8 @@
   &:has(upswing-register-admin) modal:first-child,
   &:has(upswing-register-course) modal:first-child,
   &:has(upswing-register-class) modal:first-child,
-  &:has(upswing-register-subject) modal:first-child {
+  &:has(upswing-register-subject) modal:first-child,
+  &:has(upswing-register-students-to-class) modal:first-child {
     display: none;
   }
 }
@@ -51,9 +52,16 @@
   flex-direction: column;
   gap: $spacing-4;
 
-  width: 80%;
+  width: 70%;
   min-height: 100px;
   margin-inline: auto;
+
+  &:has(.form_control + .form_control) {
+    flex-direction: row;
+    .form_control {
+      width: 50%;
+    }
+  }
 }
 
 .form_control_row label,

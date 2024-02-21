@@ -1,11 +1,16 @@
 <viewer-heading>Vagas</viewer-heading>
 <load-section>
   <status-filter [active]="filter" (onFilterChange)="setFilter($event)" />
-  @for (job of jobs$ | async | jobOffersCardContent; track $index) {
+  @if (jobs$ | async; as jobs) { @for (job of jobs | jobOffersCardContent; track
+  $index) {
   <job-offer-card [job]="job" />
+  } @empty {
+  <nothing />
   }
   <pagination-section
-    [lastPage]="jobs$ | async | lastPage"
+    [currPage]="jobs | currPage"
+    [lastPage]="jobs | lastPage"
     (onPageChange)="getPage($event)"
   />
+  }
 </load-section>

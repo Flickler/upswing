@@ -11,6 +11,7 @@ import { StudentCardComponent } from '@@Components/student-card/student-card.com
 import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
 
 @Component({
   selector: 'upswing-student-viewer',
@@ -25,6 +26,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     LoadSectionComponent,
     StudentCardComponent,
     PaginationSectionComponent,
+    NothingCardComponent,
     LucideIcons,
   ],
   templateUrl: './student-viewer.component.html',

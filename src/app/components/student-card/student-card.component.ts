@@ -2,7 +2,7 @@ import { PopupModalComponent } from '@@Components/popup-modal/popup-modal.compon
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { StudentCard } from '@@Types/Student';
 import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 @Component({
   selector: 'student-card',

@@ -11,16 +11,16 @@
     gap: $spacing-4;
     padding: $spacing-2;
     border-radius: 2rem;
-    background-color: $primary-10;
+    background-color: $primary-5;
   }
 
   button {
     padding: $spacing-4;
     border-radius: 50%;
-    background-color: $primary-10;
+    background-color: $white;
 
     &:hover {
-      background-color: $white;
+      background-color: $primary-10;
     }
   }
 

@@ -1,3 +1,4 @@
+@if (visible) {
 <div class="card_header">
   <div class="flex">
     <lucide-icons name="building" [size]="20" color="hsl(228, 20%, 60%)" />
@@ -9,13 +10,13 @@
       />
     </button>
     <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
-      <button class="action-btn">
+      <button class="action-btn" (click)="approve()">
         <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
-        Editar
+        Aprovar
       </button>
-      <button class="action-btn">
+      <button class="action-btn" (click)="notApprove()">
         <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
-        Excluir
+        Desaprovar
       </button>
     </div>
   </div>
@@ -58,4 +59,4 @@
     } }
   </div>
 </popup-modal>
-}
+} }

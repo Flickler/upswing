@@ -11,6 +11,7 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
 import { CourseCardComponent } from '@@Components/course-card/course-card.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
 
 @Component({
   selector: 'upswing-course-viewer',
@@ -25,6 +26,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     LoadSectionComponent,
     CourseCardComponent,
     PaginationSectionComponent,
+    NothingCardComponent,
     LucideIcons,
   ],
   templateUrl: './course-viewer.component.html',

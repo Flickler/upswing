@@ -1,6 +1,5 @@
 import { RegisterAccount } from './Account';
 import { Address, RegisterAddress } from './Address';
-import { BusinessArea } from './BussinesArea';
 import { SocialNetWorks } from './SocialNetworks';
 
 export type Company = {
@@ -25,6 +24,7 @@ export type RegisterCompany = Partial<{
 }>;
 
 export type CompanyCard = {
+  id: string;
   name: string;
   socialNetworks: SocialNetWorks | null;
   mainPhone: string;

@@ -12,6 +12,7 @@ import { PaginationSectionComponent } from '@@Components/pagination-section/pagi
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { StatusFilterComponent } from '@@Components/status-filter/status-filter.component';
 import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
+import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
 
 @Component({
   selector: 'upswing-company-viewer',
@@ -27,6 +28,7 @@ import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
     CompanyCardComponent,
     StatusFilterComponent,
     PaginationSectionComponent,
+    NothingCardComponent,
     LucideIcons,
   ],
   templateUrl: './company-viewer.component.html',

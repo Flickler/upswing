@@ -7,12 +7,16 @@ import { PaginationSectionComponent } from '@@Components/pagination-section/pagi
 import { StudentDashboardService } from '@@Services/student-dashboard.service';
 import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
 import { MyAppliesCardComponent } from '@@Components/my-applies-card/my-applies-card.component';
+import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
+import { LastPagePipe } from '@@Pipes/last-page.pipe';
 
 @Component({
   selector: 'upswing-job-offers-viewer',
   standalone: true,
   imports: [
     AsyncPipe,
+    CurrentPagePipe,
+    LastPagePipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
     MyAppliesCardComponent,
@@ -24,5 +28,9 @@ import { MyAppliesCardComponent } from '@@Components/my-applies-card/my-applies-
 })
 export class JobOffersViewerComponent {
   dashboardService = inject(StudentDashboardService);
-  myJobOffers$ = this.dashboardService.getMyJobOffers();
+  myJobOffers$ = this.dashboardService.getMyJobOffers(0);
+
+  getPage(page: number) {
+    this.myJobOffers$ = this.dashboardService.getMyJobOffers(page);
+  }
 }

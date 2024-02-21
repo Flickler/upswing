@@ -80,6 +80,13 @@ export const routes: Routes = [
                     './admin/register/register-subject/register-subject.component'
                   ).then((c) => c.RegisterSubjectComponent),
               },
+              {
+                path: 'student-to-class',
+                loadComponent: () =>
+                  import(
+                    './admin/register/register-students-to-class/register-students-to-class.component'
+                  ).then((c) => c.RegisterStudentsToClassComponent),
+              },
             ],
           },
           // PAGINAS DE VISUALIZAÇÃO DO ADMINISTRADOR
@@ -242,6 +249,13 @@ export const routes: Routes = [
               import('./company/register/register.component').then(
                 (c) => c.RegisterComponent
               ),
+          },
+          {
+            path: 'my-job-offer/:id',
+            loadComponent: () =>
+              import(
+                './company/candidates-viewer/candidates-viewer.component'
+              ).then((c) => c.CandidatesViewerComponent),
           },
         ],
       },

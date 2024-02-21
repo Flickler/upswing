@@ -1,11 +1,15 @@
 <viewer-heading>Alunos</viewer-heading>
 <load-section>
-  @for (student of students$ | async | studentsCardContent; track $index) {
+  @if (students$ | async; as students) { @for (student of students |
+  studentsCardContent; track $index) {
   <student-card [student]="student" />
+  }@empty {
+  <nothing />
   }
   <pagination-section
-    [currPage]="students$ | async | currPage"
-    [lastPage]="students$ | async | lastPage"
+    [currPage]="students | currPage"
+    [lastPage]="students | lastPage"
     (onPageChange)="getPage($event)"
   />
+  }
 </load-section>

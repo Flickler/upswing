@@ -30,3 +30,11 @@ export type ClassCard = {
 };
 
 export type ClassesCards = ClassCard[];
+
+export type OptionClass = {
+  classId: string;
+  code: number;
+  courseName: string;
+};
+
+export type OptionsClasses = OptionClass[];

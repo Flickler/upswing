@@ -89,5 +89,8 @@
       {{ (job.address?.zipCode)!.state }}
     </p>
   </div>
+  <a class="link_action" [routerLink]="'../my-job-offer/' + job.jobOfferId"
+    >Ver candidatos</a
+  >
 </popup-modal>
 }

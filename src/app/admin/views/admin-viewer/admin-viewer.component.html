@@ -1,10 +1,15 @@
 <viewer-heading>Administradores</viewer-heading>
 <load-section>
-  @for (admin of (admins$ | async | adminsCardContent); track $index) {
+  @if (admins$ | async; as admins) { @for (admin of (admins |
+  adminsCardContent); track $index) {
   <admin-card [admin]="admin" />
+  } @empty {
+  <nothing />
   }
   <pagination-section
-    [lastPage]="admins$ | async | lastPage"
+    [currPage]="admins | currPage"
+    [lastPage]="admins | lastPage"
     (onPageChange)="getPage($event)"
   />
+  }
 </load-section>

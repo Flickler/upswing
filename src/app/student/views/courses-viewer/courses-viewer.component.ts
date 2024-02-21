@@ -8,12 +8,16 @@ import { LoadSectionComponent } from '@@Components/load-section/load-section.com
 import { MyCourseCardComponent } from '@@Components/my-course-card/my-course-card.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
+import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
+import { LastPagePipe } from '@@Pipes/last-page.pipe';
 
 @Component({
   selector: 'upswing-courses-viewer',
   standalone: true,
   imports: [
     AsyncPipe,
+    CurrentPagePipe,
+    LastPagePipe,
     StudentCoursesCardsContentPipe,
     ViewerHeadingComponent,
     LoadSectionComponent,
@@ -26,5 +30,9 @@ import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.com
 })
 export class CoursesViewerComponent {
   dashboardService = inject(StudentDashboardService);
-  myCourses$ = this.dashboardService.getMyCourses();
+  myCourses$ = this.dashboardService.getMyCourses(0);
+
+  getPage(page: number) {
+    this.myCourses$ = this.dashboardService.getMyCourses(page);
+  }
 }
