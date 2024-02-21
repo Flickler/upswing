@@ -1,3 +1,10 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 :host {
-  display: block;
+  @include mainContainer;
+}
+
+.heading {
+  @include heading-2;
 }

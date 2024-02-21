@@ -6,6 +6,7 @@ import { Pagination } from '@@Types/Pagination';
 import { JobOffersCards, RegisterVacancy } from '@@Types/JobOffer';
 import { environment } from '@@Environments/environment';
 import { CompanyService } from './company.service';
+import { StudentsCandidates } from '@@Types/Student';
 
 @Injectable({
   providedIn: CompanyDashboardComponent,
@@ -35,6 +36,13 @@ export class CompanyDashboardService {
   getMyVancancies() {
     return this.http.get<Pagination<JobOffersCards>>(
       this.path + '/list/company/my-vacancies/' + this.userId
+    );
+  }
+
+  getOfferCandidates(idOffer: string, page: number) {
+    return this.http.get<Pagination<StudentsCandidates>>(
+      this.path + '/list/company/my-candidates/' + idOffer,
+      { params: { page: page } }
     );
   }
 }

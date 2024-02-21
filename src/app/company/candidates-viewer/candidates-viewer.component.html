@@ -1,1 +1,23 @@
-<p>candidates-viewer works!</p>
+<div class="heading">
+  <lucide-icons
+    name="chevronLeft"
+    [size]="24"
+    color="#666c84"
+    routerLink="../../my-job-offers"
+  />
+  <h1>Candidatos</h1>
+</div>
+<load-section>
+  @if (candidates$ | async; as candidates) { @for (candidate of
+  candidates.content; track $index) {
+  <candidates-card [candidate]="candidate" />
+  } @empty {
+  <nothing />
+  }
+  <pagination-section
+    [currPage]="candidates | currPage"
+    [lastPage]="candidates | lastPage"
+    (onPageChange)="getPage($event)"
+  />
+  }
+</load-section>

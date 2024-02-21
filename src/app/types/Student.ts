@@ -1,5 +1,6 @@
-import { Account, RegisterAccount } from './Account';
+import { RegisterAccount } from './Account';
 import { Address, RegisterAddress } from './Address';
+import { OptionsCourse } from './Course';
 import { SocialNetWorks } from './SocialNetworks';
 
 export type Student = {
@@ -42,3 +43,14 @@ export type StudentToClassResponse = {
   registration: number;
   email: string;
 }[];
+
+export type StudentCandidate = {
+  id: string;
+  name: string;
+  occupation: string;
+  status: string;
+  socialNetworks: SocialNetWorks;
+  courses: OptionsCourse;
+};
+
+export type StudentsCandidates = StudentCandidate[];

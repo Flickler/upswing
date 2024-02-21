@@ -1,0 +1,65 @@
+@if(!modal) {
+<div class="card_header">
+  <div class="flex">
+    <lucide-icons
+      name="userRound"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button class="icon-btn" (click)="menu = !menu">
+      <lucide-icons
+        name="moreVertical"
+        color="hsl(228, 20%, 60%)"
+        [size]="16"
+      />
+    </button>
+    <div [ngClass]="menu ? 'menu_container active' : 'menu_container'">
+      <button class="action-btn">
+        <lucide-icons name="penLine" color="hsl(228, 20%, 60%)" [size]="16" />
+        Editar
+      </button>
+      <button class="action-btn">
+        <lucide-icons name="trash2" color="hsl(228, 20%, 60%)" [size]="16" />
+        Excluir
+      </button>
+    </div>
+  </div>
+  <p class="card_title">{{ candidate.name }}</p>
+  <button (click)="modal = true">Ver mais</button>
+</div>
+
+} @else {
+<popup-modal>
+  <div class="card_header_expand">
+    <lucide-icons
+      name="userRound"
+      [size]="20"
+      color="hsl(228, 20%, 60%)"
+      class="card_avatar"
+    />
+    <button (click)="modal = false">
+      <lucide-icons name="x" [size]="20" color="hsl(226, 20%, 60%)" />
+    </button>
+  </div>
+  <div class="card_content">
+    <p class="card_title">{{ candidate.name }}</p>
+  </div>
+  <div class="card_content">
+    <button class="summary" (click)="classes = !classes">
+      <span>Turmas</span>
+      <lucide-icons
+        [ngClass]="classes ? 'inverted' : 'normal'"
+        [size]="20"
+        name="chevronDown"
+        color="hsl(228, 20%, 60%)"
+      />
+    </button>
+    <div [ngClass]="classes ? 'card_accordion active' : 'card_accordion'">
+      @for (course of candidate.courses; track $index) {
+      <span>{{ course.courseName }}</span>
+      }
+    </div>
+  </div>
+</popup-modal>
+}
