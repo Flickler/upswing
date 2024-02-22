@@ -6,7 +6,11 @@ import { environment } from '@@Environments/environment';
 import { StudentService } from './student.service';
 import { Pagination } from '@@Types/Pagination';
 import { MyCoursesCards } from '@@Types/Course';
-import { JobOffersCards } from '@@Types/JobOffer';
+import {
+  ApplyVacancy,
+  ApplyVacancyResponse,
+  JobOffersCards,
+} from '@@Types/JobOffer';
 
 @Injectable({
   providedIn: StudentDashboardComponent,
@@ -45,6 +49,13 @@ export class StudentDashboardService {
   hasConfig() {
     return this.http.get<boolean>(
       this.path + '/list/student/auto-apply/' + this.userId
+    );
+  }
+
+  unapplyVacancy(apply: ApplyVacancy) {
+    return this.http.patch<ApplyVacancyResponse>(
+      this.path + '/alter/unapply-vacancy',
+      apply
     );
   }
 }

@@ -12,6 +12,22 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
 
+  // RESETAR A SENHA
+  {
+    path: 'reset-password',
+    loadComponent: () =>
+      import('./reset-password/reset-password.component').then(
+        (c) => c.ResetPasswordComponent
+      ),
+  },
+  {
+    path: 'reset-password/:token',
+    loadComponent: () =>
+      import('./new-password/new-password.component').then(
+        (c) => c.NewPasswordComponent
+      ),
+  },
+
   // ADMINISTRADOR
   {
     path: 'ad',

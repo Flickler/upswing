@@ -40,3 +40,15 @@ export type RegisterVacancy = Partial<{
   benefitsCultural: boolean;
   closingDate: string;
 }>;
+
+export type ApplyVacancy = {
+  jobOfferId: string;
+  studentId: string;
+};
+
+export type ApplyVacancyResponse = {
+  id: string;
+  name: string;
+  position: string;
+  status: boolean;
+};

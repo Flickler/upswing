@@ -2,24 +2,57 @@
 @use "mixins" as *;
 
 :host div {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $spacing-8;
-
-  &.expanded {
-    grid-template-columns: repeat(6, 1fr);
-    .welcome {
-      grid-column: span 6;
-    }
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-6;
 }
 
 .welcome {
-  grid-column: span 4;
+  width: 100%;
   border-bottom: 1px solid $gray-scale-30;
   padding-bottom: $spacing-8;
 }
 
+a {
+  width: 22%;
+}
+
 button {
   color: $gray-scale-80;
+}
+
+@media screen and (max-width: 1440px) {
+  a {
+    width: 28%;
+  }
+
+  .expanded a {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 1224px) {
+  a {
+    width: 48%;
+  }
+
+  .expanded a {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  a {
+    width: 100%;
+  }
+
+  .expanded a {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .expanded a {
+    width: 100%;
+  }
 }

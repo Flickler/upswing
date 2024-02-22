@@ -1,24 +1,28 @@
 @use "variables" as *;
 
 :host {
-  width: 22%;
-  height: 200px;
-  aspect-ratio: 4 / 3;
-  min-width: 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: $spacing-8 $spacing-6;
-  border: 1px solid $gray-scale-30;
-  border-radius: $radius-4;
-  user-select: none;
-  transition: 0.4s ease-in;
+  display: none;
 
-  &:hover {
-    border: 1px solid $primary-30;
-    background-color: $primary-5;
-    box-shadow: $shadow-container;
+  &:has(.card_header) {
+    width: 22%;
+    height: 200px;
+    aspect-ratio: 4 / 3;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: $spacing-8 $spacing-6;
+    border: 1px solid $gray-scale-30;
+    border-radius: $radius-4;
+    user-select: none;
+    transition: 0.4s ease-in;
+
+    &:hover {
+      border: 1px solid $primary-30;
+      background-color: $primary-5;
+      box-shadow: $shadow-container;
+    }
   }
 }
 
