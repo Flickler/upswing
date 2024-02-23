@@ -1,0 +1,54 @@
+@use "variables" as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+
+  padding: $spacing-12 0;
+}
+
+.team_title {
+  color: $white;
+  font-size: $h1;
+  text-align: center;
+}
+
+.team_cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-6;
+}
+
+.user_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-4;
+  width: 260px;
+
+  .user_name {
+    color: $white;
+    font-size: $h2;
+    text-align: center;
+  }
+
+  .user_position {
+    color: $primary-color;
+    font-size: $base;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .team_title {
+    font-size: $display;
+  }
+
+  .team_cards {
+    flex-direction: column;
+    gap: $spacing-9;
+  }
+}

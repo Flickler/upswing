@@ -311,6 +311,7 @@
 </modal>
 
 @if (formStatus == 'success') {
+<audio autoplay src="assets/doubleknock.mp3"></audio>
 <popup-modal>
   <lucide-icons name="checkCircle2" [size]="40" color="hsl(226, 96%, 60%)" />
   <h3>Sucesso</h3>
@@ -328,6 +329,7 @@
   </button>
 </popup-modal>
 } @if (formStatus == 'error') {
+<audio autoplay src="assets/doubleknock.mp3"></audio>
 <popup-modal>
   <lucide-icons name="alertCircle" [size]="40" color="#fa3664" />
   <h3>Algo Aconteceu</h3>

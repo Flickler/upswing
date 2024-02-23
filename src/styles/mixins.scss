@@ -65,8 +65,7 @@
   border: 1px solid $gray-scale-30;
   transition: 0.4s ease-out;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: $white;
     font-weight: $medium;
     background-image: linear-gradient(
@@ -84,12 +83,8 @@
   }
 
   &:focus {
-    border: 1px solid hsl(226, 96%, 96%);
-
-    box-shadow: inset 0 0 60px #dee5ff, inset 20px 0 80px #47a3ff,
-      inset -20px 0 40px #33d7a9, inset 20px 0 400px #0539e6,
-      inset -8px 0 40px #bbf11a, 0 0 8px #cad0ff, -10px 0 20px #cae2ff,
-      10px 0 20px #d6cbff;
+    background-color: $primary-80;
+    outline: 2px solid $primary-5;
   }
 }
 
