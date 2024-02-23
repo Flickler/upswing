@@ -86,3 +86,13 @@ nav {
   background-color: $primary-5;
   color: $primary-color;
 }
+
+@media screen and (max-width: 1024px) {
+  nav {
+    justify-content: space-around;
+  }
+
+  .nav_group {
+    display: none;
+  }
+}

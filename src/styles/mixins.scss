@@ -65,7 +65,8 @@
   border: 1px solid $gray-scale-30;
   transition: 0.4s ease-out;
 
-  &:is(:hover, :focus) {
+  &:hover,
+  &:focus {
     color: $white;
     font-weight: $medium;
     background-image: linear-gradient(

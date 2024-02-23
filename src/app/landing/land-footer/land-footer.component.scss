@@ -1,0 +1,83 @@
+@use "variables" as *;
+
+.footer_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: $primary-5;
+  background-color: $primary-color;
+  padding-top: $spacing-8;
+}
+
+.footer_section .card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 96%;
+  padding: $spacing-9;
+  background-color: $black;
+  border-radius: $radius-4 $radius-4 0 0;
+}
+
+.footer_section .card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: $spacing-9;
+}
+
+.footer_section .card .card_section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: $spacing-6;
+  width: 80%;
+}
+
+.card_section .list {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.card_section .logo img {
+  width: 100px;
+}
+
+.card_section .label {
+  text-transform: uppercase;
+  font-weight: $semibold;
+  letter-spacing: 1px;
+  color: $primary-color;
+}
+
+.card_section .links {
+  color: $gray-scale-60;
+}
+
+.footer_section .credits {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $spacing-6;
+  color: $gray-scale-60;
+  border-top: 1px solid $gray-scale-100;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .card_section {
+    flex-direction: column;
+    gap: $spacing-6;
+    width: 100%;
+
+    .logo {
+      align-self: center;
+    }
+  }
+}
