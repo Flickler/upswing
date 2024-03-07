@@ -1,5 +1,6 @@
 <viewer-heading>Vagas</viewer-heading>
 <load-section>
+  @defer (on immediate; prefetch on idle){
   @if (myJobOffers$ | async; as jobs) { @for (jobOffers of jobs.content; track
   $index) {
   <my-applies-card [JobOffer]="jobOffers" />
@@ -12,4 +13,12 @@
     (onPageChange)="getPage($event)"
   />
   }
+} @loading(minimum 1200ms) {
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+}
 </load-section>

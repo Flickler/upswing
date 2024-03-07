@@ -1,5 +1,6 @@
 <viewer-heading>Empresas</viewer-heading>
 <load-section>
+  @defer (on immediate; prefetch on idle){
   <status-filter [active]="filter" (onFilterChange)="setFilter($event)" />
   @if (companies$ | async; as companies) { @for (company of companies |
   companiesCardContent; track $index) {
@@ -13,4 +14,12 @@
     (onPageChange)="getPage($event)"
   />
   }
+} @loading(minimum 1200ms) {
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+}
 </load-section>

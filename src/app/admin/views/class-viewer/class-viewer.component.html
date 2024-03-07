@@ -1,15 +1,24 @@
 <viewer-heading>Turmas</viewer-heading>
 <load-section>
-  @if (class$ | async; as classes) { @for (classItem of classes |
-  classesCardContent; track $index) {
-  <class-card [classItem]="classItem" />
-  }@empty {
-  <nothing />
-  }
-  <pagination-section
-    [currPage]="classes | currPage"
-    [lastPage]="classes | lastPage"
-    (onPageChange)="getPage($event)"
-  />
+  @defer (on immediate; prefetch on idle){
+    @if (class$ | async; as classes) { @for (classItem of classes |
+    classesCardContent; track $index) {
+    <class-card [classItem]="classItem" />
+    }@empty {
+    <nothing />
+    }
+    <pagination-section
+      [currPage]="classes | currPage"
+      [lastPage]="classes | lastPage"
+      (onPageChange)="getPage($event)"
+    />
+    }
+  } @loading(minimum 1200ms) {
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
   }
 </load-section>

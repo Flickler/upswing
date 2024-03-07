@@ -1,15 +1,24 @@
 <viewer-heading>Cursos</viewer-heading>
 <load-section>
-  @if (courses$ | async; as courses) { @for (course of courses |
-  coursesCardContent; track course.courseId) {
-  <course-card [course]="course" />
-  } @empty {
-  <nothing />
-  }
-  <pagination-section
-    [currPage]="courses | currPage"
-    [lastPage]="courses | lastPage"
-    (onPageChange)="getPage($event)"
-  />
+  @defer (on immediate; prefetch on idle){
+    @if (courses$ | async; as courses) {
+      @for (course of courses | coursesCardContent; track course.courseId) {
+        <course-card [course]="course" />
+      } @empty {
+        <nothing />
+      }
+      <pagination-section
+        [currPage]="courses | currPage"
+        [lastPage]="courses | lastPage"
+        (onPageChange)="getPage($event)"
+      />
+    }
+  } @loading(minimum 1200ms) {
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
+    <card-loading/>
   }
 </load-section>

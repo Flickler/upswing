@@ -10,8 +10,9 @@ import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-headi
 import { StudentCardComponent } from '@@Components/student-card/student-card.component';
 import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
-import { LucideIcons } from '@@Icons/lucide-icons.component';
+import { CardLoadingComponent } from '@@Components/card-loading/card-loading.component';
 import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-student-viewer',
@@ -26,6 +27,7 @@ import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.com
     LoadSectionComponent,
     StudentCardComponent,
     PaginationSectionComponent,
+    CardLoadingComponent,
     NothingCardComponent,
     LucideIcons,
   ],

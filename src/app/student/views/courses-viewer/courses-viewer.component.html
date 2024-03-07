@@ -1,5 +1,6 @@
 <viewer-heading>Cursos</viewer-heading>
 <load-section>
+  @defer (on immediate; prefetch on idle){
   @if (myCourses$ | async; as courses) { @for (course of courses |
   studentCoursesCardContent; track $index) {
   <my-course-card [course]="course" />
@@ -12,4 +13,12 @@
     (onPageChange)="getPage($event)"
   />
   }
+} @loading(minimum 1200ms) {
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+}
 </load-section>

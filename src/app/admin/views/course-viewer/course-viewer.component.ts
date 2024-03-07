@@ -12,6 +12,7 @@ import { CourseCardComponent } from '@@Components/course-card/course-card.compon
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
+import { CardLoadingComponent } from '@@Components/card-loading/card-loading.component';
 
 @Component({
   selector: 'upswing-course-viewer',
@@ -26,6 +27,7 @@ import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.com
     LoadSectionComponent,
     CourseCardComponent,
     PaginationSectionComponent,
+    CardLoadingComponent,
     NothingCardComponent,
     LucideIcons,
   ],

@@ -1,5 +1,6 @@
 <viewer-heading>Administradores</viewer-heading>
 <load-section>
+  @defer (on immediate; prefetch on idle){
   @if (admins$ | async; as admins) { @for (admin of (admins |
   adminsCardContent); track $index) {
   <admin-card [admin]="admin" />
@@ -12,4 +13,12 @@
     (onPageChange)="getPage($event)"
   />
   }
+} @loading(minimum 1200ms) {
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+}
 </load-section>

@@ -33,9 +33,9 @@ export class CompanyDashboardService {
     });
   }
 
-  getMyVancancies() {
+  getMyVancancies(page: number) {
     return this.http.get<Pagination<JobOffersCards>>(
-      this.path + '/list/company/my-vacancies/' + this.userId
+      this.path + '/list/company/my-vacancies/' + this.userId, {params: {page: page}}
     );
   }
 

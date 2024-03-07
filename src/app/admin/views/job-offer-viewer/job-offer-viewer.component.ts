@@ -11,6 +11,7 @@ import { StatusFilterComponent } from '@@Components/status-filter/status-filter.
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
 import { CurrentPagePipe } from '@@Pipes/get-current-page.pipe';
 import { LastPagePipe } from '@@Pipes/last-page.pipe';
+import { CardLoadingComponent } from '@@Components/card-loading/card-loading.component';
 import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
 import { LucideIcons } from '@@Icons/lucide-icons.component';
 
@@ -28,6 +29,7 @@ import { LucideIcons } from '@@Icons/lucide-icons.component';
     JobOfferCardComponent,
     StatusFilterComponent,
     PaginationSectionComponent,
+    CardLoadingComponent,
     NothingCardComponent,
     LucideIcons,
   ],

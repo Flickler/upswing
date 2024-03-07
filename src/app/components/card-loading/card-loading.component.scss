@@ -1,0 +1,21 @@
+@use "variables" as *;
+
+:host {
+  display: block;
+  height: 200px;
+  width: 260px;
+  border-radius: $radius-4;
+  animation: loading .6s ease infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-color: $gray-scale-10;
+  }
+  50% {
+    background-color: $gray-scale-30;
+  }
+  100% {
+    background-color: $gray-scale-10;
+  }
+}

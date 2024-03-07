@@ -9,9 +9,10 @@ import { ClassesCardsContentPipe } from '@@Pipes/get-classes-cards-content.pipe'
 import { ViewerHeadingComponent } from '@@Components/viewer-heading/viewer-heading.component';
 import { LoadSectionComponent } from '@@Components/load-section/load-section.component';
 import { ClassCardComponent } from '@@Components/class-card/class-card.component';
-import { LucideIcons } from '@@Icons/lucide-icons.component';
 import { PaginationSectionComponent } from '@@Components/pagination-section/pagination-section.component';
+import { CardLoadingComponent } from '@@Components/card-loading/card-loading.component';
 import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.component';
+import { LucideIcons } from '@@Icons/lucide-icons.component';
 
 @Component({
   selector: 'upswing-class-viewer',
@@ -26,6 +27,7 @@ import { NothingCardComponent } from '@@Components/nothing-card/nothing-card.com
     LoadSectionComponent,
     ClassCardComponent,
     PaginationSectionComponent,
+    CardLoadingComponent,
     NothingCardComponent,
     LucideIcons,
   ],

@@ -1,9 +1,24 @@
 <viewer-heading>Vagas</viewer-heading>
 <load-section>
-  @for (job of (myVancancies$ | async)?.content; track $index) {
-  <my-vacancy-card [job]="job" />
-  } @empty {
-  <nothing />
+  @if (myVancancies$ | async; as myVancancies) {
+    @defer (on immediate; prefetch on idle){
+      @for (job of myVancancies.content; track $index) {
+        <my-vacancy-card [job]="job" />
+      } @empty {
+        <nothing />
+      }
+      <pagination-section 
+        [currPage]="myVancancies | currPage"
+        [lastPage]="myVancancies | lastPage"
+        (onPageChange)="getPage($event)"
+      />
+    } @loading(minimum 1200ms) {
+      <card-loading/>
+      <card-loading/>
+      <card-loading/>
+      <card-loading/>
+      <card-loading/>
+      <card-loading/>
+    }
   }
-  <pagination-section />
 </load-section>

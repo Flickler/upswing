@@ -8,6 +8,7 @@
   <h1>Candidatos</h1>
 </div>
 <load-section>
+  @defer (on immediate; prefetch on idle){
   @if (candidates$ | async; as candidates) { @for (candidate of
   candidates.content; track $index) {
   <candidates-card [candidate]="candidate" />
@@ -20,4 +21,12 @@
     (onPageChange)="getPage($event)"
   />
   }
+} @loading(minimum 1200ms) {
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+}
 </load-section>

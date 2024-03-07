@@ -1,5 +1,6 @@
 <viewer-heading>Vagas</viewer-heading>
 <load-section>
+  @defer (on immediate; prefetch on idle){
   <status-filter [active]="filter" (onFilterChange)="setFilter($event)" />
   @if (jobs$ | async; as jobs) { @for (job of jobs | jobOffersCardContent; track
   $index) {
@@ -13,4 +14,12 @@
     (onPageChange)="getPage($event)"
   />
   }
+} @loading(minimum 1200ms) {
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+  <card-loading/>
+}
 </load-section>
